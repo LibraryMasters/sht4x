@@ -210,5 +210,5 @@ uint8_t i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len) {
 
 Email address: cedricmalyam@gmail.com
 
-### Acknowledgements
+### Acknowledgements 
 - @PeterHenderson https://dribbble.com/peterhenderson for the logo
