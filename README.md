@@ -29,7 +29,7 @@ The Library masters SHT4x is the full function driver of the SHT4x sensors serie
 
   ### Install
   - Example refer to video: "coming soon"
-  - Use eaxample project 
+  - Use example project 
 
   ### Examples
   - [STM32L432 (STM32CubeI)](https://github.com/LibraryMasters/sht4x/tree/master/Project%20Example/STM32L432/sht40x_temp_sens_k423kc)
