@@ -28,7 +28,7 @@ The Library masters SHT4x is the full function driver of the SHT4x sensors serie
   - [Contact Us](#Contact-Us)
 
   ### Install
-  - Example refer to video: "coming soon"
+  - refer to video: "coming soon..."
   - Use example project 
 
   ### Examples
