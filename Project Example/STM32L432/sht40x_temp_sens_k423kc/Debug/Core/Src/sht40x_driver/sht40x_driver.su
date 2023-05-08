@@ -1,0 +1,14 @@
+../Core/Src/sht40x_driver/sht40x_driver.c:55:9:a_sht40x_i2c_write	32	static
+../Core/Src/sht40x_driver/sht40x_driver.c:76:9:a_sht40x_i2c_read	32	static
+../Core/Src/sht40x_driver/sht40x_driver.c:92:6:a_sht40x_print_error_msg	16	static
+../Core/Src/sht40x_driver/sht40x_driver.c:109:9:sht40x_init	16	static
+../Core/Src/sht40x_driver/sht40x_driver.c:176:9:sht40x_deinit	16	static
+../Core/Src/sht40x_driver/sht40x_driver.c:202:9:sht40x_set_addr	16	static
+../Core/Src/sht40x_driver/sht40x_driver.c:231:9:sht40x_get_addr	16	static
+../Core/Src/sht40x_driver/sht40x_driver.c:258:9:sht40x_set_variant	16	static
+../Core/Src/sht40x_driver/sht40x_driver.c:319:9:sht40x_get_variant	16	static
+../Core/Src/sht40x_driver/sht40x_driver.c:349:9:sht40x_get_temp_rh	32	static
+../Core/Src/sht40x_driver/sht40x_driver.c:403:9:sht40x_get_serial_number	40	static
+../Core/Src/sht40x_driver/sht40x_driver.c:460:9:sht40x_activate_heater	32	static
+../Core/Src/sht40x_driver/sht40x_driver.c:523:9:sht40x_soft_reset	24	static
+../Core/Src/sht40x_driver/sht40x_driver.c:551:9:sht40x_info	16	static

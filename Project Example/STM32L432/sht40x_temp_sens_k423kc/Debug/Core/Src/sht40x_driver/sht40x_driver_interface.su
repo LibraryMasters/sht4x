@@ -1,0 +1,6 @@
+../Core/Src/sht40x_driver/sht40x_driver_interface.c:38:9:sht40x_interface_i2c_init	4	static
+../Core/Src/sht40x_driver/sht40x_driver_interface.c:53:9:sht40x_interface_i2c_deinit	4	static
+../Core/Src/sht40x_driver/sht40x_driver_interface.c:73:9:sht40x_interface_i2c_read	16	static
+../Core/Src/sht40x_driver/sht40x_driver_interface.c:98:9:sht40x_interface_i2c_write	16	static
+../Core/Src/sht40x_driver/sht40x_driver_interface.c:116:6:sht40x_interface_delay_ms	16	static
+../Core/Src/sht40x_driver/sht40x_driver_interface.c:129:6:sht40x_interface_debug_print	272	static

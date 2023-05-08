@@ -1,0 +1,4 @@
+build/default/production/sht40x_driver/sht40x_driver.o: \
+ sht40x_driver/sht40x_driver.c sht40x_driver/sht40x_driver.h
+
+sht40x_driver/sht40x_driver.h:

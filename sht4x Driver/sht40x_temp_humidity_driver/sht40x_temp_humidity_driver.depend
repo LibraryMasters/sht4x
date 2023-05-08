@@ -1,0 +1,55 @@
+# depslib dependency file v1.0
+1681832647 source:e:\project code\library master\sht4x tempearture and humidity sensor\sht4x driver\sht40x_temp_humidity_driver\main.c
+	"sht40x_driver_basic.h"
+
+1681832547 e:\project code\library master\sht4x tempearture and humidity sensor\sht4x driver\sht40x_temp_humidity_driver\sht40x_driver.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdint.h>
+	<stdbool.h>
+	<stdlib.h>
+	<stdarg.h>
+
+1681832539 source:e:\project code\library master\sht4x tempearture and humidity sensor\sht4x driver\sht40x_temp_humidity_driver\sht40x_driver.c
+	"sht40x_driver.h"
+
+1681826344 source:e:\project code\library master\sht4x tempearture and humidity sensor\sht4x driver\sht40x_temp_humidity_driver\sht40x_driver_interface.c
+	"sht40x_driver_interface.h"
+
+1681759452 e:\project code\library master\sht4x tempearture and humidity sensor\sht4x driver\sht40x_temp_humidity_driver\sht40x_driver_interface.h
+	"sht40x_driver.h"
+
+1681760044 source:e:\project code\library master\sht4x tempearture and humidity sensor\sht4x driver\sht40x_temp_humidity_driver\sht40x_driver_basic.c
+	"sht40x_driver_basic.h"
+
+1681740046 e:\project code\library master\sht4x tempearture and humidity sensor\sht4x driver\sht40x_temp_humidity_driver\sht40x_driver_basic.h
+	"sht40x_driver_interface.h"
+
+1682494433 source:e:\library master\sht4x tempearture and humidity sensor\sht4x driver\sht40x_temp_humidity_driver\main.c
+	"sht40x_driver_basic.h"
+
+1682256965 e:\library master\sht4x tempearture and humidity sensor\sht4x driver\sht40x_temp_humidity_driver\sht40x_driver_basic.h
+	"sht40x_driver_interface.h"
+
+1681759452 e:\library master\sht4x tempearture and humidity sensor\sht4x driver\sht40x_temp_humidity_driver\sht40x_driver_interface.h
+	"sht40x_driver.h"
+
+1682263613 e:\library master\sht4x tempearture and humidity sensor\sht4x driver\sht40x_temp_humidity_driver\sht40x_driver.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdint.h>
+	<stdbool.h>
+	<stdlib.h>
+	<stdarg.h>
+
+1682256991 source:e:\library master\sht4x tempearture and humidity sensor\sht4x driver\sht40x_temp_humidity_driver\sht40x_driver_basic.c
+	"sht40x_driver_basic.h"
+
+1682186155 source:e:\library master\sht4x tempearture and humidity sensor\sht4x driver\sht40x_temp_humidity_driver\sht40x_driver_interface.c
+	"sht40x_driver_interface.h"
+
+1682265113 source:e:\library master\sht4x tempearture and humidity sensor\sht4x driver\sht40x_temp_humidity_driver\sht40x_driver.c
+	"sht40x_driver.h"
+
