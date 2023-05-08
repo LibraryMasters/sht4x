@@ -24,8 +24,10 @@ The Library masters SHT4x is the full function driver of the SHT4x sensors serie
     - [example basic](#example-basic)
     - [example interface](#example-interface)
   - [Document](#Document)
+  - [How to contribute](#Contribute)
   - [License](#License)
   - [Contact Us](#Contact-Us)
+  - [Acknowledgements](#Acknowledgements)
 
   ### Install
   - refer to video: "coming soon..."
@@ -197,8 +199,16 @@ uint8_t i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len) {
 
   ### Document
   [datasheet](https://github.com/LibraryMasters/sht4x/blob/master/Document/Datasheet_SHT4x%20temperature%20sensor.pdf)
+  
+  ### Contribute
+   1. Clone repo and create a new branch: ```https://github.com/LibraryMasters/sht4x.git```
+   2. Make changes and test
+   3. Submit Pull Request with comprehensive description of changes
   ### License
   [MIT](https://choosealicense.com/licenses/mit/)
 ### Contact Us
 
 Email address: cedricmalyam@gmail.com
+
+### Acknowledgements
+- @PeterHenderson https://dribbble.com/peterhenderson for the logo
