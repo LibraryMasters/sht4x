@@ -22,7 +22,7 @@ The Library masters SHT4x is the full function driver of the SHT4x sensors serie
   - [Examples](#Examples)
   - [Usage](#Usage)
     - [example basic](#example-basic)
-    - [example interface](#example-Interface)
+    - [example interface](#example-interface)
   - [Document](#Document)
   - [License](#License)
   - [Contact Us](#Contact-Us)
@@ -100,23 +100,11 @@ int main()
   ```
 
   #### example interface
-       Declare two functions, "i2c_write" and "i2c_read" in main, call these functions in sht4x_interface as per code below:
+  Declare two functions, "i2c_write" and "i2c_read" in main, call these functions in sht4x_interface as per code below.
 
   ```C
   ...
 
-
-  /**
- * @brief      interface i2c bus read
- * @param[in]  u8Addr is the i2c device address 7 bit
- * @param[in]  u16Reg is the i2c register address
- * @param[out] *pBuf points to a data buffer
- * @param[in]  u8length is the length of the data buffer
- * @return     status code
- *             - 0 success
- *             - 1 read failed
- * @note       none
- */
 uint8_t sht40x_interface_i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
 {
     /*call your i2c read function here*/
@@ -129,17 +117,6 @@ uint8_t sht40x_interface_i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint1
     return 0; /**< success */
 }
 
-/**
- * @brief     interface i2c bus write
- * @param[in] u8Addr is the i2c device address 7 bit
- * @param[in] u16Reg is the i2c register address
- * @param[in] *pBuf points to a data buffer
- * @param[in] u8length is the length of the data buffer
- * @return    status code
- *            - 0 success
- *            - 1 write failed
- * @note      none
- */
 uint8_t sht40x_interface_i2c_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
 {
     /*call your i2c write function here*/
@@ -152,11 +129,6 @@ uint8_t sht40x_interface_i2c_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint
     return 0; /**< success */
 }
 
-/**
- * @brief     interface delay ms
- * @param[in] u32Ms is the time in milliseconds
- * @note      none
- */
 void sht40x_interface_delay_ms(uint32_t u32Ms)
 {
     /*call your delay function here*/
@@ -165,11 +137,6 @@ void sht40x_interface_delay_ms(uint32_t u32Ms)
     /*user code end*/
 }
 
-/**
- * @brief     interface print format data
- * @param[in] fmt is the format data
- * @note      none
- */
 void sht40x_interface_debug_print(const char *const fmt, ...)
 {
     /*call your call print function here*/
@@ -197,7 +164,7 @@ void sht40x_interface_debug_print(const char *const fmt, ...)
   ```
   
   ```C
-Example code from MPLAB IDE with XC16 compiler 
+Example code from MPLAB X IDE with XC16 compiler 
 
 ...
 
