@@ -38,7 +38,7 @@
 #define SHT40X_DEBUG_MODE
 
 /**
- * @defgroup driver_sht40x mcp23x08 driver function
+ * @defgroup driver_sht40x sht40x driver function
  * @brief sht40x driver modules
  * @{
  */
@@ -73,6 +73,11 @@
  #define HUMIDITY_MIN                                       0U
  #define HUMIDITY_MAX                                       100U
 
+ /* Heater time delay */
+
+#define HEATER_DELAY_1S                                     1020U
+#define HEATER_DELAY_100mS                                  115U
+
 /* Read precision table */
 static uint8_t  const READ_PRECISION[3] = { SHT40X_MEASURE_T_RH_HIGH_PREC_CMD,
                               SHT40X_MEASURE_T_RH_MIDIUM_PREC_CMD,
@@ -81,12 +86,12 @@ static uint8_t  const READ_PRECISION[3] = { SHT40X_MEASURE_T_RH_HIGH_PREC_CMD,
 
 /* Heater activate power table */
 static uint8_t const HEATER_POWER[6] = { SHT40X_ACTIVATE_HEATER_200mW_1_S_CMD,
-                            SHT40X_ACTIVATE_HEATER_200mW_100mS_CMD,
-                            SHT40X_ACTIVATE_HEATER_110mW_1_S_CMD,
-                            SHT40X_ACTIVATE_HEATER_110mW_100mS_CMD,
-                            SHT40X_ACTIVATE_HEATER_20mW_1_S_CMD,
-                            SHT40X_ACTIVATE_HEATER_20mW_100mS_CMD
-                           };
+                                         SHT40X_ACTIVATE_HEATER_200mW_100mS_CMD,
+                                         SHT40X_ACTIVATE_HEATER_110mW_1_S_CMD,
+                                         SHT40X_ACTIVATE_HEATER_110mW_100mS_CMD,
+                                         SHT40X_ACTIVATE_HEATER_20mW_1_S_CMD,
+                                         SHT40X_ACTIVATE_HEATER_20mW_100mS_CMD
+                                       };
 
                            /**
 * @brief execution status enumeration
@@ -155,8 +160,8 @@ typedef enum{
 */
  typedef struct sht40x_data_s
  {
-    float temperature_C;                                                          /**< */
-    float temperature_F;                                                          /**< */
+    float temperature_C;                                                        /**< */
+    float temperature_F;                                                        /**< */
     float humidity;                                                             /**< */
     uint8_t pTempRawData[2];                                                    /**< */
     uint8_t pHumidityRawData[2];                                                /**< */
@@ -168,9 +173,8 @@ typedef enum{
  */
  union
 {
-    uint8_t pBuffer[4];                                                       /**< */
-    uint32_t raw;                                                             /**< */
-
+    uint8_t pBuffer[4];                                                        /**< */
+    uint32_t raw;                                                              /**< */
 }static serial;
 
  /**
@@ -405,14 +409,15 @@ uint8_t sht40x_get_serial_number(sht40x_handle_t *const pHandle, uint32_t *pSeri
  * @brief     This function activate the device heater
  * @param[in] *pHandle points to sht40x pHandle structure
  * @param[in]  power is the heater power desired
+ * @param[out] pData point to the sensor data to read
  * @return  status code
  *            - 0 success
  *            - 1 failed activate heater
  *            - 2 pHandle is NULL
  *            - 3 pHandle is not initialized
- * @note      none
+ * @note      Depending on heater setting selected, this routine can take up to 1000 ms delay
  */
-uint8_t sht40x_activate_heater(sht40x_handle_t *const pHandle, sht40x_heater_power_t power);
+uint8_t sht40x_activate_heater(sht40x_handle_t *const pHandle, sht40x_heater_power_t power, sht40x_data_t *pData);
 
 /**
  * @brief     This function soft reset the device

@@ -63,6 +63,18 @@ uint8_t sht40x_basic_get_variant(sht40x_variant_t *pVariant);
 uint8_t sht40x_basic_get_temp_rh(sht40x_precision_t precision, sht40x_data_t *pData);
 
 /**
+ * @brief     Basic implementation to read the temperature and relative humidity with n number of samples
+ * @param[in] precision is the data read accuracy
+ * @param[out] pData point to the sensor data to read
+ * @param[in] u8NumSample is the number of samples to read
+ * @return  status code
+ *            - 0 success
+ *            - 1 failed to get temp/humidity
+ * @note      none
+ */
+uint8_t sht40x_basic_get_temp_humidity_nSample(sht40x_precision_t precision, sht40x_data_t *pData, uint8_t u8NumSample);
+
+/**
  * @brief     Basic implementation to get the device serial number
  * @param[out] pSerial_Number point to the device serial number
  * @return  status code
@@ -76,12 +88,13 @@ uint8_t sht40x_basic_get_serial_number(uint32_t *pSerial_Number);
 /**
  * @brief     Basic implementation to activate heater
  * @param[in]  power is the heater power desired
+ * @param[out] pData point to the sensor data to read
  * @return  status code
  *            - 0 success
  *            - 1 failed activate heater
  * @note      none
  */
-uint8_t sht40x_basic_activate_heater(sht40x_heater_power_t power);
+uint8_t sht40x_basic_activate_heater(sht40x_heater_power_t power, sht40x_data_t *pData);
 
 /**
  * @brief   Basic implementation to soft reset the device

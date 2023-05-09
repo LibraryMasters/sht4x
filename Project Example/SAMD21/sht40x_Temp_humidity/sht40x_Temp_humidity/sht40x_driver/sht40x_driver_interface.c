@@ -136,6 +136,6 @@ void sht40x_interface_debug_print(const char *const fmt, ...)
      serial_print((char *const )str, len);                  /**< example of printf function, comment out if used */
      //memset((char *) str, 0, sizeof (char)*100);
     /*user code end*/
-   sht40x_interface_delay_ms(10);        /**< delay needed for processors that fails to clear buffer quick enough */
+     sht40x_interface_delay_ms(10);        /**< delay needed for processors that fails to clear buffer quick enough */
 #endif
 }

@@ -8,6 +8,7 @@ int err;
 uint32_t UID;
 uint8_t variant;
 uint8_t deviceAdd;
+uint8_t NumberSamples = 10;
 
 uint8_t i2c_read_data(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);
 
@@ -33,13 +34,33 @@ int main(void)
 		gpio_toggle_pin_level(LED_GREEN);
 		sht40x_interface_delay_ms(2000);
 		
-	  err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);
-	  sht40x_interface_debug_print("Temp C: %.2d\r", (int)dataRead.temperature_C);
-	  sht40x_interface_debug_print("Temp F: %.2d\r", (int)dataRead.temperature_F);
-	  sht40x_interface_debug_print("Humidity: %.2f\n", dataRead.humidity);
+		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);
+		if(err)
+		{
+		sht40x_interface_debug_print("failed to read\n");
+		}
+		sht40x_interface_debug_print("\nTemp C: %.2f\n", dataRead.temperature_C);
+		sht40x_interface_debug_print("Temp F: %.2f\n", dataRead.temperature_F);
+		sht40x_interface_debug_print("Humidity: %.2f\n", dataRead.humidity);
 
-	  err = sht40x_basic_get_serial_number((uint32_t*) &UID);
-	  sht40x_interface_debug_print("serial number : %lu\r", UID);
+		/**Measure Temp and humidity with n number of samples */
+		err = sht40x_basic_get_temp_humidity_nSample(SHT40X_PRECISION_HIGH, &dataRead, NumberSamples);
+		sht40x_interface_debug_print("\nTemp C sampled: %.2f\n", dataRead.temperature_C);
+		sht40x_interface_debug_print("Humidity sampled: %.2f\n", dataRead.humidity);
+
+		/** Get device unique ID */
+		err = sht40x_basic_get_serial_number((uint32_t*) &UID);
+		if(err)
+		{
+		/**< do something */
+		}
+		sht40x_interface_debug_print("serial number : %lu\n", UID);
+
+		/** Activate heater and measure temperature */
+		err = sht40x_basic_activate_heater(SHT40X_HEATER_POWER_20mW_100mS, &dataRead);
+		sht40x_interface_debug_print("\nHeater Temp C: %.2f\n", dataRead.temperature_C);
+		sht40x_interface_debug_print("Heater Temp F: %.2f\n", dataRead.temperature_F);
+		sht40x_interface_debug_print("Heater Humidity: %.2f\n", dataRead.humidity);
 		
 	}
 }
@@ -61,20 +82,24 @@ void serial_print(char *const pBuffer, uint8_t u8Length)
 
 uint8_t i2c_read_data(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
 {
-		struct io_descriptor *I2C_0_io;
+	struct io_descriptor *I2C_0_io;
 
-		i2c_m_sync_get_io_descriptor(&I2C_0, &I2C_0_io);
-		i2c_m_sync_enable(&I2C_0);
-		i2c_m_sync_set_slaveaddr(&I2C_0, addr, I2C_M_SEVEN);
-		
-		io_write(I2C_0_io, (uint8_t *)&reg, 1);
-		sht40x_interface_delay_ms(15);
-		io_read(I2C_0_io, buf,  len);
+	i2c_m_sync_get_io_descriptor(&I2C_0, &I2C_0_io);
+	i2c_m_sync_enable(&I2C_0);
+	i2c_m_sync_set_slaveaddr(&I2C_0, addr, I2C_M_SEVEN);
+	
+	io_read(I2C_0_io, buf,  len);
 	return 0;
 }
 
 uint8_t i2c_write_data(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
 {
+    struct io_descriptor *I2C_0_io;
 
+    i2c_m_sync_get_io_descriptor(&I2C_0, &I2C_0_io);
+    i2c_m_sync_enable(&I2C_0);
+    i2c_m_sync_set_slaveaddr(&I2C_0, addr, I2C_M_SEVEN);
+	
+	io_write(I2C_0_io, (uint8_t *)&reg, 1);
 	return 0;	
 }

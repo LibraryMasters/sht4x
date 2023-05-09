@@ -110,12 +110,49 @@ uint8_t sht40x_basic_get_variant(sht40x_variant_t *pVariant)
  */
 uint8_t sht40x_basic_get_temp_rh(sht40x_precision_t precision, sht40x_data_t *pData)
 {
-    if(sht40x_get_temp_rh(&sht40x_handler, precision, (uint32_t*) pData) != SHT40X_DRV_OK)
+    if(sht40x_get_temp_rh(&sht40x_handler, precision, pData) != SHT40X_DRV_OK)
     {
         a_sht40x_print_error_msg(&sht40x_handler, "read data");
         return 1; /**< failed */
     }
     return 0;   /**< success*/
+}
+
+/**
+ * @brief     Basic implementation to read the temperature and relative humidity with n number of samples
+ * @param[in] precision is the data read accuracy
+ * @param[out] pData point to the sensor data to read
+ * @param[in] u8NumSample is the number of samples to read
+ * @return  status code
+ *            - 0 success
+ *            - 1 failed to get temp/humidity
+ * @note      none
+ */
+uint8_t sht40x_basic_get_temp_humidity_nSample(sht40x_precision_t precision, sht40x_data_t *pData, uint8_t u8NumSample)
+{
+    int index;
+    double temp_C_Samples = 0;
+    double humiditySamples = 0;
+    double temp_F_Samples = 0;
+
+    for(index = 0; index < u8NumSample; index++)
+    {
+        if(sht40x_get_temp_rh(&sht40x_handler, precision, pData) != SHT40X_DRV_OK)
+        {
+            a_sht40x_print_error_msg(&sht40x_handler, "read sample data");
+            return 1; /**< failed */
+        }
+        sht40x_interface_delay_ms(100);              /**< wait 100 ms between each sample measurement */
+        temp_C_Samples += pData->temperature_C;
+        temp_F_Samples += pData->temperature_F;
+        humiditySamples += pData->humidity;
+    }
+
+    pData->temperature_C = (float)(temp_C_Samples / u8NumSample);
+    pData->temperature_F = (float)(temp_F_Samples / u8NumSample);
+    pData->humidity = (float)(humiditySamples / u8NumSample);
+
+     return 0;   /**< success*/
 }
 
 /**
@@ -140,14 +177,15 @@ uint8_t sht40x_basic_get_serial_number(uint32_t *pSerial_Number)
 /**
  * @brief     Basic implementation to activate heater
  * @param[in]  power is the heater power desired
+ * @param[out] pData point to the sensor data to read
  * @return  status code
  *            - 0 success
  *            - 1 failed activate heater
  * @note      none
  */
-uint8_t sht40x_basic_activate_heater(sht40x_heater_power_t power)
+uint8_t sht40x_basic_activate_heater(sht40x_heater_power_t power, sht40x_data_t *pData)
 {
-    if(sht40x_activate_heater(&sht40x_handler, power) != SHT40X_DRV_OK)
+    if(sht40x_activate_heater(&sht40x_handler, power, pData) != SHT40X_DRV_OK)
     {
          a_sht40x_print_error_msg(&sht40x_handler, "activate heater");
          return 1; /**< failed */
