@@ -32,35 +32,35 @@ int main(void)
 	/* Replace with your application code */
 	while (1) {
 		gpio_toggle_pin_level(LED_GREEN);
-		sht40x_interface_delay_ms(2000);
+		sht40x_interface_delay_ms(3000);
 		
 		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);
 		if(err)
 		{
 		sht40x_interface_debug_print("failed to read\n");
 		}
-		sht40x_interface_debug_print("\nTemp C: %.2f\n", dataRead.temperature_C);
-		sht40x_interface_debug_print("Temp F: %.2f\n", dataRead.temperature_F);
-		sht40x_interface_debug_print("Humidity: %.2f\n", dataRead.humidity);
+		sht40x_interface_debug_print("\nTemp C: %d\n", (int)dataRead.temperature_C);
+		sht40x_interface_debug_print("Temp F: %d\n", (int)dataRead.temperature_F);
+		sht40x_interface_debug_print("Humidity: %d\n",(int) dataRead.humidity);
 
-		/**Measure Temp and humidity with n number of samples */
+		///**Measure Temp and humidity with n number of samples */
 		err = sht40x_basic_get_temp_humidity_nSample(SHT40X_PRECISION_HIGH, &dataRead, NumberSamples);
-		sht40x_interface_debug_print("\nTemp C sampled: %.2f\n", dataRead.temperature_C);
-		sht40x_interface_debug_print("Humidity sampled: %.2f\n", dataRead.humidity);
-
-		/** Get device unique ID */
+		sht40x_interface_debug_print("\nTemp C sampled: %d\n", (int)dataRead.temperature_C);
+		sht40x_interface_debug_print("Humidity sampled: %d\n", (int)dataRead.humidity);
+//
+		///** Get device unique ID */
 		err = sht40x_basic_get_serial_number((uint32_t*) &UID);
 		if(err)
 		{
 		/**< do something */
 		}
 		sht40x_interface_debug_print("serial number : %lu\n", UID);
-
-		/** Activate heater and measure temperature */
-		err = sht40x_basic_activate_heater(SHT40X_HEATER_POWER_20mW_100mS, &dataRead);
-		sht40x_interface_debug_print("\nHeater Temp C: %.2f\n", dataRead.temperature_C);
-		sht40x_interface_debug_print("Heater Temp F: %.2f\n", dataRead.temperature_F);
-		sht40x_interface_debug_print("Heater Humidity: %.2f\n", dataRead.humidity);
+//
+		///** Activate heater and measure temperature */
+		//err = sht40x_basic_activate_heater(SHT40X_HEATER_POWER_20mW_100mS, &dataRead);
+		//sht40x_interface_debug_print("\nHeater Temp C: %.2f\n", dataRead.temperature_C);
+		//sht40x_interface_debug_print("Heater Temp F: %.2f\n", dataRead.temperature_F);
+		//sht40x_interface_debug_print("Heater Humidity: %.2f\n", dataRead.humidity);
 		
 	}
 }

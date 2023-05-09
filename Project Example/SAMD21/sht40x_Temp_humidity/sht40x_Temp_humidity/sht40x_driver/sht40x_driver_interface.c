@@ -123,19 +123,19 @@ void sht40x_interface_debug_print(const char *const fmt, ...)
     /*call your call print function here*/
     /*user code begin */
 #ifdef SHT40X_DEBUG_MODE
-    volatile char str[100];
+    volatile char str[256];
     volatile uint8_t len;
     va_list args;
 
-    memset((char *) str, 0, sizeof (char)*100);
+    memset((char *) str, 0, sizeof (char)*256);
     va_start(args, fmt);
-    vsniprintf((char *) str, 100, (char const *) fmt, args);
+    vsniprintf((char *) str, 256, (char const *) fmt, args);
     va_end(args);
 
     len = strlen((char *) str);
      serial_print((char *const )str, len);                  /**< example of printf function, comment out if used */
      //memset((char *) str, 0, sizeof (char)*100);
     /*user code end*/
-     sht40x_interface_delay_ms(10);        /**< delay needed for processors that fails to clear buffer quick enough */
+     sht40x_interface_delay_ms(100);        /**< delay needed for processors that fails to clear buffer quick enough */
 #endif
 }
