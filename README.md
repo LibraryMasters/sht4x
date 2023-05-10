@@ -14,7 +14,7 @@ package is suitable for surface mount technology (SMT) processing and comprises 
 patented PTFE [1] membrane or a removable protective cover. Sensor specific calibration
 certificates according to ISO17025, identifiable through unique serial number, are available.
 
-The Library masters SHT4x is the full function driver of the SHT4x sensors series (sht41 and sht40). The driver is writte C language with Code Blocks, It provides the functions to read the sensor.
+The Library masters SHT4x is the full function driver of the SHT4x sensors series (sht41, sht40 and sht45). The driver is writte C language with Code Blocks, It provides the functions to read the sensor.
 
 ### Table of Cnntents
 
