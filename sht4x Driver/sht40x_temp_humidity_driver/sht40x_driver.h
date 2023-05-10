@@ -108,10 +108,10 @@ typedef enum
  * @brief sht40x variant enumeration
  */
 typedef enum {
-    SHT40_AD1B_VARIANT = 0x00,              /**< */
-    SHT40_BD1B_VARIANT = 0x01,              /**< */
-    SHT41_AD1B_VARIANT = 0x02,              /**< */
-    SHT45_AD1B_VARIANT = 0x03               /**< */
+    SHT40_AD1B_VARIANT = 0x00,                                        /**< SHT40-AD1B variant */
+    SHT40_BD1B_VARIANT = 0x01,                                        /**< SHT40-BD1B variant */
+    SHT41_AD1B_VARIANT = 0x02,                                        /**< SHT41-AD1B variant */
+    SHT45_AD1B_VARIANT = 0x03                                         /**< SHT45-AD1B variant */
 }sht40x_variant_t;
 
 
@@ -119,10 +119,10 @@ typedef enum {
  * @brief sht40x i2c address enumeration
  */
 typedef enum {
-    SHT40_AD1B_IIC_ADDRESS = 0x44,           /**< */
-    SHT40_BD1B_IIC_ADDRESS = 0x45,           /**< */
-    SHT41_AD1B_IIC_ADDRESS = 0x44,           /**< */
-    SHT45_AD1B_IIC_ADDRESS = 0x44            /**< */
+    SHT40_AD1B_IIC_ADDRESS = 0x44,                                    /**< SHT40-AD1B I2C address */
+    SHT40_BD1B_IIC_ADDRESS = 0x45,                                    /**< SHT40-BD1B I2C address */
+    SHT41_AD1B_IIC_ADDRESS = 0x44,                                    /**< SHT41-AD1B I2C address */
+    SHT45_AD1B_IIC_ADDRESS = 0x44                                     /**< SHT45-AD1B I2C address */
 }sht40x_i2c_address_t;
 
  /**
@@ -130,29 +130,29 @@ typedef enum {
  */
 typedef enum
 {
-    SHT40X_BOOL_FALSE  = 0x00,                                                 /**< boolean state false */
-    SHT40X_BOOL_TRUE   = 0x01                                                  /**< boolean state true */
+    SHT40X_BOOL_FALSE  = 0x00,                                        /**< boolean state false */
+    SHT40X_BOOL_TRUE   = 0x01                                         /**< boolean state true  */
 }sht40x_bool_t;
 
  /**
  * @brief sht40x read precision enumeration
  */
 typedef enum{
-    SHT40X_PRECISION_HIGH   = 0x00,                                             /**< */
-    SHT40X_PRECISION_MIDIUM = 0x01,                                             /**< */
-    SHT40X_PRECISION_LOWEST = 0x02                                              /**< */
+    SHT40X_PRECISION_HIGH   = 0x00,                                   /**< Measurement with high repeatability   */
+    SHT40X_PRECISION_MIDIUM = 0x01,                                   /**< Measurement with medium repeatability */
+    SHT40X_PRECISION_LOWEST = 0x02                                    /**< Measurement with low repeatability    */
 }sht40x_precision_t;
 
  /**
  * @brief sht40x heater power enumeration
  */
 typedef enum{
-    SHT40X_HEATER_POWER_200mW_1S    = 0x00,                                     /**< */
-    SHT40X_HEATER_POWER_200mW_100mS = 0x01,                                     /**< */
-    SHT40X_HEATER_POWER_110mW_1S    = 0x02,                                     /**< */
-    SHT40X_HEATER_POWER_110mW_100mS = 0x03,                                     /**< */
-    SHT40X_HEATER_POWER_20mW_1S     = 0x04,                                     /**< */
-    SHT40X_HEATER_POWER_20mW_100mS  = 0x05                                      /**< */
+    SHT40X_HEATER_POWER_200mW_1S    = 0x00,                           /**< Heater with 200mW for 1s   */
+    SHT40X_HEATER_POWER_200mW_100mS = 0x01,                           /**< heater with 200mW for 0.1s */
+    SHT40X_HEATER_POWER_110mW_1S    = 0x02,                           /**< heater with 110mW for 1s   */
+    SHT40X_HEATER_POWER_110mW_100mS = 0x03,                           /**< heater with 110mW for 0.1s */
+    SHT40X_HEATER_POWER_20mW_1S     = 0x04,                           /**< heater with 20mW for 1s    */
+    SHT40X_HEATER_POWER_20mW_100mS  = 0x05                            /**< heater with 20mW for 0.1s  */
 }sht40x_heater_power_t;
 
 /**
@@ -160,11 +160,11 @@ typedef enum{
 */
  typedef struct sht40x_data_s
  {
-    float temperature_C;                                                        /**< */
-    float temperature_F;                                                        /**< */
-    float humidity;                                                             /**< */
-    uint8_t pTempRawData[2];                                                    /**< */
-    uint8_t pHumidityRawData[2];                                                /**< */
+    float temperature_C;                                              /**< Temperature read in degree Celsius    */
+    float temperature_F;                                              /**< Temperature read in degree Fahrenheit */
+    float humidity;                                                   /**< Humidity data read */
+    uint8_t pTempRawData[2];                                          /**< Temperature raw data read */
+    uint8_t pHumidityRawData[2];                                      /**< Humidity Raw data read */
 
  }sht40x_data_t;
 
@@ -173,8 +173,8 @@ typedef enum{
  */
  union
 {
-    uint8_t pBuffer[4];                                                        /**< */
-    uint32_t raw;                                                              /**< */
+    uint8_t pBuffer[4];                                               /**< general purpose buffer */
+    uint32_t raw;                                                     /**< general purpose raw data */
 }static serial;
 
  /**
