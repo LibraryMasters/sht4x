@@ -30,8 +30,19 @@ The Library masters SHT4x is the full function driver of the SHT4x sensors serie
   - [Acknowledgements](#Acknowledgements)
 
   ### Install
+  - The interface .C file expect below functions to correctly link the driver 
+  ```
+    - i2c_initialize function  ( optional )
+    - i2c_deinitialize function ( optional )
+    - i2c_read function ( Mandatory )
+    - i2c_write function ( Mandatory )
+    - delay function ( Mandatory )
+    - print function (optional )
+  ```
   - refer to video: "coming soon..."
   - Use example project 
+
+
 
   ### Examples
   - [STM32L432 (STM32CubeI)](https://github.com/LibraryMasters/sht4x/tree/master/Project%20Example/STM32L432/sht40x_temp_sens_k423kc)
@@ -102,8 +113,7 @@ int main()
   ```
 
   #### example interface
-  Declare two functions, "i2c_write" and "i2c_read" in main, call these functions in sht4x_interface.c as per code below.
-
+  
   ```C
   ...
 
@@ -163,38 +173,6 @@ void sht40x_interface_debug_print(const char *const fmt, ...)
 
   ...
   
-  ```
-  
-  ```C
-Example code from MPLAB X IDE with XC16 compiler 
-
-...
-
-uint8_t i2c_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len) {
-    I2C1_MasterWrite((uint8_t *) & reg, 1, addr, &status);
-    while (status == I2C1_MESSAGE_PENDING);     /**< wait for write operation to complete */
-
-    if (status == I2C1_MESSAGE_FAIL) {
-        return 1;
-    }
-
-    return 0; /**< success */
-}
-
-uint8_t i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len) {
-
-    I2C1_MasterRead((uint8_t *) buf, len, addr, &status);
-    while (status == I2C1_MESSAGE_PENDING);
-
-    if (status == I2C1_MESSAGE_FAIL) {
-        return 1;
-    }
-
-    return 0; /**< success */
-}
-
-...
-
   ```
 
   ### Document
