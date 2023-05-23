@@ -179,7 +179,7 @@ void sht40x_interface_debug_print(const char *const fmt, ...)
   [datasheet](https://github.com/LibraryMasters/sht4x/blob/master/Document/Datasheet_SHT4x%20temperature%20sensor.pdf)
   
   ### Contribute
-   1. Clone repo and create a new branch: ```https://github.com/LibraryMasters/sht4x.git```
+   1. Clone repo and create a new branch: ```https://github.com/LibraryMasters/sht4x_PR.git```
    2. Make changes and test
    3. Submit Pull Request with comprehensive description of changes
   ### License
