@@ -40,6 +40,10 @@ int main(void)
 		sht40x_interface_debug_print("\nTemp C: %.2f\n", dataRead.temperature_C);
 		sht40x_interface_debug_print("Temp F: %.2f\n", dataRead.temperature_F);
 		sht40x_interface_debug_print("Humidity: %.2f\n", dataRead.humidity);
+		for(int index = 0; index < RESPONSE_LENGTH; index++){
+			sht40x_interface_debug_print("raw data: 0x%.2x\n", dataRead.rawData[index]);
+		}
+		
 
 		err = sht40x_basic_get_serial_number( (uint32_t*)&UID );
 		sht40x_interface_debug_print("\nserial number : %lu\n", UID);

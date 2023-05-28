@@ -2,19 +2,19 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="sht40x_driver_interface.c" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3731" topLine="88" />
+		</Cursor>
+	</File>
+	<File name="sht40x_driver.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="18151" topLine="397" />
+		</Cursor>
+	</File>
 	<File name="main.c" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2039" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="sht40x_driver_basic.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3111" topLine="69" />
-		</Cursor>
-	</File>
-	<File name="sht40x_driver.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3093" topLine="36" />
+			<Cursor1 position="1085" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="sht40x_driver_interface.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
@@ -22,19 +22,19 @@
 			<Cursor1 position="2967" topLine="51" />
 		</Cursor>
 	</File>
-	<File name="sht40x_driver_interface.c" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+	<File name="sht40x_driver_basic.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3731" topLine="88" />
+			<Cursor1 position="3111" topLine="69" />
 		</Cursor>
 	</File>
 	<File name="sht40x_driver_basic.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6181" topLine="160" />
+			<Cursor1 position="6181" topLine="121" />
 		</Cursor>
 	</File>
-	<File name="sht40x_driver.h" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="sht40x_driver.c" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6907" topLine="105" />
+			<Cursor1 position="1232" topLine="78" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

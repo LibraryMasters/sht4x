@@ -68,7 +68,7 @@
  /* Response length */
  #define RESPONSE_LENGTH                                    0x06                /*< I2C response length */
 
- #define DUMMY_DATA                                         0x00                 /**< dummy data */
+ #define DUMMY_DATA                                         0x00                /**< dummy data */
 
  #define HUMIDITY_MIN                                       0U
  #define HUMIDITY_MAX                                       100U
@@ -163,8 +163,9 @@ typedef enum{
     float temperature_C;                                              /**< Temperature read in degree Celsius    */
     float temperature_F;                                              /**< Temperature read in degree Fahrenheit */
     float humidity;                                                   /**< Humidity data read */
-    uint8_t pTempRawData[2];                                          /**< Temperature raw data read */
-    uint8_t pHumidityRawData[2];                                      /**< Humidity Raw data read */
+    uint8_t rawData[RESPONSE_LENGTH];                                 /**< Temperature raw data */
+//    uint8_t pTempRawData[2];                                          /**< Temperature raw data read */
+//    uint8_t pHumidityRawData[2];                                      /**< Humidity Raw data read */
 
  }sht40x_data_t;
 

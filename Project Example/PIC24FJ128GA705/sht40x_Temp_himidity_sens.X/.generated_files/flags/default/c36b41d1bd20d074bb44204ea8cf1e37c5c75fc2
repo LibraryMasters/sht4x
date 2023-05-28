@@ -1,0 +1,1 @@
+ -c -mcpu=$(MP_PROCESSOR_OPTION)      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"E:\Library Master\sht4x Tempearture and Humidity sensor\Project Example\PIC24FJ128GA705\sht40x_Temp_himidity_sens.X\sht40x_driver\sht40x_driver_interface.c
