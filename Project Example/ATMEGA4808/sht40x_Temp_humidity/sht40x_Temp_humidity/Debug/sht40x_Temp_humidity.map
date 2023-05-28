@@ -41,7 +41,7 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega4808/avrxmega3/crtatmega4808.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_copy_data.o)
-                              src/i2c_master.o (__do_copy_data)
+                              main.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_clear_bss.o)
                               examples/src/i2c_master_example.o (__do_clear_bss)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_prologue.o)
@@ -125,6 +125,8 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .data.NumberSamples
+                0x00000000        0x1 main.o
  .text          0x00000000        0x0 sht40x_driver/sht40x_driver.o
  .data          0x00000000        0x0 sht40x_driver/sht40x_driver.o
  .bss           0x00000000        0x0 sht40x_driver/sht40x_driver.o
@@ -1153,24 +1155,24 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x6dc4
+.debug_info     0x00000000     0x6dd6
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x229c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega4808/avrxmega3/crtatmega4808.o
  .debug_info    0x0000229c       0xa1 atmel_start.o
  .debug_info    0x0000233d      0x34f examples/src/i2c_master_example.o
- .debug_info    0x0000268c      0x664 main.o
- .debug_info    0x00002cf0      0xaf1 sht40x_driver/sht40x_driver.o
- .debug_info    0x000037e1      0xa7f sht40x_driver/sht40x_driver_basic.o
- .debug_info    0x00004260      0x4fe sht40x_driver/sht40x_driver_interface.o
- .debug_info    0x0000475e       0x8d src/bod.o
- .debug_info    0x000047eb      0x2b5 src/clkctrl.o
- .debug_info    0x00004aa0       0x8d src/cpuint.o
- .debug_info    0x00004b2d      0xd1b src/driver_init.o
- .debug_info    0x00005848      0xdc1 src/i2c_master.o
- .debug_info    0x00006609      0x146 src/i2c_types.o
- .debug_info    0x0000674f       0x98 src/protected_io.o
- .debug_info    0x000067e7      0x14b src/slpctrl.o
- .debug_info    0x00006932      0x492 src/usart_basic.o
+ .debug_info    0x0000268c      0x676 main.o
+ .debug_info    0x00002d02      0xaf1 sht40x_driver/sht40x_driver.o
+ .debug_info    0x000037f3      0xa7f sht40x_driver/sht40x_driver_basic.o
+ .debug_info    0x00004272      0x4fe sht40x_driver/sht40x_driver_interface.o
+ .debug_info    0x00004770       0x8d src/bod.o
+ .debug_info    0x000047fd      0x2b5 src/clkctrl.o
+ .debug_info    0x00004ab2       0x8d src/cpuint.o
+ .debug_info    0x00004b3f      0xd1b src/driver_init.o
+ .debug_info    0x0000585a      0xdc1 src/i2c_master.o
+ .debug_info    0x0000661b      0x146 src/i2c_types.o
+ .debug_info    0x00006761       0x98 src/protected_io.o
+ .debug_info    0x000067f9      0x14b src/slpctrl.o
+ .debug_info    0x00006944      0x492 src/usart_basic.o
 
 .debug_abbrev   0x00000000     0x366b
  *(.debug_abbrev)
@@ -1227,36 +1229,36 @@ END GROUP
  .debug_frame   0x000008f0       0x34 src/slpctrl.o
  .debug_frame   0x00000924       0xd4 src/usart_basic.o
 
-.debug_str      0x00000000     0x29f1
+.debug_str      0x00000000     0x29ff
  *(.debug_str)
  .debug_str     0x00000000      0xecd C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega4808/avrxmega3/crtatmega4808.o
  .debug_str     0x00000ecd      0x178 atmel_start.o
                                 0x1b1 (size before relaxing)
  .debug_str     0x00001045      0x22e examples/src/i2c_master_example.o
                                 0x360 (size before relaxing)
- .debug_str     0x00001273      0x344 main.o
-                                0x571 (size before relaxing)
- .debug_str     0x000015b7      0x294 sht40x_driver/sht40x_driver.o
+ .debug_str     0x00001273      0x352 main.o
+                                0x57f (size before relaxing)
+ .debug_str     0x000015c5      0x294 sht40x_driver/sht40x_driver.o
                                 0x701 (size before relaxing)
- .debug_str     0x0000184b      0x1a1 sht40x_driver/sht40x_driver_basic.o
+ .debug_str     0x00001859      0x1a1 sht40x_driver/sht40x_driver_basic.o
                                 0x764 (size before relaxing)
- .debug_str     0x000019ec       0xe3 sht40x_driver/sht40x_driver_interface.o
+ .debug_str     0x000019fa       0xe3 sht40x_driver/sht40x_driver_interface.o
                                 0x417 (size before relaxing)
- .debug_str     0x00001acf       0x16 src/bod.o
+ .debug_str     0x00001add       0x16 src/bod.o
                                 0x199 (size before relaxing)
- .debug_str     0x00001ae5      0x1e9 src/clkctrl.o
+ .debug_str     0x00001af3      0x1e9 src/clkctrl.o
                                 0x397 (size before relaxing)
- .debug_str     0x00001cce       0x1c src/cpuint.o
+ .debug_str     0x00001cdc       0x1c src/cpuint.o
                                 0x19f (size before relaxing)
- .debug_str     0x00001cea      0x3cf src/driver_init.o
+ .debug_str     0x00001cf8      0x3cf src/driver_init.o
                                 0x5f2 (size before relaxing)
- .debug_str     0x000020b9      0x635 src/i2c_master.o
+ .debug_str     0x000020c7      0x635 src/i2c_master.o
                                 0xa52 (size before relaxing)
- .debug_str     0x000026ee       0x63 src/i2c_types.o
+ .debug_str     0x000026fc       0x63 src/i2c_types.o
                                 0x22f (size before relaxing)
- .debug_str     0x00002751       0xb0 src/slpctrl.o
+ .debug_str     0x0000275f       0xb0 src/slpctrl.o
                                 0x265 (size before relaxing)
- .debug_str     0x00002801      0x1f0 src/usart_basic.o
+ .debug_str     0x0000280f      0x1f0 src/usart_basic.o
                                 0x3e4 (size before relaxing)
 
 .debug_loc      0x00000000     0x23b3

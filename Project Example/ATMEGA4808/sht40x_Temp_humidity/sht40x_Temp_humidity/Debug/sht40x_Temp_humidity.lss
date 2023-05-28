@@ -17,19 +17,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   6 .debug_aranges 00000480  00000000  00000000  00002618  2**3
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_info   00006dc4  00000000  00000000  00002a98  2**0
+  7 .debug_info   00006dd6  00000000  00000000  00002a98  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_abbrev 0000366b  00000000  00000000  0000985c  2**0
+  8 .debug_abbrev 0000366b  00000000  00000000  0000986e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_line   0000245a  00000000  00000000  0000cec7  2**0
+  9 .debug_line   0000245a  00000000  00000000  0000ced9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_frame  000009f8  00000000  00000000  0000f324  2**2
+ 10 .debug_frame  000009f8  00000000  00000000  0000f334  2**2
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_str    000029f1  00000000  00000000  0000fd1c  2**0
+ 11 .debug_str    000029ff  00000000  00000000  0000fd2c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_loc    000023b3  00000000  00000000  0001270d  2**0
+ 12 .debug_loc    000023b3  00000000  00000000  0001272b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00000380  00000000  00000000  00014ac0  2**0
+ 13 .debug_ranges 00000380  00000000  00000000  00014ade  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -474,7 +474,7 @@ static inline void PORTD_toggle_pin_level(const uint8_t pin)
      3e4:	90 e0       	ldi	r25, 0x00	; 0
      3e6:	0e 94 74 05 	call	0xae8	; 0xae8 <sht40x_interface_delay_ms>
 		
-		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);
+		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);                                       /**< Take temperature and humidity measurement */
      3ea:	6b e6       	ldi	r22, 0x6B	; 107
      3ec:	78 e2       	ldi	r23, 0x28	; 40
      3ee:	80 e0       	ldi	r24, 0x00	; 0
@@ -526,6 +526,7 @@ static inline void PORTD_toggle_pin_level(const uint8_t pin)
      44e:	9f 93       	push	r25
      450:	8f 93       	push	r24
      452:	0e 94 77 05 	call	0xaee	; 0xaee <sht40x_interface_debug_print>
+		
 		for(int index = 0; index < RESPONSE_LENGTH; index++){
      456:	2d b7       	in	r18, 0x3d	; 61
      458:	3e b7       	in	r19, 0x3e	; 62
@@ -548,11 +549,11 @@ static inline void PORTD_toggle_pin_level(const uint8_t pin)
      478:	9f 93       	push	r25
      47a:	8f 93       	push	r24
      47c:	0e 94 77 05 	call	0xaee	; 0xaee <sht40x_interface_debug_print>
-		
-		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);
+		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);                                       /**< Take temperature and humidity measurement */
 		sht40x_interface_debug_print("\nTemp C: %.2f\n", dataRead.temperature_C);
 		sht40x_interface_debug_print("Temp F: %.2f\n", dataRead.temperature_F);
 		sht40x_interface_debug_print("Humidity: %.2f\n", dataRead.humidity);
+		
 		for(int index = 0; index < RESPONSE_LENGTH; index++){
      480:	21 96       	adiw	r28, 0x01	; 1
      482:	0f 90       	pop	r0
@@ -565,8 +566,7 @@ static inline void PORTD_toggle_pin_level(const uint8_t pin)
 			sht40x_interface_debug_print("raw data: 0x%.2x\n", dataRead.rawData[index]);
 		}
 		
-
-		err = sht40x_basic_get_serial_number( (uint32_t*)&UID );
+		err = sht40x_basic_get_serial_number( (uint32_t*)&UID );                                                 /**< Read sensor unique ID (Serial number) */
      490:	8d e7       	ldi	r24, 0x7D	; 125
      492:	98 e2       	ldi	r25, 0x28	; 40
      494:	0e 94 59 05 	call	0xab2	; 0xab2 <sht40x_basic_get_serial_number>
@@ -587,9 +587,9 @@ static inline void PORTD_toggle_pin_level(const uint8_t pin)
      4be:	9f 93       	push	r25
      4c0:	8f 93       	push	r24
      4c2:	0e 94 77 05 	call	0xaee	; 0xaee <sht40x_interface_debug_print>
-		//sht40x_interface_debug_print("\nDevice variant: %d\n", variant);
-		//sht40x_basic_get_addr((uint8_t *)&deviceAdd);
-		//sht40x_interface_debug_print("\nDevice Address: %x\n", deviceAdd);
+		//        sht40x_interface_debug_print("\nDevice variant: %d\n", variant);
+		//        sht40x_basic_get_addr((uint8_t *) & deviceAdd);
+		//        sht40x_interface_debug_print("\nDevice Address: %x\n", deviceAdd);
 		
 
 	}

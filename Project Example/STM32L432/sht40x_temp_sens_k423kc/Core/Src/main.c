@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "sht40x_driver/sht40x_driver_basic.h"
+#include "sht40x_driver_basic.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,7 +47,6 @@ UART_HandleTypeDef huart2;
 void serial_print(const char *pString, uint8_t u8Length);
 uint8_t i2c_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);
 uint8_t i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -68,10 +67,7 @@ int err;
 uint32_t UID;
 uint8_t variant;
 uint8_t deviceAdd;
-float tempBuffer = 0;
-float humidityBuffer = 0;
 uint8_t NumberSamples = 10;
-
 /* USER CODE END 0 */
 
 /**
@@ -105,58 +101,54 @@ int main(void)
   MX_I2C1_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-      HAL_Delay(500);
-
-      sht40x_basic_initialize(SHT40_AD1B_VARIANT);
-      sht40x_info(&sht40xInfo);
-
-      sht40x_interface_debug_print("Chip Name: \t%s\r\n", sht40xInfo.chip_name);
-      sht40x_interface_debug_print("Manufacturer: \t%s\r\n",sht40xInfo.manufacturer_name);
-      sht40x_interface_debug_print("Interface Protocol: \t%s\r\n", sht40xInfo.interface);
-      sht40x_interface_debug_print("Supply Volt Max: \t%.1f V\r\n",sht40xInfo.supply_voltage_max_v);
-      sht40x_interface_debug_print("Supply Volt Min: \t%.1f V\r\n",sht40xInfo.supply_voltage_min_v);
-      sht40x_interface_debug_print("Maximum Current: \t%.1f uA\r\n",sht40xInfo.max_current_ma);
-      sht40x_interface_debug_print("Max Temperature: \t%.1f C\r\n",sht40xInfo.temperature_max);
-      sht40x_interface_debug_print("Diver Version: \t\tV%.1f.%.2d\r\n",(sht40xInfo.driver_version /1000), (uint8_t)(sht40xInfo.driver_version - (uint8_t)(sht40xInfo.driver_version / 100)*100));
 
   /* USER CODE END 2 */
+  HAL_Delay(500);
 
+	sht40x_basic_initialize(SHT40_AD1B_VARIANT);
+	sht40x_info(&sht40xInfo);
+
+	sht40x_interface_debug_print("Chip Name: \t%s\r\n", sht40xInfo.chip_name);
+	sht40x_interface_debug_print("Manufacturer: \t%s\r\n",sht40xInfo.manufacturer_name);
+	sht40x_interface_debug_print("Interface Protocol: \t%s\r\n", sht40xInfo.interface);
+	sht40x_interface_debug_print("Supply Volt Max: \t%.1f V\r\n",sht40xInfo.supply_voltage_max_v);
+	sht40x_interface_debug_print("Supply Volt Min: \t%.1f V\r\n",sht40xInfo.supply_voltage_min_v);
+	sht40x_interface_debug_print("Maximum Current: \t%.1f uA\r\n",sht40xInfo.max_current_ma);
+	sht40x_interface_debug_print("Max Temperature: \t%.1f C\r\n",sht40xInfo.temperature_max);
+	sht40x_interface_debug_print("Diver Version: \t\tV%.1f.%.2d\r\n",(sht40xInfo.driver_version /1000), (uint8_t)(sht40xInfo.driver_version - (uint8_t)(sht40xInfo.driver_version / 100)*100));
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
 		HAL_GPIO_TogglePin(BLUE_LED_GPIO_Port, BLUE_LED_Pin);
-		sht40x_interface_delay_ms(4000);
+		sht40x_interface_delay_ms(3000);
 
-		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);
-		if(err)
-		{
-		  sht40x_interface_debug_print("failed to read\n");
-		}
+		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);                               /**< Take temperature and humidity measurement */
 		sht40x_interface_debug_print("\nTemp C: %.2f\n", dataRead.temperature_C);
 		sht40x_interface_debug_print("Temp F: %.2f\n", dataRead.temperature_F);
 		sht40x_interface_debug_print("Humidity: %.2f\n", dataRead.humidity);
 
-		/**Measure Temp and humidity with n number of samples */
-		err = sht40x_basic_get_temp_humidity_nSample(SHT40X_PRECISION_HIGH, &dataRead, NumberSamples);
-		sht40x_interface_debug_print("\nTemp C sampled: %.2f\n", dataRead.temperature_C);
-		sht40x_interface_debug_print("Humidity sampled: %.2f\n", dataRead.humidity);
-
-		/** Get device unique ID */
-		err = sht40x_basic_get_serial_number((uint32_t*) &UID);
-		if(err)
-		{
-		  /**< do something */
+		for(int index = 0; index < RESPONSE_LENGTH; index++){
+			sht40x_interface_debug_print("raw data: 0x%.2x\n", dataRead.rawData[index]);
 		}
-		sht40x_interface_debug_print("serial number : %lu\n", UID);
 
-		/** Activate heater and measure temperature */
-		/*err = sht40x_basic_activate_heater(SHT40X_HEATER_POWER_20mW_100mS, &dataRead);
-		sht40x_interface_debug_print("\nHeater Temp C: %.2f\n", dataRead.temperature_C);
-		sht40x_interface_debug_print("Heater Temp F: %.2f\n", dataRead.temperature_F);
-		sht40x_interface_debug_print("Heater Humidity: %.2f\n", dataRead.humidity);*/
+		err = sht40x_basic_get_serial_number( (uint32_t*)&UID );                                         /**< Read sensor unique ID (Serial number) */
+		sht40x_interface_debug_print("\nserial number : %lu\n", UID);
 
 
+//        err = sht40x_basic_get_temp_humidity_nSample(SHT40X_PRECISION_HIGH, &dataRead, NumberSamples); /**< Measure Temp and humidity with n number of samples */
+//        sht40x_interface_debug_print("\nTemp C sampled: %.2f\n", dataRead.temperature_C);
+//        sht40x_interface_debug_print("Humidity sampled: %.2f\n", dataRead.humidity);
+
+//        err = sht40x_basic_activate_heater(SHT40X_HEATER_POWER_200mW_100mS, &dataRead);                 /**< Activate heater and measure temperature */
+//        sht40x_interface_debug_print("\nHeater Temp C: %.2f\n", dataRead.temperature_C);
+//        sht40x_interface_debug_print("Heater Temp F: %.2f\n", dataRead.temperature_F);
+//        sht40x_interface_debug_print("Heater Humidity: %.2f\n", dataRead.humidity);
+
+//        sht40x_basic_get_variant((uint8_t *) & variant);
+//        sht40x_interface_debug_print("\nDevice variant: %d\n", variant);
+//        sht40x_basic_get_addr((uint8_t *) & deviceAdd);
+//        sht40x_interface_debug_print("\nDevice Address: %x\n", deviceAdd);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -383,7 +375,6 @@ uint8_t i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
 
 	return 0;                   /**< success */
 }
-
 /* USER CODE END 4 */
 
 /**

@@ -9,6 +9,7 @@ int err;
 uint32_t UID;
 uint8_t variant;
 uint8_t deviceAdd;
+uint8_t NumberSamples = 10;
 
 uint8_t i2c_read_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);
 void delay_ms(uint32_t u32Ms);
@@ -36,27 +37,32 @@ int main(void)
 		LED_GREEN_toggle_level();
 		sht40x_interface_delay_ms(3000);
 		
-		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);
+		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);                                       /**< Take temperature and humidity measurement */
 		sht40x_interface_debug_print("\nTemp C: %.2f\n", dataRead.temperature_C);
 		sht40x_interface_debug_print("Temp F: %.2f\n", dataRead.temperature_F);
 		sht40x_interface_debug_print("Humidity: %.2f\n", dataRead.humidity);
+		
 		for(int index = 0; index < RESPONSE_LENGTH; index++){
 			sht40x_interface_debug_print("raw data: 0x%.2x\n", dataRead.rawData[index]);
 		}
 		
-
-		err = sht40x_basic_get_serial_number( (uint32_t*)&UID );
+		err = sht40x_basic_get_serial_number( (uint32_t*)&UID );                                                 /**< Read sensor unique ID (Serial number) */
 		sht40x_interface_debug_print("\nserial number : %lu\n", UID);
 		
-// 		err = sht40x_basic_activate_heater(SHT40X_HEATER_POWER_200mW_100mS, &dataRead);
-// 		sht40x_interface_debug_print("\nHeater Temp C: %.2f\n", dataRead.temperature_C);
-// 		sht40x_interface_debug_print("Heater Temp F: %.2f\n", dataRead.temperature_F);
-// 		sht40x_interface_debug_print("Heater Humidity: %.2f\n", dataRead.humidity);
-		
-		//sht40x_basic_get_variant((uint8_t *)&variant);
-		//sht40x_interface_debug_print("\nDevice variant: %d\n", variant);
-		//sht40x_basic_get_addr((uint8_t *)&deviceAdd);
-		//sht40x_interface_debug_print("\nDevice Address: %x\n", deviceAdd);
+
+		//        err = sht40x_basic_get_temp_humidity_nSample(SHT40X_PRECISION_HIGH, &dataRead, NumberSamples); /**< Measure Temp and humidity with n number of samples */
+		//        sht40x_interface_debug_print("\nTemp C sampled: %.2f\n", dataRead.temperature_C);
+		//        sht40x_interface_debug_print("Humidity sampled: %.2f\n", dataRead.humidity);
+
+		//        err = sht40x_basic_activate_heater(SHT40X_HEATER_POWER_200mW_100mS, &dataRead);                 /**< Activate heater and measure temperature */
+		//        sht40x_interface_debug_print("\nHeater Temp C: %.2f\n", dataRead.temperature_C);
+		//        sht40x_interface_debug_print("Heater Temp F: %.2f\n", dataRead.temperature_F);
+		//        sht40x_interface_debug_print("Heater Humidity: %.2f\n", dataRead.humidity);
+
+		//        sht40x_basic_get_variant((uint8_t *) & variant);
+		//        sht40x_interface_debug_print("\nDevice variant: %d\n", variant);
+		//        sht40x_basic_get_addr((uint8_t *) & deviceAdd);
+		//        sht40x_interface_debug_print("\nDevice Address: %x\n", deviceAdd);
 		
 
 	}

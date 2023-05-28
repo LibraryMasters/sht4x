@@ -61,16 +61,7 @@ int err;
 uint32_t UID;
 uint8_t variant;
 uint8_t deviceAdd;
-float tempBuffer = 0;
-float humidityBuffer = 0;
 uint8_t NumberSamples = 10;
-
-uint32_t timeCheck;
-uint32_t readTimerCheck;
-uint32_t heaterTimerCheck;
-void led_blink(void);
-void readTemp(void);
-void activate_heater(void);
 
 I2C1_MESSAGE_STATUS status;
 
@@ -94,10 +85,35 @@ int main(void) {
     sht40x_interface_debug_print("Diver Version: \t\tV%.1f.%.2d\r\n", (sht40xInfo.driver_version / 1000), (uint8_t) (sht40xInfo.driver_version - (uint8_t) (sht40xInfo.driver_version / 100)*100));
 
     while (1) {
+ 
+        delay_ms(3000);
+        
+		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);                               /**< Take temperature and humidity measurement */
+		sht40x_interface_debug_print("\nTemp C: %.2f\n", dataRead.temperature_C);
+		sht40x_interface_debug_print("Temp F: %.2f\n", dataRead.temperature_F);
+		sht40x_interface_debug_print("Humidity: %.2f\n", dataRead.humidity);
+		
+		for(int index = 0; index < RESPONSE_LENGTH; index++){
+			sht40x_interface_debug_print("raw data: 0x%.2x\n", dataRead.rawData[index]);
+		}
+		
+		err = sht40x_basic_get_serial_number( (uint32_t*)&UID );                                         /**< Read sensor unique ID (Serial number) */
+		sht40x_interface_debug_print("\nserial number : %lu\n", UID);
+        
+//
+//        err = sht40x_basic_get_temp_humidity_nSample(SHT40X_PRECISION_HIGH, &dataRead, NumberSamples); /**< Measure Temp and humidity with n number of samples */
+//        sht40x_interface_debug_print("\nTemp C sampled: %.2f\n", dataRead.temperature_C);
+//        sht40x_interface_debug_print("Humidity sampled: %.2f\n", dataRead.humidity);
 
-        non_blocking_task(led_blink, _500_MS_TIMEOUT, timeCheck);
-        non_blocking_task(readTemp, _1000_MS_TIMEOUT * 4, readTimerCheck);
-        non_blocking_task(activate_heater, _1000_MS_TIMEOUT * 15, heaterTimerCheck);
+//        err = sht40x_basic_activate_heater(SHT40X_HEATER_POWER_200mW_100mS, &dataRead);                 /**< Activate heater and measure temperature */
+//        sht40x_interface_debug_print("\nHeater Temp C: %.2f\n", dataRead.temperature_C);
+//        sht40x_interface_debug_print("Heater Temp F: %.2f\n", dataRead.temperature_F);
+//        sht40x_interface_debug_print("Heater Humidity: %.2f\n", dataRead.humidity);
+
+//        sht40x_basic_get_variant((uint8_t *) & variant);
+//        sht40x_interface_debug_print("\nDevice variant: %d\n", variant);
+//        sht40x_basic_get_addr((uint8_t *) & deviceAdd);
+//        sht40x_interface_debug_print("\nDevice Address: %x\n", deviceAdd);
 
            // Add your application code
     }
@@ -105,50 +121,6 @@ int main(void) {
     return 1;
 }
 
-/**
- End of File
- */
-
-void led_blink(void) {
-    BLUE_LED_Toggle();
-    timeCheck = millis();
-}
-
-void readTemp(void) {
-
-    /** Activate heater and measure temperature */
-
-    err = sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);
-    if (err) {
-        sht40x_interface_debug_print("failed to read\n");
-    }
-    sht40x_interface_debug_print("\nTemp C: %.2f\n", dataRead.temperature_C);
-    sht40x_interface_debug_print("Temp F: %.2f\n", dataRead.temperature_F);
-    sht40x_interface_debug_print("Humidity: %.2f\n", dataRead.humidity);
-
-    /**Measure Temp and humidity with n number of samples */
-//    err = sht40x_basic_get_temp_humidity_nSample(SHT40X_PRECISION_HIGH, &dataRead, NumberSamples);
-//    sht40x_interface_debug_print("\nTemp C sampled: %.2f\n", dataRead.temperature_C);
-//    sht40x_interface_debug_print("Humidity sampled: %.2f\n", dataRead.humidity);
-
-    /** Get device unique ID */
-    err = sht40x_basic_get_serial_number((uint32_t*) & UID);
-    if (err) {
-        /**< do something */
-    }
-    sht40x_interface_debug_print("serial number : %lu\n", UID);
-    
-    readTimerCheck = millis();
-}
-
-void activate_heater(void) {
-    
-    err = sht40x_basic_activate_heater(SHT40X_HEATER_POWER_20mW_100mS, &dataRead);
-    sht40x_interface_debug_print("\nHeater Temp C: %.2f\n", dataRead.temperature_C);
-    sht40x_interface_debug_print("Heater Temp F: %.2f\n", dataRead.temperature_F);
-    sht40x_interface_debug_print("Heater Humidity: %.2f\n", dataRead.humidity);
-    heaterTimerCheck = millis();
-}
 
 uint8_t i2c_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len) {
     I2C1_MasterWrite((uint8_t *) & reg, 1, addr, &status);
@@ -172,3 +144,7 @@ uint8_t i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len) {
 
     return 0; /**< success */
 }
+
+/**
+ End of File
+ */

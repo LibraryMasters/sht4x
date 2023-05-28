@@ -39,7 +39,7 @@
 #define MIN_CURRENT               500                    /**< chip min current (?A)*/
 #define TEMPERATURE_MIN           -40.0f                 /**< chip min operating temperature (°C) */
 #define TEMPERATURE_MAX           125.0f                 /**< chip max operating temperature (°C) */
-#define DRIVER_VERSION            1100                   /**< driver version */
+#define DRIVER_VERSION            1200                   /**< driver version */
 
 /**
 * @brief i2c write byte
@@ -190,7 +190,7 @@ uint8_t sht40x_deinit(sht40x_handle_t *pHandle)
 }
 
 /**
- * @brief     This function set the address
+ * @brief     This function set the i2c address
  * @param[in] *pHandle points to sht40x pHandle structure
  * @return  status code
  *            - 0 success
@@ -218,7 +218,7 @@ uint8_t sht40x_set_addr(sht40x_handle_t *const pHandle)
 }
 
 /**
- * @brief     This function get the address
+ * @brief     This function get the i2c address
  * @param[in] *pHandle points to sht40x pHandle structure
  * @param[out] pI2c_address point to the chip i2c address
  * @return  status code
@@ -382,9 +382,7 @@ uint8_t sht40x_get_temp_rh(sht40x_handle_t *const pHandle,  sht40x_precision_t p
     pData->humidity =  pData->humidity > HUMIDITY_MAX ? HUMIDITY_MAX: pData->humidity;                     /**< if humidity is high than max allowed, set to 100 */
     pData->humidity =  pData->humidity < HUMIDITY_MIN ? HUMIDITY_MIN:  pData->humidity;                    /**< if humidity is less than min allowed, set to 0 */
 
-    memcpy(pData->pTempRawData, pStatus, 2);
-    pData->pHumidityRawData[0] = pStatus[3];
-    pData->pHumidityRawData[1] = pStatus[4];
+    memcpy(pData->rawData, pStatus, RESPONSE_LENGTH);
 
     return 0;
 }
@@ -495,9 +493,7 @@ uint8_t sht40x_activate_heater(sht40x_handle_t *const pHandle, sht40x_heater_pow
     pData->humidity = (pStatus[3] << 8) | pStatus[4];
     pData->humidity = ((pData->humidity/65535.0) * 125) - 6;
 
-    memcpy(pData->pTempRawData, pStatus, 2);
-    pData->pHumidityRawData[0] = pStatus[3];
-    pData->pHumidityRawData[1] = pStatus[4];
+    memcpy(pData->rawData, pStatus, RESPONSE_LENGTH);
 
     /**error handler***/
 

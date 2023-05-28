@@ -27,9 +27,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h \
- ../Core/Src/sht40x_driver/sht40x_driver_basic.h \
- ../Core/Src/sht40x_driver/sht40x_driver_interface.h \
- ../Core/Src/sht40x_driver/sht40x_driver.h
+ E:/Library\ Master/sht4x\ Tempearture\ and\ Humidity\ sensor/Project\ Example/STM32L432/sht40x_temp_sens_k423kc/Core/sht4xx_driver/sht40x_driver_basic.h \
+ E:/Library\ Master/sht4x\ Tempearture\ and\ Humidity\ sensor/Project\ Example/STM32L432/sht40x_temp_sens_k423kc/Core/sht4xx_driver/sht40x_driver_interface.h \
+ E:/Library\ Master/sht4x\ Tempearture\ and\ Humidity\ sensor/Project\ Example/STM32L432/sht40x_temp_sens_k423kc/Core/sht4xx_driver/sht40x_driver.h
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
@@ -59,6 +59,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h:
-../Core/Src/sht40x_driver/sht40x_driver_basic.h:
-../Core/Src/sht40x_driver/sht40x_driver_interface.h:
-../Core/Src/sht40x_driver/sht40x_driver.h:
+E:/Library\ Master/sht4x\ Tempearture\ and\ Humidity\ sensor/Project\ Example/STM32L432/sht40x_temp_sens_k423kc/Core/sht4xx_driver/sht40x_driver_basic.h:
+E:/Library\ Master/sht4x\ Tempearture\ and\ Humidity\ sensor/Project\ Example/STM32L432/sht40x_temp_sens_k423kc/Core/sht4xx_driver/sht40x_driver_interface.h:
+E:/Library\ Master/sht4x\ Tempearture\ and\ Humidity\ sensor/Project\ Example/STM32L432/sht40x_temp_sens_k423kc/Core/sht4xx_driver/sht40x_driver.h:

@@ -1,8 +1,0 @@
-../Core/Src/sht40x_driver/sht40x_driver_basic.c:40:9:sht40x_basic_initialize	24	static
-../Core/Src/sht40x_driver/sht40x_driver_basic.c:91:9:sht40x_basic_get_variant	16	static
-../Core/Src/sht40x_driver/sht40x_driver_basic.c:111:9:sht40x_basic_get_temp_rh	16	static
-../Core/Src/sht40x_driver/sht40x_driver_basic.c:131:9:sht40x_basic_get_temp_humidity_nSample	48	static
-../Core/Src/sht40x_driver/sht40x_driver_basic.c:166:9:sht40x_basic_get_serial_number	16	static
-../Core/Src/sht40x_driver/sht40x_driver_basic.c:186:9:sht40x_basic_activate_heater	16	static
-../Core/Src/sht40x_driver/sht40x_driver_basic.c:204:9:sht40x_basic_soft_reset	8	static
-../Core/Src/sht40x_driver/sht40x_driver_basic.c:222:9:sht40x_basic_get_addr	16	static

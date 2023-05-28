@@ -34,33 +34,34 @@ int main(void)
 		gpio_toggle_pin_level(LED_GREEN);
 		sht40x_interface_delay_ms(3000);
 		
-		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);
-		if(err)
-		{
-		sht40x_interface_debug_print("failed to read\n");
+		delay_ms(3000);
+		        
+		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);                                      /**< Take temperature and humidity measurement */
+		sht40x_interface_debug_print("\nTemp C: %.2f\n", dataRead.temperature_C);
+		sht40x_interface_debug_print("Temp F: %.2f\n", dataRead.temperature_F);
+		sht40x_interface_debug_print("Humidity: %.2f\n", dataRead.humidity);
+		        
+		for(int index = 0; index < RESPONSE_LENGTH; index++){
+			sht40x_interface_debug_print("raw data: 0x%.2x\n", dataRead.rawData[index]);
 		}
-		sht40x_interface_debug_print("\nTemp C: %d\n", (int)dataRead.temperature_C);
-		sht40x_interface_debug_print("Temp F: %d\n", (int)dataRead.temperature_F);
-		sht40x_interface_debug_print("Humidity: %d\n",(int) dataRead.humidity);
+		        
+		err = sht40x_basic_get_serial_number( (uint32_t*)&UID );                                                 /**< Read sensor unique ID (Serial number) */
+		sht40x_interface_debug_print("\nserial number : %lu\n", UID);
+		        
+		//
+		//        err = sht40x_basic_get_temp_humidity_nSample(SHT40X_PRECISION_HIGH, &dataRead, NumberSamples); /**< Measure Temp and humidity with n number of samples */
+		//        sht40x_interface_debug_print("\nTemp C sampled: %.2f\n", dataRead.temperature_C);
+		//        sht40x_interface_debug_print("Humidity sampled: %.2f\n", dataRead.humidity);
 
-		///**Measure Temp and humidity with n number of samples */
-		err = sht40x_basic_get_temp_humidity_nSample(SHT40X_PRECISION_HIGH, &dataRead, NumberSamples);
-		sht40x_interface_debug_print("\nTemp C sampled: %d\n", (int)dataRead.temperature_C);
-		sht40x_interface_debug_print("Humidity sampled: %d\n", (int)dataRead.humidity);
-//
-		///** Get device unique ID */
-		err = sht40x_basic_get_serial_number((uint32_t*) &UID);
-		if(err)
-		{
-		/**< do something */
-		}
-		sht40x_interface_debug_print("serial number : %lu\n", UID);
-//
-		///** Activate heater and measure temperature */
-		//err = sht40x_basic_activate_heater(SHT40X_HEATER_POWER_20mW_100mS, &dataRead);
-		//sht40x_interface_debug_print("\nHeater Temp C: %.2f\n", dataRead.temperature_C);
-		//sht40x_interface_debug_print("Heater Temp F: %.2f\n", dataRead.temperature_F);
-		//sht40x_interface_debug_print("Heater Humidity: %.2f\n", dataRead.humidity);
+		//        err = sht40x_basic_activate_heater(SHT40X_HEATER_POWER_200mW_100mS, &dataRead);                 /**< Activate heater and measure temperature */
+		//        sht40x_interface_debug_print("\nHeater Temp C: %.2f\n", dataRead.temperature_C);
+		//        sht40x_interface_debug_print("Heater Temp F: %.2f\n", dataRead.temperature_F);
+		//        sht40x_interface_debug_print("Heater Humidity: %.2f\n", dataRead.humidity);
+
+		//        sht40x_basic_get_variant((uint8_t *) & variant);
+		//        sht40x_interface_debug_print("\nDevice variant: %d\n", variant);
+		//        sht40x_basic_get_addr((uint8_t *) & deviceAdd);
+		//        sht40x_interface_debug_print("\nDevice Address: %x\n", deviceAdd);
 		
 	}
 }
@@ -70,9 +71,6 @@ void serial_print(char *const pBuffer, uint8_t u8Length)
 {
 	struct io_descriptor *io;
 
-	//usart_async_register_callback(&USART_0, USART_ASYNC_TXC_CB, tx_cb_USART_0);
-	/*usart_async_register_callback(&USART_0, USART_ASYNC_RXC_CB, rx_cb);
-	usart_async_register_callback(&USART_0, USART_ASYNC_ERROR_CB, err_cb);*/
 	usart_async_get_io_descriptor(&USART_0, &io);
 	usart_async_enable(&USART_0);
 
