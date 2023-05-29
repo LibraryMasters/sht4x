@@ -7,8 +7,6 @@ int err;
 uint32_t UID;
 uint8_t variant;
 uint8_t deviceAdd;
-float tempBuffer = 0;
-float humidityBuffer = 0;
 uint8_t NumberSamples = 10;
 
 int main()
@@ -34,6 +32,9 @@ int main()
     sht40x_interface_debug_print("\nTemp C: %.2f\n", dataRead.temperature_C);
     sht40x_interface_debug_print("Temp F: %.2f\n", dataRead.temperature_F);
     sht40x_interface_debug_print("Humidity: %.2f\n", dataRead.humidity);
+
+    for (int index = 0; index < RESPONSE_LENGTH; index++)
+        sht40x_interface_debug_print("Raw data : %.2x\n", dataRead.rawData[index]);
 
     /**Measure Temp and humidity with n number of samples */
     err = sht40x_basic_get_temp_humidity_nSample(SHT40X_PRECISION_HIGH, &dataRead, NumberSamples);
