@@ -114,7 +114,7 @@ void sht40x_interface_delay_ms(uint32_t u32Ms)
 {
     /*call your delay function here*/
     /*user code begin */
-//    delay_ms(u32Ms);
+   delay_ms(u32Ms);
     /*user code end*/
 }
 
