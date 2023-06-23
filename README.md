@@ -49,6 +49,7 @@ The Library masters SHT4x is the full function driver of the SHT4x sensors serie
   - [PIC24FJ128GA705 (MPLAB X IDE)](https://github.com/LibraryMasters/sht4x/tree/master/Project%20Example/PIC24FJ128GA705/sht40x_Temp_himidity_sens.X)
   - [SAMD21G18 (Atmel studio 7)](https://github.com/LibraryMasters/sht4x/tree/master/Project%20Example/SAMD21/sht40x_Temp_humidity)
   - [ATMEGA4808 (Atmel studio 7)](https://github.com/LibraryMasters/sht4x/tree/master/Project%20Example/ATMEGA4808/sht40x_Temp_humidity)
+  - [RP2040 (VScode)](https://github.com/LibraryMasters/sht4x/tree/master/Project%20Example/RP2040%20Pi%20Pico/sht40x_Temp_humidity)
   ### Usage
   #### example basic
 
