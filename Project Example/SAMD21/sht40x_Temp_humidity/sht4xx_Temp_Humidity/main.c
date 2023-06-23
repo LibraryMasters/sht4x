@@ -29,6 +29,8 @@ int main(void)
 	sht40x_interface_debug_print("Maximum Current: \t%.1f uA\r\n",sht40xInfo.max_current_ma);
 	sht40x_interface_debug_print("Max Temperature: \t%.1f C\r\n",sht40xInfo.temperature_max);
 	sht40x_interface_debug_print("Diver Version: \t\tV%.1f.%.2d\r\n",(sht40xInfo.driver_version /1000), (uint8_t)(sht40xInfo.driver_version - (uint8_t)(sht40xInfo.driver_version / 100)*100));
+	sht40x_interface_debug_print("Recommended MCU flash: \t%dkB\r\n",sht40xInfo.flash_size_min);
+	sht40x_interface_debug_print("Recommended MCU RAM: \t%dkB\r\n",sht40xInfo.ram_size_min);
 	
 
 	/* Replace with your application code */
@@ -36,6 +38,10 @@ int main(void)
 		sht40x_interface_delay_ms(3000);
 		
 		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);                                      /**< Take temperature and humidity measurement */
+		if(err != SHT40X_DRV_OK){
+			sht40x_interface_debug_print("failed to read sensor\n");
+			return;
+		}
 		sht40x_interface_debug_print("\nTemp C: %.2f\n", dataRead.temperature_C);
 		sht40x_interface_debug_print("Temp F: %.2f\n", dataRead.temperature_F);
 		sht40x_interface_debug_print("Humidity: %.2f\n", dataRead.humidity);

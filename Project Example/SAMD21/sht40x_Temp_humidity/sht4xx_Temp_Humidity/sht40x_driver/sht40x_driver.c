@@ -30,16 +30,18 @@
 /**
 * @brief chip information definition
 */
-#define CHIP_NAME                "SHT40"                 /**< chip name */
+#define CHIP_NAME                "SHT4x"                 /**< chip name */
 #define INTERFACE                 "I2C"                  /**< interface protocol */
 #define MANUFACTURER_NAME         "Sensirion"            /**< manufacturer name */
 #define SUPPLY_VOLTAGE_MIN        1.8f                   /**< chip min supply voltage */
 #define SUPPLY_VOLTAGE_MAX        3.6f                   /**< chip max supply voltage */
-#define MAX_CURRENT               0.1                    /**< chip max current (uA)*/
-#define MIN_CURRENT               500                    /**< chip min current (μA)*/
+#define MIN_CURRENT               0.08                   /**< chip max current (μA)*/
+#define MAX_CURRENT               500                    /**< chip min current (μA)*/
 #define TEMPERATURE_MIN           -40.0f                 /**< chip min operating temperature (°C) */
 #define TEMPERATURE_MAX           125.0f                 /**< chip max operating temperature (°C) */
-#define DRIVER_VERSION            1200                   /**< driver version */
+#define MCU_FLASH_MIN             64                     /**< Micro-controller minimum recommended flash size (kB) */
+#define MCU_RAM_MIN               4                      /**< Micro-controller minimum recommended RAM size (KB)*/
+#define DRIVER_VERSION            1201                   /**< driver version */
 
 /**
 * @brief i2c write byte
@@ -467,7 +469,7 @@ uint8_t sht40x_activate_heater(sht40x_handle_t *const pHandle, sht40x_heater_pow
     if(pHandle->inited != 1)
         return 3;      /**< return failed error */
 
-         err = a_sht40x_i2c_write(pHandle, HEATER_POWER[power], DUMMY_DATA, 0);
+    err = a_sht40x_i2c_write(pHandle, HEATER_POWER[power], DUMMY_DATA, 0);
     if(err)
     {
         a_sht40x_print_error_msg(pHandle, "write heater cmd");
@@ -559,6 +561,8 @@ uint8_t sht40x_info(sht40x_info_t *const pInfo)
     pInfo->max_current_ma = MAX_CURRENT;                             /**< set maximum current */
     pInfo->temperature_max = TEMPERATURE_MAX;                        /**< set minimal temperature */
     pInfo->temperature_min = TEMPERATURE_MIN;                        /**< set maximum temperature */
+    pInfo->flash_size_min = MCU_FLASH_MIN;                           /**< set the Micro-controller minimum recommended flash size */
+    pInfo->ram_size_min = MCU_RAM_MIN;                               /**< set the Micro-controller minimum recommended ram size */
     pInfo->driver_version = DRIVER_VERSION;                          /**< set driver version */
 
     return 0;                                                        /**< return success */

@@ -23,6 +23,8 @@ int main()
     sht40x_interface_debug_print("Maximum Current: \t%.1f uA\r\n",sht40xInfo.max_current_ma);
     sht40x_interface_debug_print("Max Temperature: \t%.1f C\r\n",sht40xInfo.temperature_max);
     sht40x_interface_debug_print("Diver Version: \t\tV%.1f.%.2d\r\n",(sht40xInfo.driver_version /1000), (uint8_t)(sht40xInfo.driver_version - (uint8_t)(sht40xInfo.driver_version / 100)*100));
+    sht40x_interface_debug_print("\nRecommended MCU flash: \t%dkB\r\n",sht40xInfo.flash_size_min);
+    sht40x_interface_debug_print("Recommended MCU RAM: \t%dkB\r\n",sht40xInfo.ram_size_min);
 
     err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);
     if(err)

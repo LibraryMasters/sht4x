@@ -163,9 +163,7 @@ typedef enum{
     float temperature_C;                                              /**< Temperature read in degree Celsius    */
     float temperature_F;                                              /**< Temperature read in degree Fahrenheit */
     float humidity;                                                   /**< Humidity data read */
-    uint8_t rawData[RESPONSE_LENGTH];                                 /**< Temperature raw data */
-//    uint8_t pTempRawData[2];                                          /**< Temperature raw data read */
-//    uint8_t pHumidityRawData[2];                                      /**< Humidity Raw data read */
+    uint8_t rawData[RESPONSE_LENGTH];                                 /**< Sensor raw data */
 
  }sht40x_data_t;
 
@@ -209,6 +207,8 @@ typedef struct sht40x_info_s
     float max_current_ma;                                                       /**< chip max current */
     float temperature_min;                                                      /**< chip min operating temperature */
     float temperature_max;                                                      /**< chip max operating temperature */
+    uint8_t flash_size_min;                                                     /**< Micro-controller minimum recommended flash size */
+    uint8_t ram_size_min;                                                       /**< Micro-controller minimum recommended flash size */
     float driver_version;                                                       /**< driver version */
 } sht40x_info_t;
 
