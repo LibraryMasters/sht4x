@@ -6,17 +6,17 @@
 
 ## Library Maters SHT4x 
 
-SHT4x is a digital sensor platform for measuring relative humidity and temperature at different
+SHT4x is a digital sensor for measuring relative humidity and temperature at different
 accuracy classes. Its I2C interface provides several preconfigured I2C addresses while maintaining
 an ultra-low power budget. The power-trimmed internal heater can be used at three heating levels
 thus enabling sensor operation in demanding environments. The four-pin dual-flat-no-leads
-package is suitable for surface mount technology (SMT) processing and comprises an optional onpackage
-patented PTFE [1] membrane or a removable protective cover. Sensor specific calibration
-certificates according to ISO17025, identifiable through unique serial number, are available.
+package is suitable for surface mount technology (SMT) processing and comprises an optional on-package
+patented PTFE [1] membrane or a removable protective cover. Sensor-specific calibration
+certificates according to ISO17025, identifiable through unique serial numbers, are available.
 
-The Library masters SHT4x is the full function driver of the SHT4x sensors series (sht41, sht40 and sht45). The driver is writte C language with Code Blocks, It provides the functions to read the sensor.
+The Library masters SHT4x is the full-function driver of the SHT4x sensors series (sht41, sht40, and sht45). The driver is written in C language with Code Blocks, It provides the functions to read the sensor.
 
-### Table of Cnntents
+### Table of Contents
 
   - [Install](#Install)
   - [Examples](#Examples)
@@ -30,7 +30,7 @@ The Library masters SHT4x is the full function driver of the SHT4x sensors serie
   - [Acknowledgements](#Acknowledgements)
 
   ### Install
-  - The interface .C file expect below functions to correctly link the driver 
+  - The interface .C file expects below functions to correctly link the driver 
   ```
     - i2c_initialize function  ( optional )
     - i2c_deinitialize function ( optional )
@@ -39,7 +39,7 @@ The Library masters SHT4x is the full function driver of the SHT4x sensors serie
     - delay function ( Mandatory )
     - print function (optional )
   ```
-  - refer to video: "coming soon..."
+  - refer to the video: "Coming soon..."
   - Use example project 
 
 
@@ -182,7 +182,7 @@ void sht40x_interface_debug_print(const char *const fmt, ...)
   ### Contribute
    1. Clone repo and create a new branch: ```https://github.com/LibraryMasters/sht4x_PR.git```
    2. Make changes and test
-   3. Submit Pull Request with comprehensive description of changes
+   3. Submit a Pull Request with a comprehensive description of changes
   ### License
   [MIT](https://choosealicense.com/licenses/mit/)
 ### Contact Us
