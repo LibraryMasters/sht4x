@@ -1,0 +1,197 @@
+\doxysection{sht40x\+\_\+driver.\+h}
+\hypertarget{sht40x__driver_8h_source}{}\label{sht40x__driver_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#ifndef\ SHT40X\_DRIVER\_H\_INCLUDED}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ SHT40X\_DRIVER\_H\_INCLUDED}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <stdarg.h>}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ SHT40X\_DEBUG\_MODE}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\ \#define\ SHT40X\_RESET\_REG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00054\ \ \textcolor{comment}{/*Control\ command\ */}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\ \#define\ SHT40X\_MEASURE\_T\_RH\_HIGH\_PREC\_CMD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xFD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\ \#define\ SHT40X\_MEASURE\_T\_RH\_MIDIUM\_PREC\_CMD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xF6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\ \#define\ SHT40X\_MEASURE\_T\_RH\_LOWEST\_PREC\_CMD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xE0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\ \#define\ SHT40X\_READ\_SERIAL\_NUMBER\_CMD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x89\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\ \#define\ SHT40X\_SOFT\_RESET\_CMD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x94\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\ \#define\ SHT40X\_ACTIVATE\_HEATER\_200mW\_1\_S\_CMD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x39\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\ \#define\ SHT40X\_ACTIVATE\_HEATER\_200mW\_100mS\_CMD\ \ \ \ \ \ \ \ \ \ \ \ \ 0x32\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\ \#define\ SHT40X\_ACTIVATE\_HEATER\_110mW\_1\_S\_CMD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x2F\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\ \#define\ SHT40X\_ACTIVATE\_HEATER\_110mW\_100mS\_CMD\ \ \ \ \ \ \ \ \ \ \ \ \ 0x24\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\ \#define\ SHT40X\_ACTIVATE\_HEATER\_20mW\_1\_S\_CMD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x1E\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\ \#define\ SHT40X\_ACTIVATE\_HEATER\_20mW\_100mS\_CMD\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x15\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00068\ \ \textcolor{comment}{/*\ Response\ length\ */}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\ \#define\ RESPONSE\_LENGTH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x06\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*<\ I2C\ response\ length\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\ \#define\ DUMMY\_DATA\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\ \#define\ HUMIDITY\_MIN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0U}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\ \#define\ HUMIDITY\_MAX\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 100U}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \textcolor{comment}{/*\ Heater\ time\ delay\ */}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ HEATER\_DELAY\_1S\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1020U}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ HEATER\_DELAY\_100mS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 115U}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{comment}{/*\ Read\ precision\ table\ */}}
+\DoxyCodeLine{00082\ \textcolor{keyword}{static}\ uint8\_t\ \ \textcolor{keyword}{const}\ READ\_PRECISION[3]\ =\ \{\ \mbox{\hyperlink{group__driver__sht40x_gac23b5b089a02f00182f2cc56f3b8be44}{SHT40X\_MEASURE\_T\_RH\_HIGH\_PREC\_CMD}},}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_gaf8297224810ee43c3678add00275a895}{SHT40X\_MEASURE\_T\_RH\_MIDIUM\_PREC\_CMD}},}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ga6157027142774b715dc8be580a26edb5}{SHT40X\_MEASURE\_T\_RH\_LOWEST\_PREC\_CMD}}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{comment}{/*\ Heater\ activate\ power\ table\ */}}
+\DoxyCodeLine{00088\ \textcolor{keyword}{static}\ uint8\_t\ \textcolor{keyword}{const}\ HEATER\_POWER[6]\ =\ \{\ \mbox{\hyperlink{group__driver__sht40x_ga9ffb41faa0c3e67a3282f3b5f0c8be81}{SHT40X\_ACTIVATE\_HEATER\_200mW\_1\_S\_CMD}},}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ga51020190aab186d8d3450348cac6dbb7}{SHT40X\_ACTIVATE\_HEATER\_200mW\_100mS\_CMD}},}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ga7d3f0ed8bf3404f712ea1956ebe03e01}{SHT40X\_ACTIVATE\_HEATER\_110mW\_1\_S\_CMD}},}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ga796a0f0c942f484d8397108f58b59432}{SHT40X\_ACTIVATE\_HEATER\_110mW\_100mS\_CMD}},}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ga18c1bfc7e0bfc11c35e5bde674634a18}{SHT40X\_ACTIVATE\_HEATER\_20mW\_1\_S\_CMD}},}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_gaba24f26b6edadf1e7c85f67126279651}{SHT40X\_ACTIVATE\_HEATER\_20mW\_100mS\_CMD}}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00100\ \{}
+\DoxyCodeLine{00101\ \ \ \ \mbox{\hyperlink{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37fa01b2fe98c7961eebe578830cb68edbe4}{SHT40X\_DRV\_OK}}\ \ \ \ \ \ \ \ \ \ =\ 0x00,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \mbox{\hyperlink{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37faf2323683ee1f5daa776a62b186d0328c}{SHT40X\_DRV\_FAILED}}\ \ \ \ \ \ =\ 0x01,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \mbox{\hyperlink{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37fa4e4ccde7ccb2ff12d19e3423158a41b1}{SHT40X\_DRV\_ERR\_HANDLER}}\ =\ 0x02,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \mbox{\hyperlink{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37faddb58aa01719f997579fa3470e2295e6}{SHT40X\_DRV\_ERR\_INIT}}\ \ \ \ =\ 0x03\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00105\ \}\ \mbox{\hyperlink{group__driver__sht40x_ga39003b4e94d34577b361f20b65c9d37f}{sht40x\_driver\_execute\_stat\_t}};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00110\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686ac67758fd9c5ed0a53f0871b29eb84e4b}{SHT40\_AD1B\_VARIANT}}\ =\ 0x00,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686ad6d01b980e6166c30d31f4d2e53e2d5e}{SHT40\_BD1B\_VARIANT}}\ =\ 0x01,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686a5ef0cb288e7a02b0a784e4563948be22}{SHT41\_AD1B\_VARIANT}}\ =\ 0x02,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686a4f2b7f6d6a3c0be451a8b40e91afcc45}{SHT45\_AD1B\_VARIANT}}\ =\ 0x03\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00115\ \}\mbox{\hyperlink{group__driver__sht40x_gae5cf7a39681b5141b37b14b9e5724686}{sht40x\_variant\_t}};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00121\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a5ea199802779800c46c5f7aecb40c6c5}{SHT40\_AD1B\_IIC\_ADDRESS}}\ =\ 0x44,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a5ea9b92b1c8f5384ed7c8150042c1af1}{SHT40\_BD1B\_IIC\_ADDRESS}}\ =\ 0x45,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a891f17c11635ac067c016baf19b3a174}{SHT41\_AD1B\_IIC\_ADDRESS}}\ =\ 0x44,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00125\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a071e681fb1faf5cc9adb4c84d7c7a666}{SHT45\_AD1B\_IIC\_ADDRESS}}\ =\ 0x44\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00126\ \}\mbox{\hyperlink{group__driver__sht40x_gae96188cc1735feaf37958b7d9d87c5f3}{sht40x\_i2c\_address\_t}};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00131\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00132\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_gga8f709c833f5d276ee11f73e47df13beba3599faa2cfc9af329aa60ecb280e8725}{SHT40X\_BOOL\_FALSE}}\ \ =\ 0x00,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_gga8f709c833f5d276ee11f73e47df13beba42542bac4a59d727c597092f4e92603b}{SHT40X\_BOOL\_TRUE}}\ \ \ =\ 0x01\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00135\ \}\mbox{\hyperlink{group__driver__sht40x_ga8f709c833f5d276ee11f73e47df13beb}{sht40x\_bool\_t}};}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00140\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00141\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggac023ff12c3bab3146aa7121893982e8da6283152f59f5175fcfd79c2ce5d60139}{SHT40X\_PRECISION\_HIGH}}\ \ \ =\ 0x00,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggac023ff12c3bab3146aa7121893982e8da91fe736ae12a3cb69f7c33f06493925b}{SHT40X\_PRECISION\_MIDIUM}}\ =\ 0x01,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00143\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggac023ff12c3bab3146aa7121893982e8daad1847286550b817dce94b4ed39c0253}{SHT40X\_PRECISION\_LOWEST}}\ =\ 0x02\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \}\mbox{\hyperlink{group__driver__sht40x_gac023ff12c3bab3146aa7121893982e8d}{sht40x\_precision\_t}};}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00149\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da5e960adc4b8bbc9bfc7433b9332169a8}{SHT40X\_HEATER\_POWER\_200mW\_1S}}\ \ \ \ =\ 0x00,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da1c244179aea87845c8e455dd77129a3a}{SHT40X\_HEATER\_POWER\_200mW\_100mS}}\ =\ 0x01,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00152\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da7b28ce8a08100eb4b3f8cd8b537a3b2c}{SHT40X\_HEATER\_POWER\_110mW\_1S}}\ \ \ \ =\ 0x02,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9daef2c806a4512067127af3571dfa94d0b}{SHT40X\_HEATER\_POWER\_110mW\_100mS}}\ =\ 0x03,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da3972da063aa527afb3e64ac15453cc44}{SHT40X\_HEATER\_POWER\_20mW\_1S}}\ \ \ \ \ =\ 0x04,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00155\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da517384e3a888f985fd40beb2ea6971e8}{SHT40X\_HEATER\_POWER\_20mW\_100mS}}\ \ =\ 0x05\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00156\ \}\mbox{\hyperlink{group__driver__sht40x_gaf4f7e90340bcb8e1384dd0cc42afca9d}{sht40x\_heater\_power\_t}};}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00161\ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsht40x__data__s}{sht40x\_data\_s}}}
+\DoxyCodeLine{00162\ \ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group__sht40x__base__driver_ga6ed9ed8b9ef93354a625e06c30a46e5f}{temperature\_C}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group__sht40x__base__driver_ga85a67a7a9e32560c12019dbde489cb5a}{temperature\_F}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group__sht40x__base__driver_ga6a87b2b0cff24d38b367ccd34843a206}{humidity}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00166\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_ga8ca7b17baca6e8a0b542bfb6f7b611fc}{rawData}}[RESPONSE\_LENGTH];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00168\ \ \}\mbox{\hyperlink{group__driver__sht40x_ga35c0112b2e4e11c89c7655587ca11b4d}{sht40x\_data\_t}};}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00173\ \ \textcolor{keyword}{union}}
+\DoxyCodeLine{00174\ \{}
+\DoxyCodeLine{00175\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_ga52a6e27165fb77b9cac34a55c32f0064}{pBuffer}}[4];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00176\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{group__driver__sht40x_ga0a595268561edc58e347ca8387000bc6}{raw}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00177\ \}\textcolor{keyword}{static}\ \mbox{\hyperlink{group__driver__sht40x_ga643de7bb5f1d5fe0dab1abd0fe837a7a}{serial}};}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00182\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{structsht40x__handle__s}{sht40x\_handle\_s}}}
+\DoxyCodeLine{00183\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ uint8\_t\ (*\mbox{\hyperlink{group__sht40x__base__driver_ga0371a3fe03709a345f9f6d3b1e53dbf2}{i2c\_init}})(void);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00185\ \ \ \ \ uint8\_t\ (*\mbox{\hyperlink{group__sht40x__base__driver_ga2ed17bbf1b0e0d9f8369d88ec6c59c84}{i2c\_deinit}})(void);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00186\ \ \ \ \ uint8\_t\ (*\mbox{\hyperlink{group__sht40x__base__driver_ga5ef818b19857ef9b2bdda362a3da8546}{i2c\_read}})(uint8\_t\ addr,\ uint8\_t\ reg,\ uint8\_t\ *buf,\ uint16\_t\ len);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ uint8\_t\ (*\mbox{\hyperlink{group__sht40x__base__driver_ga2184a8faa98450c4bbe99bb3e9ec6b98}{i2c\_write}})(uint8\_t\ addr,\ uint8\_t\ reg,\ uint8\_t\ *buf,\ uint16\_t\ len);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00188\ \ \ \ \ void\ (*\mbox{\hyperlink{group__sht40x__base__driver_ga9671f2fb685ddb47d249aeb15d3b65f8}{delay\_ms}})(uint32\_t\ u32Ms);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00189\ \ \ \ \ void(*\mbox{\hyperlink{group__sht40x__base__driver_ga7df70df65cbb313403d219c1d36f7f80}{debug\_print}})(\textcolor{keywordtype}{char}\ *fmt,\ ...);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00190\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_gafd5dbf719bae2b1ea9260a55e7c289cf}{i2c\_address}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00191\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_gab12781dc74efa482bb473b16d794e273}{variant}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00192\ \ \ \ \ uint8\_t\ inited;}
+\DoxyCodeLine{00193\ \ \ \ \ \mbox{\hyperlink{group__driver__sht40x_gae96188cc1735feaf37958b7d9d87c5f3}{sht40x\_i2c\_address\_t}}\ addres;}
+\DoxyCodeLine{00194\ \}\ \mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\_handle\_t}};}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00200\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsht40x__info__s}{sht40x\_info\_s}}}
+\DoxyCodeLine{00201\ \{}
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{group__sht40x__base__driver_ga18705bed6dbf9c36936161c9438de2e4}{chip\_name}}[10];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{group__sht40x__base__driver_gaaf6aff5d2bbc0bb299ccc5668ed48f84}{manufacturer\_name}}[25];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{group__sht40x__base__driver_gab07cd02ca5925420eb6f44b424380a08}{interface}}[5];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group__sht40x__base__driver_gad8bde6ddadaf43d951e62f3befb9d35a}{supply\_voltage\_min\_v}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group__sht40x__base__driver_ga3d2b12bcac7a85ea8646bff9debe8660}{supply\_voltage\_max\_v}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group__sht40x__base__driver_ga9db82802561bf22d799b03a345f1d1dc}{max\_current\_ma}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group__sht40x__base__driver_ga8f9dbe66ac0b66ebae0a36fcb4ba368e}{temperature\_min}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group__sht40x__base__driver_ga3366a5dce9b829e03c3d321c2b4df3f6}{temperature\_max}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00210\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_ga66b0077cb2ce08399af5e9c78db1c513}{flash\_size\_min}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00211\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_gad0004239afc1fd3b87020ed38521a8d2}{ram\_size\_min}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group__sht40x__base__driver_ga4f23616ece06fddbe13287610c4792e2}{driver\_version}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00213\ \}\ \mbox{\hyperlink{group__driver__sht40x_gad5d00c8d20ffb34531570e328073cd2f}{sht40x\_info\_t}};}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\#define\ DRIVER\_SHT40X\_LINK\_INIT(pHandle,\ STRUCTURE)\ \ \ \ \ \ \ \ \ \ \ memset(pHandle,\ 0,\ sizeof(STRUCTURE))}}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00240\ \textcolor{preprocessor}{\#define\ DRIVER\_SHT40X\_LINK\_I2C\_INIT(pHandle,\ FUC)\ \ \ \ \ \ \ \ \ \ \ \ \ \ (pHandle)-\/>i2c\_init\ =\ FUC}}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00249\ \textcolor{preprocessor}{\#define\ DRIVER\_SHT40X\_LINK\_I2C\_DEINIT(pHandle,\ FUC)\ \ \ \ \ \ \ \ \ \ \ \ (pHandle)-\/>i2c\_deinit\ =\ FUC}}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00258\ \textcolor{preprocessor}{\#define\ DRIVER\_SHT40X\_LINK\_I2C\_WRITE(pHandle,\ FUC)\ \ \ \ \ \ \ \ \ \ \ \ \ (pHandle)-\/>i2c\_write\ =\ FUC}}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00267\ \textcolor{preprocessor}{\#define\ DRIVER\_SHT40X\_LINK\_I2C\_READ(pHandle,\ FUC)\ \ \ \ \ \ \ \ \ \ \ \ \ \ (pHandle)-\/>i2c\_read\ =\ FUC}}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00275\ \textcolor{preprocessor}{\#define\ DRIVER\_SHT40X\_LINK\_DELAY\_MS(pHandle,\ FUC)\ \ \ \ \ \ \ \ \ \ \ \ \ (pHandle)-\/>delay\_ms\ =\ FUC}}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00283\ \textcolor{preprocessor}{\#define\ DRIVER\_SHT40X\_LINK\_DEBUG\_PRINT(pHandle,\ FUC)\ \ \ \ \ \ \ \ \ \ (pHandle)-\/>debug\_print\ =\ FUC}}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00305\ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_ga4cb55ca0655fd0591d7c779b985ae814}{sht40x\_info}}(\mbox{\hyperlink{structsht40x__info__s}{sht40x\_info\_t}}\ *\textcolor{keyword}{const}\ info);}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00317\ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_gab5a047e4896a925e52b10e6c956dfa7c}{sht40x\_init}}(\mbox{\hyperlink{structsht40x__handle__s}{sht40x\_handle\_t}}\ *\textcolor{keyword}{const}\ pHandle);}
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00329\ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_ga3b66b90085570eaf26aded262a47c5ab}{sht40x\_deinit}}(\mbox{\hyperlink{structsht40x__handle__s}{sht40x\_handle\_t}}\ *\textcolor{keyword}{const}\ pHandle);}
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00341\ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_ga13b7a986936821445e11db95b2a472ac}{sht40x\_set\_addr}}(\mbox{\hyperlink{structsht40x__handle__s}{sht40x\_handle\_t}}\ *\textcolor{keyword}{const}\ pHandle);}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00354\ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_gaab63de05b73b0dd26f20234ded872b34}{sht40x\_get\_addr}}(\mbox{\hyperlink{structsht40x__handle__s}{sht40x\_handle\_t}}\ *\textcolor{keyword}{const}\ pHandle,\ \mbox{\hyperlink{group__driver__sht40x_gae96188cc1735feaf37958b7d9d87c5f3}{sht40x\_i2c\_address\_t}}\ \ *pI2c\_address);}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00367\ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_gab980498594e493b2515f647574683ee7}{sht40x\_set\_variant}}(\mbox{\hyperlink{structsht40x__handle__s}{sht40x\_handle\_t}}\ *\textcolor{keyword}{const}\ pHandle,\ \mbox{\hyperlink{group__driver__sht40x_gae5cf7a39681b5141b37b14b9e5724686}{sht40x\_variant\_t}}\ variant);}
+\DoxyCodeLine{00368\ }
+\DoxyCodeLine{00380\ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_ga4fefe407f014e5bdd319b6ce1515bc4b}{sht40x\_get\_variant}}(\mbox{\hyperlink{structsht40x__handle__s}{sht40x\_handle\_t}}\ *\textcolor{keyword}{const}\ pHandle,\ \mbox{\hyperlink{group__driver__sht40x_gae5cf7a39681b5141b37b14b9e5724686}{sht40x\_variant\_t}}\ *pVariant);}
+\DoxyCodeLine{00381\ }
+\DoxyCodeLine{00394\ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_gae8c360d749850f5a5f0685dc4c2ed6a5}{sht40x\_get\_temp\_rh}}(\mbox{\hyperlink{structsht40x__handle__s}{sht40x\_handle\_t}}\ *\textcolor{keyword}{const}\ pHandle,\ \ \mbox{\hyperlink{group__driver__sht40x_gac023ff12c3bab3146aa7121893982e8d}{sht40x\_precision\_t}}\ precision,\ \mbox{\hyperlink{structsht40x__data__s}{sht40x\_data\_t}}\ *pData);}
+\DoxyCodeLine{00395\ }
+\DoxyCodeLine{00407\ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_ga41024678c4b2a9aaceb52553ae72c7c0}{sht40x\_get\_serial\_number}}(\mbox{\hyperlink{structsht40x__handle__s}{sht40x\_handle\_t}}\ *\textcolor{keyword}{const}\ pHandle,\ uint32\_t\ *pSerial\_Number);}
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00421\ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_ga5bb0a0543bdc96436c562574dfacfe02}{sht40x\_activate\_heater}}(\mbox{\hyperlink{structsht40x__handle__s}{sht40x\_handle\_t}}\ *\textcolor{keyword}{const}\ pHandle,\ \mbox{\hyperlink{group__driver__sht40x_gaf4f7e90340bcb8e1384dd0cc42afca9d}{sht40x\_heater\_power\_t}}\ power,\ \mbox{\hyperlink{structsht40x__data__s}{sht40x\_data\_t}}\ *pData);}
+\DoxyCodeLine{00422\ }
+\DoxyCodeLine{00433\ uint8\_t\ \mbox{\hyperlink{group__sht40x__base__driver_ga55aa82365880ea7d903a851178d5e4fe}{sht40x\_soft\_reset}}(\mbox{\hyperlink{structsht40x__handle__s}{sht40x\_handle\_t}}\ *\textcolor{keyword}{const}\ pHandle);}
+\DoxyCodeLine{00434\ }
+\DoxyCodeLine{00435\ }
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00437\ }
+\DoxyCodeLine{00438\ }
+\DoxyCodeLine{00439\ }
+\DoxyCodeLine{00440\ }
+\DoxyCodeLine{00441\ }
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00443\ }
+\DoxyCodeLine{00444\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SHT40X\_DRIVER\_H\_INCLUDED}}
+
+\end{DoxyCode}

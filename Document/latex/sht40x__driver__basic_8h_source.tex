@@ -1,0 +1,32 @@
+\doxysection{sht40x\+\_\+driver\+\_\+basic.\+h}
+\hypertarget{sht40x__driver__basic_8h_source}{}\label{sht40x__driver__basic_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifndef\ SHT40X\_DRIVER\_BASIC\_H\_INCLUDED}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ SHT40X\_DRIVER\_BASIC\_H\_INCLUDED}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}sht40x\_driver\_interface.h"{}}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00041\ uint8\_t\ sht40x\_basic\_initialize(\mbox{\hyperlink{group__driver__sht40x_gae5cf7a39681b5141b37b14b9e5724686}{sht40x\_variant\_t}}\ variant);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00051\ uint8\_t\ sht40x\_basic\_get\_variant(\mbox{\hyperlink{group__driver__sht40x_gae5cf7a39681b5141b37b14b9e5724686}{sht40x\_variant\_t}}\ *pVariant);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00062\ uint8\_t\ sht40x\_basic\_get\_temp\_rh(\mbox{\hyperlink{group__driver__sht40x_gac023ff12c3bab3146aa7121893982e8d}{sht40x\_precision\_t}}\ precision,\ \mbox{\hyperlink{structsht40x__data__s}{sht40x\_data\_t}}\ *pData);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00074\ uint8\_t\ sht40x\_basic\_get\_temp\_humidity\_nSample(\mbox{\hyperlink{group__driver__sht40x_gac023ff12c3bab3146aa7121893982e8d}{sht40x\_precision\_t}}\ precision,\ \mbox{\hyperlink{structsht40x__data__s}{sht40x\_data\_t}}\ *pData,\ uint8\_t\ u8NumSample);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00084\ uint8\_t\ sht40x\_basic\_get\_serial\_number(uint32\_t\ *pSerial\_Number);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00096\ uint8\_t\ sht40x\_basic\_activate\_heater(\mbox{\hyperlink{group__driver__sht40x_gaf4f7e90340bcb8e1384dd0cc42afca9d}{sht40x\_heater\_power\_t}}\ power,\ \mbox{\hyperlink{structsht40x__data__s}{sht40x\_data\_t}}\ *pData);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00105\ uint8\_t\ sht40x\_basic\_soft\_reset(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00115\ uint8\_t\ sht40x\_basic\_get\_addr(uint8\_t\ \ *pI2c\_address);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SHT40X\_DRIVER\_BASIC\_H\_INCLUDED}}
+
+\end{DoxyCode}

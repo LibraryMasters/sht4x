@@ -1,0 +1,172 @@
+\doxysubsection{sht40x link driver function}
+\hypertarget{group__sht40x__link__driver}{}\label{group__sht40x__link__driver}\index{sht40x link driver function@{sht40x link driver function}}
+
+
+sht40x link driver modules  
+
+
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__sht40x__link__driver_gaddb8c63f3c28e870b8156936a4b584d7}{DRIVER\+\_\+\+SHT40\+X\+\_\+\+LINK\+\_\+\+INIT}}(p\+Handle,  STRUCTURE)~memset(p\+Handle, 0, sizeof(STRUCTURE))
+\begin{DoxyCompactList}\small\item\em initialize sht40x\+\_\+handle\+\_\+t structure \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__sht40x__link__driver_ga8eee7ecf73e700396c1fa27cd6df4cb2}{DRIVER\+\_\+\+SHT40\+X\+\_\+\+LINK\+\_\+\+I2\+C\+\_\+\+INIT}}(p\+Handle,  FUC)~(p\+Handle)-\/$>$i2c\+\_\+init = FUC
+\begin{DoxyCompactList}\small\item\em link i2c\+\_\+init function \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__sht40x__link__driver_gada787dad0a435a738c8d524cd5e4426c}{DRIVER\+\_\+\+SHT40\+X\+\_\+\+LINK\+\_\+\+I2\+C\+\_\+\+DEINIT}}(p\+Handle,  FUC)~(p\+Handle)-\/$>$i2c\+\_\+deinit = FUC
+\begin{DoxyCompactList}\small\item\em link i2c\+\_\+deinit function \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__sht40x__link__driver_ga440f24b3062c73df30d137782af3f643}{DRIVER\+\_\+\+SHT40\+X\+\_\+\+LINK\+\_\+\+I2\+C\+\_\+\+WRITE}}(p\+Handle,  FUC)~(p\+Handle)-\/$>$i2c\+\_\+write = FUC
+\begin{DoxyCompactList}\small\item\em link i2c\+\_\+write function \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__sht40x__link__driver_gadc16be197ddb28066ba3ca711ff850e1}{DRIVER\+\_\+\+SHT40\+X\+\_\+\+LINK\+\_\+\+I2\+C\+\_\+\+READ}}(p\+Handle,  FUC)~(p\+Handle)-\/$>$i2c\+\_\+read = FUC
+\begin{DoxyCompactList}\small\item\em link i2c\+\_\+read function \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__sht40x__link__driver_gaefbd6395b2745cae35d0ef994235df21}{DRIVER\+\_\+\+SHT40\+X\+\_\+\+LINK\+\_\+\+DELAY\+\_\+\+MS}}(p\+Handle,  FUC)~(p\+Handle)-\/$>$delay\+\_\+ms = FUC
+\begin{DoxyCompactList}\small\item\em link delay\+\_\+ms function \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__sht40x__link__driver_ga0bf6620c840279c4781e51ffe3462e03}{DRIVER\+\_\+\+SHT40\+X\+\_\+\+LINK\+\_\+\+DEBUG\+\_\+\+PRINT}}(p\+Handle,  FUC)~(p\+Handle)-\/$>$debug\+\_\+print = FUC
+\begin{DoxyCompactList}\small\item\em link debug\+\_\+print function \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+sht40x link driver modules 
+
+
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group__sht40x__link__driver_ga0bf6620c840279c4781e51ffe3462e03}\label{group__sht40x__link__driver_ga0bf6620c840279c4781e51ffe3462e03} 
+\index{sht40x link driver function@{sht40x link driver function}!DRIVER\_SHT40X\_LINK\_DEBUG\_PRINT@{DRIVER\_SHT40X\_LINK\_DEBUG\_PRINT}}
+\index{DRIVER\_SHT40X\_LINK\_DEBUG\_PRINT@{DRIVER\_SHT40X\_LINK\_DEBUG\_PRINT}!sht40x link driver function@{sht40x link driver function}}
+\doxysubsubsubsection{\texorpdfstring{DRIVER\_SHT40X\_LINK\_DEBUG\_PRINT}{DRIVER\_SHT40X\_LINK\_DEBUG\_PRINT}}
+{\footnotesize\ttfamily \#define DRIVER\+\_\+\+SHT40\+X\+\_\+\+LINK\+\_\+\+DEBUG\+\_\+\+PRINT(\begin{DoxyParamCaption}\item[{}]{p\+Handle,  }\item[{}]{FUC }\end{DoxyParamCaption})~(p\+Handle)-\/$>$debug\+\_\+print = FUC}
+
+
+
+link debug\+\_\+print function 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\mbox{\texttt{ in}}  & {\em FUC} & points to a debug\+\_\+print function address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\Hypertarget{group__sht40x__link__driver_gaefbd6395b2745cae35d0ef994235df21}\label{group__sht40x__link__driver_gaefbd6395b2745cae35d0ef994235df21} 
+\index{sht40x link driver function@{sht40x link driver function}!DRIVER\_SHT40X\_LINK\_DELAY\_MS@{DRIVER\_SHT40X\_LINK\_DELAY\_MS}}
+\index{DRIVER\_SHT40X\_LINK\_DELAY\_MS@{DRIVER\_SHT40X\_LINK\_DELAY\_MS}!sht40x link driver function@{sht40x link driver function}}
+\doxysubsubsubsection{\texorpdfstring{DRIVER\_SHT40X\_LINK\_DELAY\_MS}{DRIVER\_SHT40X\_LINK\_DELAY\_MS}}
+{\footnotesize\ttfamily \#define DRIVER\+\_\+\+SHT40\+X\+\_\+\+LINK\+\_\+\+DELAY\+\_\+\+MS(\begin{DoxyParamCaption}\item[{}]{p\+Handle,  }\item[{}]{FUC }\end{DoxyParamCaption})~(p\+Handle)-\/$>$delay\+\_\+ms = FUC}
+
+
+
+link delay\+\_\+ms function 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\mbox{\texttt{ in}}  & {\em FUC} & points to a delay\+\_\+ms function address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\Hypertarget{group__sht40x__link__driver_gada787dad0a435a738c8d524cd5e4426c}\label{group__sht40x__link__driver_gada787dad0a435a738c8d524cd5e4426c} 
+\index{sht40x link driver function@{sht40x link driver function}!DRIVER\_SHT40X\_LINK\_I2C\_DEINIT@{DRIVER\_SHT40X\_LINK\_I2C\_DEINIT}}
+\index{DRIVER\_SHT40X\_LINK\_I2C\_DEINIT@{DRIVER\_SHT40X\_LINK\_I2C\_DEINIT}!sht40x link driver function@{sht40x link driver function}}
+\doxysubsubsubsection{\texorpdfstring{DRIVER\_SHT40X\_LINK\_I2C\_DEINIT}{DRIVER\_SHT40X\_LINK\_I2C\_DEINIT}}
+{\footnotesize\ttfamily \#define DRIVER\+\_\+\+SHT40\+X\+\_\+\+LINK\+\_\+\+I2\+C\+\_\+\+DEINIT(\begin{DoxyParamCaption}\item[{}]{p\+Handle,  }\item[{}]{FUC }\end{DoxyParamCaption})~(p\+Handle)-\/$>$i2c\+\_\+deinit = FUC}
+
+
+
+link i2c\+\_\+deinit function 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\mbox{\texttt{ in}}  & {\em FUC} & points to a i2c\+\_\+deinit function address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\Hypertarget{group__sht40x__link__driver_ga8eee7ecf73e700396c1fa27cd6df4cb2}\label{group__sht40x__link__driver_ga8eee7ecf73e700396c1fa27cd6df4cb2} 
+\index{sht40x link driver function@{sht40x link driver function}!DRIVER\_SHT40X\_LINK\_I2C\_INIT@{DRIVER\_SHT40X\_LINK\_I2C\_INIT}}
+\index{DRIVER\_SHT40X\_LINK\_I2C\_INIT@{DRIVER\_SHT40X\_LINK\_I2C\_INIT}!sht40x link driver function@{sht40x link driver function}}
+\doxysubsubsubsection{\texorpdfstring{DRIVER\_SHT40X\_LINK\_I2C\_INIT}{DRIVER\_SHT40X\_LINK\_I2C\_INIT}}
+{\footnotesize\ttfamily \#define DRIVER\+\_\+\+SHT40\+X\+\_\+\+LINK\+\_\+\+I2\+C\+\_\+\+INIT(\begin{DoxyParamCaption}\item[{}]{p\+Handle,  }\item[{}]{FUC }\end{DoxyParamCaption})~(p\+Handle)-\/$>$i2c\+\_\+init = FUC}
+
+
+
+link i2c\+\_\+init function 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\mbox{\texttt{ in}}  & {\em FUC} & points to a i2c\+\_\+init function address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\Hypertarget{group__sht40x__link__driver_gadc16be197ddb28066ba3ca711ff850e1}\label{group__sht40x__link__driver_gadc16be197ddb28066ba3ca711ff850e1} 
+\index{sht40x link driver function@{sht40x link driver function}!DRIVER\_SHT40X\_LINK\_I2C\_READ@{DRIVER\_SHT40X\_LINK\_I2C\_READ}}
+\index{DRIVER\_SHT40X\_LINK\_I2C\_READ@{DRIVER\_SHT40X\_LINK\_I2C\_READ}!sht40x link driver function@{sht40x link driver function}}
+\doxysubsubsubsection{\texorpdfstring{DRIVER\_SHT40X\_LINK\_I2C\_READ}{DRIVER\_SHT40X\_LINK\_I2C\_READ}}
+{\footnotesize\ttfamily \#define DRIVER\+\_\+\+SHT40\+X\+\_\+\+LINK\+\_\+\+I2\+C\+\_\+\+READ(\begin{DoxyParamCaption}\item[{}]{p\+Handle,  }\item[{}]{FUC }\end{DoxyParamCaption})~(p\+Handle)-\/$>$i2c\+\_\+read = FUC}
+
+
+
+link i2c\+\_\+read function 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\mbox{\texttt{ in}}  & {\em FUC} & points to a i2c\+\_\+read function address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\Hypertarget{group__sht40x__link__driver_ga440f24b3062c73df30d137782af3f643}\label{group__sht40x__link__driver_ga440f24b3062c73df30d137782af3f643} 
+\index{sht40x link driver function@{sht40x link driver function}!DRIVER\_SHT40X\_LINK\_I2C\_WRITE@{DRIVER\_SHT40X\_LINK\_I2C\_WRITE}}
+\index{DRIVER\_SHT40X\_LINK\_I2C\_WRITE@{DRIVER\_SHT40X\_LINK\_I2C\_WRITE}!sht40x link driver function@{sht40x link driver function}}
+\doxysubsubsubsection{\texorpdfstring{DRIVER\_SHT40X\_LINK\_I2C\_WRITE}{DRIVER\_SHT40X\_LINK\_I2C\_WRITE}}
+{\footnotesize\ttfamily \#define DRIVER\+\_\+\+SHT40\+X\+\_\+\+LINK\+\_\+\+I2\+C\+\_\+\+WRITE(\begin{DoxyParamCaption}\item[{}]{p\+Handle,  }\item[{}]{FUC }\end{DoxyParamCaption})~(p\+Handle)-\/$>$i2c\+\_\+write = FUC}
+
+
+
+link i2c\+\_\+write function 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\mbox{\texttt{ in}}  & {\em FUC} & points to a i2c\+\_\+write function address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\Hypertarget{group__sht40x__link__driver_gaddb8c63f3c28e870b8156936a4b584d7}\label{group__sht40x__link__driver_gaddb8c63f3c28e870b8156936a4b584d7} 
+\index{sht40x link driver function@{sht40x link driver function}!DRIVER\_SHT40X\_LINK\_INIT@{DRIVER\_SHT40X\_LINK\_INIT}}
+\index{DRIVER\_SHT40X\_LINK\_INIT@{DRIVER\_SHT40X\_LINK\_INIT}!sht40x link driver function@{sht40x link driver function}}
+\doxysubsubsubsection{\texorpdfstring{DRIVER\_SHT40X\_LINK\_INIT}{DRIVER\_SHT40X\_LINK\_INIT}}
+{\footnotesize\ttfamily \#define DRIVER\+\_\+\+SHT40\+X\+\_\+\+LINK\+\_\+\+INIT(\begin{DoxyParamCaption}\item[{}]{p\+Handle,  }\item[{}]{STRUCTURE }\end{DoxyParamCaption})~memset(p\+Handle, 0, sizeof(STRUCTURE))}
+
+
+
+initialize sht40x\+\_\+handle\+\_\+t structure 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\mbox{\texttt{ in}}  & {\em STRUCTURE} & is sht40x\+\_\+handle\+\_\+t \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}

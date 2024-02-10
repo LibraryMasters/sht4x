@@ -34,7 +34,7 @@
 // <i> Prescalar for Main CPU clock
 // <id> cpu_div
 #ifndef CONF_CPU_DIV
-#define CONF_CPU_DIV PM_CPUSEL_CPUDIV_DIV1_Val
+#define CONF_CPU_DIV PM_CPUSEL_CPUDIV_DIV2_Val
 #endif
 // </h>
 

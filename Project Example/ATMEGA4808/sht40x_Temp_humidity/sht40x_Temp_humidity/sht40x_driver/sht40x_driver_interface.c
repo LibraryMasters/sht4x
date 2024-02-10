@@ -45,10 +45,10 @@ uint8_t sht40x_interface_i2c_init(void)
 }
 
 /**
- * @brief interface i2c bus deinit
+ * @brief interface i2c bus de-init
  * @return status code
  *          - 0 success
- *          - 1 i2c deinit fail
+ *          - 1 i2c de-init fail
  */
 uint8_t sht40x_interface_i2c_deinit(void)
 {
@@ -62,7 +62,6 @@ uint8_t sht40x_interface_i2c_deinit(void)
 /**
  * @brief      interface i2c bus read
  * @param[in]  u8Addr is the i2c device address 7 bit
- * @param[in]  u16Reg is the i2c register address
  * @param[out] *pBuf points to a data buffer
  * @param[in]  u8length is the length of the data buffer
  * @return     status code
@@ -70,11 +69,14 @@ uint8_t sht40x_interface_i2c_deinit(void)
  *             - 1 read failed
  * @note       none
  */
-uint8_t sht40x_interface_i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
+uint8_t sht40x_interface_i2c_read(uint8_t addr, uint8_t *pBuf, uint8_t u8Length)
 {
     /*call your i2c read function here*/
     /*user code begin */
-    i2c_read_write(addr, reg, buf, len);
+	if(i2c_read(addr, pBuf, u8Length) != 0)
+	{
+		return 1;
+	}
     /*user code end*/
     return 0; /**< success */
 }
@@ -82,7 +84,6 @@ uint8_t sht40x_interface_i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint1
 /**
  * @brief     interface i2c bus write
  * @param[in] u8Addr is the i2c device address 7 bit
- * @param[in] u16Reg is the i2c register address
  * @param[in] *pBuf points to a data buffer
  * @param[in] u8length is the length of the data buffer
  * @return    status code
@@ -90,11 +91,14 @@ uint8_t sht40x_interface_i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint1
  *            - 1 write failed
  * @note      none
  */
-uint8_t sht40x_interface_i2c_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
+uint8_t sht40x_interface_i2c_write(uint8_t addr, uint8_t *pBuf, uint8_t u8Length)
 {
     /*call your i2c write function here*/
     /*user code begin */
-
+	if(i2c_write(addr, pBuf, u8Length) != 0)
+	{
+		return 1;
+	}
     /*user code end*/
     return 0; /**< success */
 }
@@ -108,7 +112,7 @@ void sht40x_interface_delay_ms(uint32_t u32Ms)
 {
     /*call your delay function here*/
     /*user code begin */
-    delay_ms(u32Ms);
+     delay_ms(u32Ms);
     /*user code end*/
 }
 
@@ -133,7 +137,7 @@ void sht40x_interface_debug_print(const char *const fmt, ...)
 
     len = strlen((char *) str);
     //   EUSART1_Write_Text((const char *) str, len);        /**< example of a usart function */
-       (void)printf((uint8_t *)str, len);                  /**< example of printf function, comment out if used */
+    (void)printf((char *const)str, len);                     /**< example of printf function, comment out if used */
 
     /*user code end*/
 //#endif

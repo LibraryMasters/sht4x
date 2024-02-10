@@ -1,0 +1,398 @@
+\doxysection{sht40x driver function}
+\hypertarget{group__driver__sht40x}{}\label{group__driver__sht40x}\index{sht40x driver function@{sht40x driver function}}
+
+
+sht40x driver modules  
+
+
+\doxysubsubsection*{Topics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__sht40x__link__driver}{sht40x link driver function}}
+\begin{DoxyCompactList}\small\item\em sht40x link driver modules \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__sht40x__base__driver}{sht40x base driver function}}
+\begin{DoxyCompactList}\small\item\em sht40x base driver modules \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structsht40x__data__s}{sht40x\+\_\+data\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em sht40x data structure definition \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structsht40x__handle__s}{sht40x\+\_\+handle\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em sht40x handle enumeration \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structsht40x__info__s}{sht40x\+\_\+info\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em sht40x information structure definition \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__driver__sht40x_ga39003b4e94d34577b361f20b65c9d37f}{sht40x\+\_\+driver\+\_\+execute\+\_\+stat\+\_\+t}} \{ \mbox{\hyperlink{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37fa01b2fe98c7961eebe578830cb68edbe4}{SHT40\+X\+\_\+\+DRV\+\_\+\+OK}} = 0x00
+, \mbox{\hyperlink{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37faf2323683ee1f5daa776a62b186d0328c}{SHT40\+X\+\_\+\+DRV\+\_\+\+FAILED}} = 0x01
+, \mbox{\hyperlink{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37fa4e4ccde7ccb2ff12d19e3423158a41b1}{SHT40\+X\+\_\+\+DRV\+\_\+\+ERR\+\_\+\+HANDLER}} = 0x02
+, \mbox{\hyperlink{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37faddb58aa01719f997579fa3470e2295e6}{SHT40\+X\+\_\+\+DRV\+\_\+\+ERR\+\_\+\+INIT}} = 0x03
+ \}
+\begin{DoxyCompactList}\small\item\em execution status enumeration \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__driver__sht40x_gae5cf7a39681b5141b37b14b9e5724686}{sht40x\+\_\+variant\+\_\+t}} \{ \mbox{\hyperlink{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686ac67758fd9c5ed0a53f0871b29eb84e4b}{SHT40\+\_\+\+AD1\+B\+\_\+\+VARIANT}} = 0x00
+, \mbox{\hyperlink{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686ad6d01b980e6166c30d31f4d2e53e2d5e}{SHT40\+\_\+\+BD1\+B\+\_\+\+VARIANT}} = 0x01
+, \mbox{\hyperlink{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686a5ef0cb288e7a02b0a784e4563948be22}{SHT41\+\_\+\+AD1\+B\+\_\+\+VARIANT}} = 0x02
+, \mbox{\hyperlink{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686a4f2b7f6d6a3c0be451a8b40e91afcc45}{SHT45\+\_\+\+AD1\+B\+\_\+\+VARIANT}} = 0x03
+ \}
+\begin{DoxyCompactList}\small\item\em sht40x variant enumeration \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__driver__sht40x_gae96188cc1735feaf37958b7d9d87c5f3}{sht40x\+\_\+i2c\+\_\+address\+\_\+t}} \{ \mbox{\hyperlink{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a5ea199802779800c46c5f7aecb40c6c5}{SHT40\+\_\+\+AD1\+B\+\_\+\+IIC\+\_\+\+ADDRESS}} = 0x44
+, \mbox{\hyperlink{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a5ea9b92b1c8f5384ed7c8150042c1af1}{SHT40\+\_\+\+BD1\+B\+\_\+\+IIC\+\_\+\+ADDRESS}} = 0x45
+, \mbox{\hyperlink{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a891f17c11635ac067c016baf19b3a174}{SHT41\+\_\+\+AD1\+B\+\_\+\+IIC\+\_\+\+ADDRESS}} = 0x44
+, \mbox{\hyperlink{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a071e681fb1faf5cc9adb4c84d7c7a666}{SHT45\+\_\+\+AD1\+B\+\_\+\+IIC\+\_\+\+ADDRESS}} = 0x44
+ \}
+\begin{DoxyCompactList}\small\item\em sht40x i2c address enumeration \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__driver__sht40x_ga8f709c833f5d276ee11f73e47df13beb}{sht40x\+\_\+bool\+\_\+t}} \{ \mbox{\hyperlink{group__driver__sht40x_gga8f709c833f5d276ee11f73e47df13beba3599faa2cfc9af329aa60ecb280e8725}{SHT40\+X\+\_\+\+BOOL\+\_\+\+FALSE}} = 0x00
+, \mbox{\hyperlink{group__driver__sht40x_gga8f709c833f5d276ee11f73e47df13beba42542bac4a59d727c597092f4e92603b}{SHT40\+X\+\_\+\+BOOL\+\_\+\+TRUE}} = 0x01
+ \}
+\begin{DoxyCompactList}\small\item\em sht40x boolean enumeration \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__driver__sht40x_gac023ff12c3bab3146aa7121893982e8d}{sht40x\+\_\+precision\+\_\+t}} \{ \mbox{\hyperlink{group__driver__sht40x_ggac023ff12c3bab3146aa7121893982e8da6283152f59f5175fcfd79c2ce5d60139}{SHT40\+X\+\_\+\+PRECISION\+\_\+\+HIGH}} = 0x00
+, \mbox{\hyperlink{group__driver__sht40x_ggac023ff12c3bab3146aa7121893982e8da91fe736ae12a3cb69f7c33f06493925b}{SHT40\+X\+\_\+\+PRECISION\+\_\+\+MIDIUM}} = 0x01
+, \mbox{\hyperlink{group__driver__sht40x_ggac023ff12c3bab3146aa7121893982e8daad1847286550b817dce94b4ed39c0253}{SHT40\+X\+\_\+\+PRECISION\+\_\+\+LOWEST}} = 0x02
+ \}
+\begin{DoxyCompactList}\small\item\em sht40x read precision enumeration \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__driver__sht40x_gaf4f7e90340bcb8e1384dd0cc42afca9d}{sht40x\+\_\+heater\+\_\+power\+\_\+t}} \{ \newline
+\mbox{\hyperlink{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da5e960adc4b8bbc9bfc7433b9332169a8}{SHT40\+X\+\_\+\+HEATER\+\_\+\+POWER\+\_\+200m\+W\+\_\+1S}} = 0x00
+, \mbox{\hyperlink{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da1c244179aea87845c8e455dd77129a3a}{SHT40\+X\+\_\+\+HEATER\+\_\+\+POWER\+\_\+200m\+W\+\_\+100mS}} = 0x01
+, \mbox{\hyperlink{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da7b28ce8a08100eb4b3f8cd8b537a3b2c}{SHT40\+X\+\_\+\+HEATER\+\_\+\+POWER\+\_\+110m\+W\+\_\+1S}} = 0x02
+, \mbox{\hyperlink{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9daef2c806a4512067127af3571dfa94d0b}{SHT40\+X\+\_\+\+HEATER\+\_\+\+POWER\+\_\+110m\+W\+\_\+100mS}} = 0x03
+, \newline
+\mbox{\hyperlink{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da3972da063aa527afb3e64ac15453cc44}{SHT40\+X\+\_\+\+HEATER\+\_\+\+POWER\+\_\+20m\+W\+\_\+1S}} = 0x04
+, \mbox{\hyperlink{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da517384e3a888f985fd40beb2ea6971e8}{SHT40\+X\+\_\+\+HEATER\+\_\+\+POWER\+\_\+20m\+W\+\_\+100mS}} = 0x05
+ \}
+\begin{DoxyCompactList}\small\item\em sht40x heater power enumeration \end{DoxyCompactList}\item 
+\Hypertarget{group__driver__sht40x_ga35c0112b2e4e11c89c7655587ca11b4d}\label{group__driver__sht40x_ga35c0112b2e4e11c89c7655587ca11b4d} 
+typedef struct \mbox{\hyperlink{structsht40x__data__s}{sht40x\+\_\+data\+\_\+s}} {\bfseries sht40x\+\_\+data\+\_\+t}
+\begin{DoxyCompactList}\small\item\em sht40x data structure definition \end{DoxyCompactList}\item 
+\Hypertarget{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}\label{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80} 
+typedef struct \mbox{\hyperlink{structsht40x__handle__s}{sht40x\+\_\+handle\+\_\+s}} {\bfseries sht40x\+\_\+handle\+\_\+t}
+\begin{DoxyCompactList}\small\item\em sht40x handle enumeration \end{DoxyCompactList}\item 
+\Hypertarget{group__driver__sht40x_gad5d00c8d20ffb34531570e328073cd2f}\label{group__driver__sht40x_gad5d00c8d20ffb34531570e328073cd2f} 
+typedef struct \mbox{\hyperlink{structsht40x__info__s}{sht40x\+\_\+info\+\_\+s}} {\bfseries sht40x\+\_\+info\+\_\+t}
+\begin{DoxyCompactList}\small\item\em sht40x information structure definition \end{DoxyCompactList}\item 
+\Hypertarget{group__driver__sht40x_ga643de7bb5f1d5fe0dab1abd0fe837a7a}\label{group__driver__sht40x_ga643de7bb5f1d5fe0dab1abd0fe837a7a} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>uint8\_t \mbox{\hyperlink{group__sht40x__base__driver_ga52a6e27165fb77b9cac34a55c32f0064}{pBuffer}} \mbox{[}4\mbox{]}\\
+\>uint32\_t \mbox{\hyperlink{group__sht40x__base__driver_ga0a595268561edc58e347ca8387000bc6}{raw}}\\
+\} {\bfseries serial}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em sht40x unique ID union definition \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__driver__sht40x_ga0076f490cf1a0bdca3579c1cbd742e04}{SHT40\+X\+\_\+\+RESET\+\_\+\+REG}}~0x00
+\item 
+\#define \mbox{\hyperlink{group__driver__sht40x_gac23b5b089a02f00182f2cc56f3b8be44}{SHT40\+X\+\_\+\+MEASURE\+\_\+\+T\+\_\+\+RH\+\_\+\+HIGH\+\_\+\+PREC\+\_\+\+CMD}}~0x\+FD
+\item 
+\#define \mbox{\hyperlink{group__driver__sht40x_gaf8297224810ee43c3678add00275a895}{SHT40\+X\+\_\+\+MEASURE\+\_\+\+T\+\_\+\+RH\+\_\+\+MIDIUM\+\_\+\+PREC\+\_\+\+CMD}}~0x\+F6
+\item 
+\#define \mbox{\hyperlink{group__driver__sht40x_ga6157027142774b715dc8be580a26edb5}{SHT40\+X\+\_\+\+MEASURE\+\_\+\+T\+\_\+\+RH\+\_\+\+LOWEST\+\_\+\+PREC\+\_\+\+CMD}}~0x\+E0
+\item 
+\#define \mbox{\hyperlink{group__driver__sht40x_ga69d9b052ba2edbd3dbedb9adc4083337}{SHT40\+X\+\_\+\+READ\+\_\+\+SERIAL\+\_\+\+NUMBER\+\_\+\+CMD}}~0x89
+\item 
+\#define \mbox{\hyperlink{group__driver__sht40x_gab63bd99c1ed638c5df13d14a19a3e268}{SHT40\+X\+\_\+\+SOFT\+\_\+\+RESET\+\_\+\+CMD}}~0x94
+\item 
+\#define \mbox{\hyperlink{group__driver__sht40x_ga9ffb41faa0c3e67a3282f3b5f0c8be81}{SHT40\+X\+\_\+\+ACTIVATE\+\_\+\+HEATER\+\_\+200m\+W\+\_\+1\+\_\+\+S\+\_\+\+CMD}}~0x39
+\item 
+\#define \mbox{\hyperlink{group__driver__sht40x_ga51020190aab186d8d3450348cac6dbb7}{SHT40\+X\+\_\+\+ACTIVATE\+\_\+\+HEATER\+\_\+200m\+W\+\_\+100m\+S\+\_\+\+CMD}}~0x32
+\item 
+\#define \mbox{\hyperlink{group__driver__sht40x_ga7d3f0ed8bf3404f712ea1956ebe03e01}{SHT40\+X\+\_\+\+ACTIVATE\+\_\+\+HEATER\+\_\+110m\+W\+\_\+1\+\_\+\+S\+\_\+\+CMD}}~0x2F
+\item 
+\#define \mbox{\hyperlink{group__driver__sht40x_ga796a0f0c942f484d8397108f58b59432}{SHT40\+X\+\_\+\+ACTIVATE\+\_\+\+HEATER\+\_\+110m\+W\+\_\+100m\+S\+\_\+\+CMD}}~0x24
+\item 
+\#define \mbox{\hyperlink{group__driver__sht40x_ga18c1bfc7e0bfc11c35e5bde674634a18}{SHT40\+X\+\_\+\+ACTIVATE\+\_\+\+HEATER\+\_\+20m\+W\+\_\+1\+\_\+\+S\+\_\+\+CMD}}~0x1E
+\item 
+\#define \mbox{\hyperlink{group__driver__sht40x_gaba24f26b6edadf1e7c85f67126279651}{SHT40\+X\+\_\+\+ACTIVATE\+\_\+\+HEATER\+\_\+20m\+W\+\_\+100m\+S\+\_\+\+CMD}}~0x15
+\item 
+\Hypertarget{group__driver__sht40x_gad448af2e5675bacb42b8eb80708c75a5}\label{group__driver__sht40x_gad448af2e5675bacb42b8eb80708c75a5} 
+\#define {\bfseries RESPONSE\+\_\+\+LENGTH}~0x06                /\texorpdfstring{$\ast$}{*}$<$ I2C response length \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{group__driver__sht40x_ga5fc5258fad26a2225b045a59bb32c8d9}{DUMMY\+\_\+\+DATA}}~0x00
+\item 
+\Hypertarget{group__driver__sht40x_ga50baad14fa17c79e891d153605301b2c}\label{group__driver__sht40x_ga50baad14fa17c79e891d153605301b2c} 
+\#define {\bfseries HUMIDITY\+\_\+\+MIN}~0U
+\item 
+\Hypertarget{group__driver__sht40x_ga970046dc24185b03aab6ea549a67761e}\label{group__driver__sht40x_ga970046dc24185b03aab6ea549a67761e} 
+\#define {\bfseries HUMIDITY\+\_\+\+MAX}~100U
+\item 
+\Hypertarget{group__driver__sht40x_gadb2c4fee200af79817e56fb398fa7f9d}\label{group__driver__sht40x_gadb2c4fee200af79817e56fb398fa7f9d} 
+\#define {\bfseries HEATER\+\_\+\+DELAY\+\_\+1S}~1020U
+\item 
+\Hypertarget{group__driver__sht40x_ga18cf0915c5ee99b7188998cc1df85109}\label{group__driver__sht40x_ga18cf0915c5ee99b7188998cc1df85109} 
+\#define {\bfseries HEATER\+\_\+\+DELAY\+\_\+100mS}~115U
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+sht40x driver modules 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group__driver__sht40x_ga5fc5258fad26a2225b045a59bb32c8d9}\label{group__driver__sht40x_ga5fc5258fad26a2225b045a59bb32c8d9} 
+\index{sht40x driver function@{sht40x driver function}!DUMMY\_DATA@{DUMMY\_DATA}}
+\index{DUMMY\_DATA@{DUMMY\_DATA}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{DUMMY\_DATA}{DUMMY\_DATA}}
+{\footnotesize\ttfamily \#define DUMMY\+\_\+\+DATA~0x00}
+
+dummy data \Hypertarget{group__driver__sht40x_ga796a0f0c942f484d8397108f58b59432}\label{group__driver__sht40x_ga796a0f0c942f484d8397108f58b59432} 
+\index{sht40x driver function@{sht40x driver function}!SHT40X\_ACTIVATE\_HEATER\_110mW\_100mS\_CMD@{SHT40X\_ACTIVATE\_HEATER\_110mW\_100mS\_CMD}}
+\index{SHT40X\_ACTIVATE\_HEATER\_110mW\_100mS\_CMD@{SHT40X\_ACTIVATE\_HEATER\_110mW\_100mS\_CMD}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{SHT40X\_ACTIVATE\_HEATER\_110mW\_100mS\_CMD}{SHT40X\_ACTIVATE\_HEATER\_110mW\_100mS\_CMD}}
+{\footnotesize\ttfamily \#define SHT40\+X\+\_\+\+ACTIVATE\+\_\+\+HEATER\+\_\+110m\+W\+\_\+100m\+S\+\_\+\+CMD~0x24}
+
+Activate heater with 110mW for 0.\+1s including a high precision measurement just before deactivation \Hypertarget{group__driver__sht40x_ga7d3f0ed8bf3404f712ea1956ebe03e01}\label{group__driver__sht40x_ga7d3f0ed8bf3404f712ea1956ebe03e01} 
+\index{sht40x driver function@{sht40x driver function}!SHT40X\_ACTIVATE\_HEATER\_110mW\_1\_S\_CMD@{SHT40X\_ACTIVATE\_HEATER\_110mW\_1\_S\_CMD}}
+\index{SHT40X\_ACTIVATE\_HEATER\_110mW\_1\_S\_CMD@{SHT40X\_ACTIVATE\_HEATER\_110mW\_1\_S\_CMD}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{SHT40X\_ACTIVATE\_HEATER\_110mW\_1\_S\_CMD}{SHT40X\_ACTIVATE\_HEATER\_110mW\_1\_S\_CMD}}
+{\footnotesize\ttfamily \#define SHT40\+X\+\_\+\+ACTIVATE\+\_\+\+HEATER\+\_\+110m\+W\+\_\+1\+\_\+\+S\+\_\+\+CMD~0x2F}
+
+Activate heater with 110mW for 0.\+1s including a high precision measurement just before deactivation \Hypertarget{group__driver__sht40x_ga51020190aab186d8d3450348cac6dbb7}\label{group__driver__sht40x_ga51020190aab186d8d3450348cac6dbb7} 
+\index{sht40x driver function@{sht40x driver function}!SHT40X\_ACTIVATE\_HEATER\_200mW\_100mS\_CMD@{SHT40X\_ACTIVATE\_HEATER\_200mW\_100mS\_CMD}}
+\index{SHT40X\_ACTIVATE\_HEATER\_200mW\_100mS\_CMD@{SHT40X\_ACTIVATE\_HEATER\_200mW\_100mS\_CMD}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{SHT40X\_ACTIVATE\_HEATER\_200mW\_100mS\_CMD}{SHT40X\_ACTIVATE\_HEATER\_200mW\_100mS\_CMD}}
+{\footnotesize\ttfamily \#define SHT40\+X\+\_\+\+ACTIVATE\+\_\+\+HEATER\+\_\+200m\+W\+\_\+100m\+S\+\_\+\+CMD~0x32}
+
+Activate heater with 110mW for 1s including a high precision measurement just before deactivation \Hypertarget{group__driver__sht40x_ga9ffb41faa0c3e67a3282f3b5f0c8be81}\label{group__driver__sht40x_ga9ffb41faa0c3e67a3282f3b5f0c8be81} 
+\index{sht40x driver function@{sht40x driver function}!SHT40X\_ACTIVATE\_HEATER\_200mW\_1\_S\_CMD@{SHT40X\_ACTIVATE\_HEATER\_200mW\_1\_S\_CMD}}
+\index{SHT40X\_ACTIVATE\_HEATER\_200mW\_1\_S\_CMD@{SHT40X\_ACTIVATE\_HEATER\_200mW\_1\_S\_CMD}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{SHT40X\_ACTIVATE\_HEATER\_200mW\_1\_S\_CMD}{SHT40X\_ACTIVATE\_HEATER\_200mW\_1\_S\_CMD}}
+{\footnotesize\ttfamily \#define SHT40\+X\+\_\+\+ACTIVATE\+\_\+\+HEATER\+\_\+200m\+W\+\_\+1\+\_\+\+S\+\_\+\+CMD~0x39}
+
+Activate heater with 200mW for 0.\+1s including a high precision measurement just before deactivation \Hypertarget{group__driver__sht40x_gaba24f26b6edadf1e7c85f67126279651}\label{group__driver__sht40x_gaba24f26b6edadf1e7c85f67126279651} 
+\index{sht40x driver function@{sht40x driver function}!SHT40X\_ACTIVATE\_HEATER\_20mW\_100mS\_CMD@{SHT40X\_ACTIVATE\_HEATER\_20mW\_100mS\_CMD}}
+\index{SHT40X\_ACTIVATE\_HEATER\_20mW\_100mS\_CMD@{SHT40X\_ACTIVATE\_HEATER\_20mW\_100mS\_CMD}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{SHT40X\_ACTIVATE\_HEATER\_20mW\_100mS\_CMD}{SHT40X\_ACTIVATE\_HEATER\_20mW\_100mS\_CMD}}
+{\footnotesize\ttfamily \#define SHT40\+X\+\_\+\+ACTIVATE\+\_\+\+HEATER\+\_\+20m\+W\+\_\+100m\+S\+\_\+\+CMD~0x15}
+
+Activate heater with 20mW for 0.\+1s including a high precision measurement just before deactivation \Hypertarget{group__driver__sht40x_ga18c1bfc7e0bfc11c35e5bde674634a18}\label{group__driver__sht40x_ga18c1bfc7e0bfc11c35e5bde674634a18} 
+\index{sht40x driver function@{sht40x driver function}!SHT40X\_ACTIVATE\_HEATER\_20mW\_1\_S\_CMD@{SHT40X\_ACTIVATE\_HEATER\_20mW\_1\_S\_CMD}}
+\index{SHT40X\_ACTIVATE\_HEATER\_20mW\_1\_S\_CMD@{SHT40X\_ACTIVATE\_HEATER\_20mW\_1\_S\_CMD}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{SHT40X\_ACTIVATE\_HEATER\_20mW\_1\_S\_CMD}{SHT40X\_ACTIVATE\_HEATER\_20mW\_1\_S\_CMD}}
+{\footnotesize\ttfamily \#define SHT40\+X\+\_\+\+ACTIVATE\+\_\+\+HEATER\+\_\+20m\+W\+\_\+1\+\_\+\+S\+\_\+\+CMD~0x1E}
+
+activate heater with 20mW for 1s including a high precision measurement just before deactivation \Hypertarget{group__driver__sht40x_gac23b5b089a02f00182f2cc56f3b8be44}\label{group__driver__sht40x_gac23b5b089a02f00182f2cc56f3b8be44} 
+\index{sht40x driver function@{sht40x driver function}!SHT40X\_MEASURE\_T\_RH\_HIGH\_PREC\_CMD@{SHT40X\_MEASURE\_T\_RH\_HIGH\_PREC\_CMD}}
+\index{SHT40X\_MEASURE\_T\_RH\_HIGH\_PREC\_CMD@{SHT40X\_MEASURE\_T\_RH\_HIGH\_PREC\_CMD}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{SHT40X\_MEASURE\_T\_RH\_HIGH\_PREC\_CMD}{SHT40X\_MEASURE\_T\_RH\_HIGH\_PREC\_CMD}}
+{\footnotesize\ttfamily \#define SHT40\+X\+\_\+\+MEASURE\+\_\+\+T\+\_\+\+RH\+\_\+\+HIGH\+\_\+\+PREC\+\_\+\+CMD~0x\+FD}
+
+Measure T \& RH with high precision (high repeatability) command \Hypertarget{group__driver__sht40x_ga6157027142774b715dc8be580a26edb5}\label{group__driver__sht40x_ga6157027142774b715dc8be580a26edb5} 
+\index{sht40x driver function@{sht40x driver function}!SHT40X\_MEASURE\_T\_RH\_LOWEST\_PREC\_CMD@{SHT40X\_MEASURE\_T\_RH\_LOWEST\_PREC\_CMD}}
+\index{SHT40X\_MEASURE\_T\_RH\_LOWEST\_PREC\_CMD@{SHT40X\_MEASURE\_T\_RH\_LOWEST\_PREC\_CMD}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{SHT40X\_MEASURE\_T\_RH\_LOWEST\_PREC\_CMD}{SHT40X\_MEASURE\_T\_RH\_LOWEST\_PREC\_CMD}}
+{\footnotesize\ttfamily \#define SHT40\+X\+\_\+\+MEASURE\+\_\+\+T\+\_\+\+RH\+\_\+\+LOWEST\+\_\+\+PREC\+\_\+\+CMD~0x\+E0}
+
+Measure T \& RH with lowest precision (low repeatability) command \Hypertarget{group__driver__sht40x_gaf8297224810ee43c3678add00275a895}\label{group__driver__sht40x_gaf8297224810ee43c3678add00275a895} 
+\index{sht40x driver function@{sht40x driver function}!SHT40X\_MEASURE\_T\_RH\_MIDIUM\_PREC\_CMD@{SHT40X\_MEASURE\_T\_RH\_MIDIUM\_PREC\_CMD}}
+\index{SHT40X\_MEASURE\_T\_RH\_MIDIUM\_PREC\_CMD@{SHT40X\_MEASURE\_T\_RH\_MIDIUM\_PREC\_CMD}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{SHT40X\_MEASURE\_T\_RH\_MIDIUM\_PREC\_CMD}{SHT40X\_MEASURE\_T\_RH\_MIDIUM\_PREC\_CMD}}
+{\footnotesize\ttfamily \#define SHT40\+X\+\_\+\+MEASURE\+\_\+\+T\+\_\+\+RH\+\_\+\+MIDIUM\+\_\+\+PREC\+\_\+\+CMD~0x\+F6}
+
+Measure T \& RH with medium precision (medium repeatability) command \Hypertarget{group__driver__sht40x_ga69d9b052ba2edbd3dbedb9adc4083337}\label{group__driver__sht40x_ga69d9b052ba2edbd3dbedb9adc4083337} 
+\index{sht40x driver function@{sht40x driver function}!SHT40X\_READ\_SERIAL\_NUMBER\_CMD@{SHT40X\_READ\_SERIAL\_NUMBER\_CMD}}
+\index{SHT40X\_READ\_SERIAL\_NUMBER\_CMD@{SHT40X\_READ\_SERIAL\_NUMBER\_CMD}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{SHT40X\_READ\_SERIAL\_NUMBER\_CMD}{SHT40X\_READ\_SERIAL\_NUMBER\_CMD}}
+{\footnotesize\ttfamily \#define SHT40\+X\+\_\+\+READ\+\_\+\+SERIAL\+\_\+\+NUMBER\+\_\+\+CMD~0x89}
+
+Read serial number command \Hypertarget{group__driver__sht40x_ga0076f490cf1a0bdca3579c1cbd742e04}\label{group__driver__sht40x_ga0076f490cf1a0bdca3579c1cbd742e04} 
+\index{sht40x driver function@{sht40x driver function}!SHT40X\_RESET\_REG@{SHT40X\_RESET\_REG}}
+\index{SHT40X\_RESET\_REG@{SHT40X\_RESET\_REG}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{SHT40X\_RESET\_REG}{SHT40X\_RESET\_REG}}
+{\footnotesize\ttfamily \#define SHT40\+X\+\_\+\+RESET\+\_\+\+REG~0x00}
+
+@addtogrouup sht40x\+\_\+base\+\_\+driver Register reset register address \Hypertarget{group__driver__sht40x_gab63bd99c1ed638c5df13d14a19a3e268}\label{group__driver__sht40x_gab63bd99c1ed638c5df13d14a19a3e268} 
+\index{sht40x driver function@{sht40x driver function}!SHT40X\_SOFT\_RESET\_CMD@{SHT40X\_SOFT\_RESET\_CMD}}
+\index{SHT40X\_SOFT\_RESET\_CMD@{SHT40X\_SOFT\_RESET\_CMD}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{SHT40X\_SOFT\_RESET\_CMD}{SHT40X\_SOFT\_RESET\_CMD}}
+{\footnotesize\ttfamily \#define SHT40\+X\+\_\+\+SOFT\+\_\+\+RESET\+\_\+\+CMD~0x94}
+
+Soft reset activate heater with 200mW for 1s, including a high precision measurement just before deactivation 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{group__driver__sht40x_ga8f709c833f5d276ee11f73e47df13beb}\label{group__driver__sht40x_ga8f709c833f5d276ee11f73e47df13beb} 
+\index{sht40x driver function@{sht40x driver function}!sht40x\_bool\_t@{sht40x\_bool\_t}}
+\index{sht40x\_bool\_t@{sht40x\_bool\_t}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{sht40x\_bool\_t}{sht40x\_bool\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__driver__sht40x_ga8f709c833f5d276ee11f73e47df13beb}{sht40x\+\_\+bool\+\_\+t}}}
+
+
+
+sht40x boolean enumeration 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_BOOL\_FALSE@{SHT40X\_BOOL\_FALSE}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_BOOL\_FALSE@{SHT40X\_BOOL\_FALSE}}}\Hypertarget{group__driver__sht40x_gga8f709c833f5d276ee11f73e47df13beba3599faa2cfc9af329aa60ecb280e8725}\label{group__driver__sht40x_gga8f709c833f5d276ee11f73e47df13beba3599faa2cfc9af329aa60ecb280e8725} 
+SHT40\+X\+\_\+\+BOOL\+\_\+\+FALSE&boolean state false \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_BOOL\_TRUE@{SHT40X\_BOOL\_TRUE}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_BOOL\_TRUE@{SHT40X\_BOOL\_TRUE}}}\Hypertarget{group__driver__sht40x_gga8f709c833f5d276ee11f73e47df13beba42542bac4a59d727c597092f4e92603b}\label{group__driver__sht40x_gga8f709c833f5d276ee11f73e47df13beba42542bac4a59d727c597092f4e92603b} 
+SHT40\+X\+\_\+\+BOOL\+\_\+\+TRUE&boolean state true ~\newline
+ \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{group__driver__sht40x_ga39003b4e94d34577b361f20b65c9d37f}\label{group__driver__sht40x_ga39003b4e94d34577b361f20b65c9d37f} 
+\index{sht40x driver function@{sht40x driver function}!sht40x\_driver\_execute\_stat\_t@{sht40x\_driver\_execute\_stat\_t}}
+\index{sht40x\_driver\_execute\_stat\_t@{sht40x\_driver\_execute\_stat\_t}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{sht40x\_driver\_execute\_stat\_t}{sht40x\_driver\_execute\_stat\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__driver__sht40x_ga39003b4e94d34577b361f20b65c9d37f}{sht40x\+\_\+driver\+\_\+execute\+\_\+stat\+\_\+t}}}
+
+
+
+execution status enumeration 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_DRV\_OK@{SHT40X\_DRV\_OK}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_DRV\_OK@{SHT40X\_DRV\_OK}}}\Hypertarget{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37fa01b2fe98c7961eebe578830cb68edbe4}\label{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37fa01b2fe98c7961eebe578830cb68edbe4} 
+SHT40\+X\+\_\+\+DRV\+\_\+\+OK&status execute success \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_DRV\_FAILED@{SHT40X\_DRV\_FAILED}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_DRV\_FAILED@{SHT40X\_DRV\_FAILED}}}\Hypertarget{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37faf2323683ee1f5daa776a62b186d0328c}\label{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37faf2323683ee1f5daa776a62b186d0328c} 
+SHT40\+X\+\_\+\+DRV\+\_\+\+FAILED&status execute failed \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_DRV\_ERR\_HANDLER@{SHT40X\_DRV\_ERR\_HANDLER}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_DRV\_ERR\_HANDLER@{SHT40X\_DRV\_ERR\_HANDLER}}}\Hypertarget{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37fa4e4ccde7ccb2ff12d19e3423158a41b1}\label{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37fa4e4ccde7ccb2ff12d19e3423158a41b1} 
+SHT40\+X\+\_\+\+DRV\+\_\+\+ERR\+\_\+\+HANDLER&status execute failed, handle is null \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_DRV\_ERR\_INIT@{SHT40X\_DRV\_ERR\_INIT}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_DRV\_ERR\_INIT@{SHT40X\_DRV\_ERR\_INIT}}}\Hypertarget{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37faddb58aa01719f997579fa3470e2295e6}\label{group__driver__sht40x_gga39003b4e94d34577b361f20b65c9d37faddb58aa01719f997579fa3470e2295e6} 
+SHT40\+X\+\_\+\+DRV\+\_\+\+ERR\+\_\+\+INIT&status execute failed, handle not initialize \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{group__driver__sht40x_gaf4f7e90340bcb8e1384dd0cc42afca9d}\label{group__driver__sht40x_gaf4f7e90340bcb8e1384dd0cc42afca9d} 
+\index{sht40x driver function@{sht40x driver function}!sht40x\_heater\_power\_t@{sht40x\_heater\_power\_t}}
+\index{sht40x\_heater\_power\_t@{sht40x\_heater\_power\_t}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{sht40x\_heater\_power\_t}{sht40x\_heater\_power\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__driver__sht40x_gaf4f7e90340bcb8e1384dd0cc42afca9d}{sht40x\+\_\+heater\+\_\+power\+\_\+t}}}
+
+
+
+sht40x heater power enumeration 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_HEATER\_POWER\_200mW\_1S@{SHT40X\_HEATER\_POWER\_200mW\_1S}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_HEATER\_POWER\_200mW\_1S@{SHT40X\_HEATER\_POWER\_200mW\_1S}}}\Hypertarget{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da5e960adc4b8bbc9bfc7433b9332169a8}\label{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da5e960adc4b8bbc9bfc7433b9332169a8} 
+SHT40\+X\+\_\+\+HEATER\+\_\+\+POWER\+\_\+200m\+W\+\_\+1S&Heater with 200mW for 1s ~\newline
+ \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_HEATER\_POWER\_200mW\_100mS@{SHT40X\_HEATER\_POWER\_200mW\_100mS}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_HEATER\_POWER\_200mW\_100mS@{SHT40X\_HEATER\_POWER\_200mW\_100mS}}}\Hypertarget{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da1c244179aea87845c8e455dd77129a3a}\label{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da1c244179aea87845c8e455dd77129a3a} 
+SHT40\+X\+\_\+\+HEATER\+\_\+\+POWER\+\_\+200m\+W\+\_\+100mS&heater with 200mW for 0.\+1s \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_HEATER\_POWER\_110mW\_1S@{SHT40X\_HEATER\_POWER\_110mW\_1S}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_HEATER\_POWER\_110mW\_1S@{SHT40X\_HEATER\_POWER\_110mW\_1S}}}\Hypertarget{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da7b28ce8a08100eb4b3f8cd8b537a3b2c}\label{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da7b28ce8a08100eb4b3f8cd8b537a3b2c} 
+SHT40\+X\+\_\+\+HEATER\+\_\+\+POWER\+\_\+110m\+W\+\_\+1S&heater with 110mW for 1s ~\newline
+ \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_HEATER\_POWER\_110mW\_100mS@{SHT40X\_HEATER\_POWER\_110mW\_100mS}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_HEATER\_POWER\_110mW\_100mS@{SHT40X\_HEATER\_POWER\_110mW\_100mS}}}\Hypertarget{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9daef2c806a4512067127af3571dfa94d0b}\label{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9daef2c806a4512067127af3571dfa94d0b} 
+SHT40\+X\+\_\+\+HEATER\+\_\+\+POWER\+\_\+110m\+W\+\_\+100mS&heater with 110mW for 0.\+1s \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_HEATER\_POWER\_20mW\_1S@{SHT40X\_HEATER\_POWER\_20mW\_1S}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_HEATER\_POWER\_20mW\_1S@{SHT40X\_HEATER\_POWER\_20mW\_1S}}}\Hypertarget{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da3972da063aa527afb3e64ac15453cc44}\label{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da3972da063aa527afb3e64ac15453cc44} 
+SHT40\+X\+\_\+\+HEATER\+\_\+\+POWER\+\_\+20m\+W\+\_\+1S&heater with 20mW for 1s ~\newline
+ \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_HEATER\_POWER\_20mW\_100mS@{SHT40X\_HEATER\_POWER\_20mW\_100mS}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_HEATER\_POWER\_20mW\_100mS@{SHT40X\_HEATER\_POWER\_20mW\_100mS}}}\Hypertarget{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da517384e3a888f985fd40beb2ea6971e8}\label{group__driver__sht40x_ggaf4f7e90340bcb8e1384dd0cc42afca9da517384e3a888f985fd40beb2ea6971e8} 
+SHT40\+X\+\_\+\+HEATER\+\_\+\+POWER\+\_\+20m\+W\+\_\+100mS&heater with 20mW for 0.\+1s ~\newline
+ \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{group__driver__sht40x_gae96188cc1735feaf37958b7d9d87c5f3}\label{group__driver__sht40x_gae96188cc1735feaf37958b7d9d87c5f3} 
+\index{sht40x driver function@{sht40x driver function}!sht40x\_i2c\_address\_t@{sht40x\_i2c\_address\_t}}
+\index{sht40x\_i2c\_address\_t@{sht40x\_i2c\_address\_t}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{sht40x\_i2c\_address\_t}{sht40x\_i2c\_address\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__driver__sht40x_gae96188cc1735feaf37958b7d9d87c5f3}{sht40x\+\_\+i2c\+\_\+address\+\_\+t}}}
+
+
+
+sht40x i2c address enumeration 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40\_AD1B\_IIC\_ADDRESS@{SHT40\_AD1B\_IIC\_ADDRESS}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40\_AD1B\_IIC\_ADDRESS@{SHT40\_AD1B\_IIC\_ADDRESS}}}\Hypertarget{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a5ea199802779800c46c5f7aecb40c6c5}\label{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a5ea199802779800c46c5f7aecb40c6c5} 
+SHT40\+\_\+\+AD1\+B\+\_\+\+IIC\+\_\+\+ADDRESS&SHT40-\/\+AD1B I2C address \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40\_BD1B\_IIC\_ADDRESS@{SHT40\_BD1B\_IIC\_ADDRESS}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40\_BD1B\_IIC\_ADDRESS@{SHT40\_BD1B\_IIC\_ADDRESS}}}\Hypertarget{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a5ea9b92b1c8f5384ed7c8150042c1af1}\label{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a5ea9b92b1c8f5384ed7c8150042c1af1} 
+SHT40\+\_\+\+BD1\+B\+\_\+\+IIC\+\_\+\+ADDRESS&SHT40-\/\+BD1B I2C address \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT41\_AD1B\_IIC\_ADDRESS@{SHT41\_AD1B\_IIC\_ADDRESS}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT41\_AD1B\_IIC\_ADDRESS@{SHT41\_AD1B\_IIC\_ADDRESS}}}\Hypertarget{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a891f17c11635ac067c016baf19b3a174}\label{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a891f17c11635ac067c016baf19b3a174} 
+SHT41\+\_\+\+AD1\+B\+\_\+\+IIC\+\_\+\+ADDRESS&SHT41-\/\+AD1B I2C address \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT45\_AD1B\_IIC\_ADDRESS@{SHT45\_AD1B\_IIC\_ADDRESS}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT45\_AD1B\_IIC\_ADDRESS@{SHT45\_AD1B\_IIC\_ADDRESS}}}\Hypertarget{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a071e681fb1faf5cc9adb4c84d7c7a666}\label{group__driver__sht40x_ggae96188cc1735feaf37958b7d9d87c5f3a071e681fb1faf5cc9adb4c84d7c7a666} 
+SHT45\+\_\+\+AD1\+B\+\_\+\+IIC\+\_\+\+ADDRESS&SHT45-\/\+AD1B I2C address \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{group__driver__sht40x_gac023ff12c3bab3146aa7121893982e8d}\label{group__driver__sht40x_gac023ff12c3bab3146aa7121893982e8d} 
+\index{sht40x driver function@{sht40x driver function}!sht40x\_precision\_t@{sht40x\_precision\_t}}
+\index{sht40x\_precision\_t@{sht40x\_precision\_t}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{sht40x\_precision\_t}{sht40x\_precision\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__driver__sht40x_gac023ff12c3bab3146aa7121893982e8d}{sht40x\+\_\+precision\+\_\+t}}}
+
+
+
+sht40x read precision enumeration 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_PRECISION\_HIGH@{SHT40X\_PRECISION\_HIGH}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_PRECISION\_HIGH@{SHT40X\_PRECISION\_HIGH}}}\Hypertarget{group__driver__sht40x_ggac023ff12c3bab3146aa7121893982e8da6283152f59f5175fcfd79c2ce5d60139}\label{group__driver__sht40x_ggac023ff12c3bab3146aa7121893982e8da6283152f59f5175fcfd79c2ce5d60139} 
+SHT40\+X\+\_\+\+PRECISION\+\_\+\+HIGH&Measurement with high repeatability ~\newline
+ \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_PRECISION\_MIDIUM@{SHT40X\_PRECISION\_MIDIUM}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_PRECISION\_MIDIUM@{SHT40X\_PRECISION\_MIDIUM}}}\Hypertarget{group__driver__sht40x_ggac023ff12c3bab3146aa7121893982e8da91fe736ae12a3cb69f7c33f06493925b}\label{group__driver__sht40x_ggac023ff12c3bab3146aa7121893982e8da91fe736ae12a3cb69f7c33f06493925b} 
+SHT40\+X\+\_\+\+PRECISION\+\_\+\+MIDIUM&Measurement with medium repeatability \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40X\_PRECISION\_LOWEST@{SHT40X\_PRECISION\_LOWEST}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40X\_PRECISION\_LOWEST@{SHT40X\_PRECISION\_LOWEST}}}\Hypertarget{group__driver__sht40x_ggac023ff12c3bab3146aa7121893982e8daad1847286550b817dce94b4ed39c0253}\label{group__driver__sht40x_ggac023ff12c3bab3146aa7121893982e8daad1847286550b817dce94b4ed39c0253} 
+SHT40\+X\+\_\+\+PRECISION\+\_\+\+LOWEST&Measurement with low repeatability ~\newline
+ \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{group__driver__sht40x_gae5cf7a39681b5141b37b14b9e5724686}\label{group__driver__sht40x_gae5cf7a39681b5141b37b14b9e5724686} 
+\index{sht40x driver function@{sht40x driver function}!sht40x\_variant\_t@{sht40x\_variant\_t}}
+\index{sht40x\_variant\_t@{sht40x\_variant\_t}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{sht40x\_variant\_t}{sht40x\_variant\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__driver__sht40x_gae5cf7a39681b5141b37b14b9e5724686}{sht40x\+\_\+variant\+\_\+t}}}
+
+
+
+sht40x variant enumeration 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40\_AD1B\_VARIANT@{SHT40\_AD1B\_VARIANT}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40\_AD1B\_VARIANT@{SHT40\_AD1B\_VARIANT}}}\Hypertarget{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686ac67758fd9c5ed0a53f0871b29eb84e4b}\label{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686ac67758fd9c5ed0a53f0871b29eb84e4b} 
+SHT40\+\_\+\+AD1\+B\+\_\+\+VARIANT&SHT40-\/\+AD1B variant \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT40\_BD1B\_VARIANT@{SHT40\_BD1B\_VARIANT}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT40\_BD1B\_VARIANT@{SHT40\_BD1B\_VARIANT}}}\Hypertarget{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686ad6d01b980e6166c30d31f4d2e53e2d5e}\label{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686ad6d01b980e6166c30d31f4d2e53e2d5e} 
+SHT40\+\_\+\+BD1\+B\+\_\+\+VARIANT&SHT40-\/\+BD1B variant \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT41\_AD1B\_VARIANT@{SHT41\_AD1B\_VARIANT}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT41\_AD1B\_VARIANT@{SHT41\_AD1B\_VARIANT}}}\Hypertarget{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686a5ef0cb288e7a02b0a784e4563948be22}\label{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686a5ef0cb288e7a02b0a784e4563948be22} 
+SHT41\+\_\+\+AD1\+B\+\_\+\+VARIANT&SHT41-\/\+AD1B variant \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHT45\_AD1B\_VARIANT@{SHT45\_AD1B\_VARIANT}!sht40x driver function@{sht40x driver function}}\index{sht40x driver function@{sht40x driver function}!SHT45\_AD1B\_VARIANT@{SHT45\_AD1B\_VARIANT}}}\Hypertarget{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686a4f2b7f6d6a3c0be451a8b40e91afcc45}\label{group__driver__sht40x_ggae5cf7a39681b5141b37b14b9e5724686a4f2b7f6d6a3c0be451a8b40e91afcc45} 
+SHT45\+\_\+\+AD1\+B\+\_\+\+VARIANT&SHT45-\/\+AD1B variant \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{group__driver__sht40x_ga52a6e27165fb77b9cac34a55c32f0064}\label{group__driver__sht40x_ga52a6e27165fb77b9cac34a55c32f0064} 
+\index{sht40x driver function@{sht40x driver function}!pBuffer@{pBuffer}}
+\index{pBuffer@{pBuffer}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{pBuffer}{pBuffer}}
+{\footnotesize\ttfamily uint8\+\_\+t p\+Buffer\mbox{[}4\mbox{]}}
+
+general purpose buffer \Hypertarget{group__driver__sht40x_ga0a595268561edc58e347ca8387000bc6}\label{group__driver__sht40x_ga0a595268561edc58e347ca8387000bc6} 
+\index{sht40x driver function@{sht40x driver function}!raw@{raw}}
+\index{raw@{raw}!sht40x driver function@{sht40x driver function}}
+\doxysubsubsection{\texorpdfstring{raw}{raw}}
+{\footnotesize\ttfamily uint32\+\_\+t raw}
+
+general purpose raw data \input{group__sht40x__link__driver}
+\input{group__sht40x__base__driver}

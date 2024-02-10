@@ -1,0 +1,56 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Project",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "sht4x_driver::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sht4x_driver-Debug-d3a5a6af0d933a958c79.json",
+					"name" : "sht4x_driver",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "E:/Library Master/sht4x Tempearture and Humidity sensor/Project Example/RP2040 Pi Pico/sht40x_Temp_humidity/sht4x_driver/build",
+		"source" : "E:/Library Master/sht4x Tempearture and Humidity sensor/Project Example/RP2040 Pi Pico/sht40x_Temp_humidity/sht4x_driver"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

@@ -70,11 +70,11 @@ uint8_t sht40x_interface_i2c_deinit(void)
  *             - 1 read failed
  * @note       none
  */
-uint8_t sht40x_interface_i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
+uint8_t sht40x_interface_i2c_read(uint8_t addr, uint8_t *buf, uint8_t len)
 {
     /*call your i2c read function here*/
     /*user code begin */
-	   if( i2c_read(addr, reg, buf, len) != 0)
+	   if( i2c_read(addr, buf, len) != 0)
 	   {
 		   sht40x_interface_debug_print("i2c read failed\n");
 		   return 1;
@@ -94,11 +94,11 @@ uint8_t sht40x_interface_i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint1
  *            - 1 write failed
  * @note      none
  */
-uint8_t sht40x_interface_i2c_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
+uint8_t sht40x_interface_i2c_write(uint8_t addr, uint8_t *buf, uint8_t len)
 {
     /*call your i2c write function here*/
     /*user code begin */
-    if(i2c_write(addr, reg, buf, len) !=  0)
+    if(i2c_write(addr, buf, len) !=  0)
     {
     	sht40x_interface_debug_print("i2c write failed\n");
     	return 1;
@@ -140,8 +140,7 @@ void sht40x_interface_debug_print(const char *const fmt, ...)
 	    va_end(args);
 
 	    len = strlen((char *) str);
-	    //   EUSART1_Write_Text((const char *) str, len);        /**< example of a usart function */
-	       (void)serial_print((const char *)str, len);                  /**< example of printf function, comment out if used */
+	    (void)serial_print((const char *)str, len);                  /**< example of printf function, comment out if used */
 
     /*user code end*/
 //#endif

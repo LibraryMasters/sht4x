@@ -100,20 +100,23 @@ int main(void) {
 		err = sht40x_basic_get_serial_number( (uint32_t*)&UID );                                         /**< Read sensor unique ID (Serial number) */
 		sht40x_interface_debug_print("\nserial number : %lu\n", UID);
         
-//
-//        err = sht40x_basic_get_temp_humidity_nSample(SHT40X_PRECISION_HIGH, &dataRead, NumberSamples); /**< Measure Temp and humidity with n number of samples */
-//        sht40x_interface_debug_print("\nTemp C sampled: %.2f\n", dataRead.temperature_C);
-//        sht40x_interface_debug_print("Humidity sampled: %.2f\n", dataRead.humidity);
+        err = sht40x_basic_get_temp_humidity_nSample(SHT40X_PRECISION_HIGH, &dataRead, NumberSamples); /**< Measure Temp and humidity with n number of samples */
+        if(err != SHT40X_DRV_OK)
+            return;
+        else {
+            sht40x_interface_debug_print("\nTemp C sampled: %.2f\n", dataRead.temperature_C);
+            sht40x_interface_debug_print("Humidity sampled: %.2f\n", dataRead.humidity);
+        }
 
-//        err = sht40x_basic_activate_heater(SHT40X_HEATER_POWER_200mW_100mS, &dataRead);                 /**< Activate heater and measure temperature */
-//        sht40x_interface_debug_print("\nHeater Temp C: %.2f\n", dataRead.temperature_C);
-//        sht40x_interface_debug_print("Heater Temp F: %.2f\n", dataRead.temperature_F);
-//        sht40x_interface_debug_print("Heater Humidity: %.2f\n", dataRead.humidity);
+        err = sht40x_basic_activate_heater(SHT40X_HEATER_POWER_200mW_100mS, &dataRead);                 /**< Activate heater and measure temperature */
+        sht40x_interface_debug_print("\nHeater Temp C: %.2f\n", dataRead.temperature_C);
+        sht40x_interface_debug_print("Heater Temp F: %.2f\n", dataRead.temperature_F);
+        sht40x_interface_debug_print("Heater Humidity: %.2f\n", dataRead.humidity);
 
-//        sht40x_basic_get_variant((uint8_t *) & variant);
-//        sht40x_interface_debug_print("\nDevice variant: %d\n", variant);
-//        sht40x_basic_get_addr((uint8_t *) & deviceAdd);
-//        sht40x_interface_debug_print("\nDevice Address: %x\n", deviceAdd);
+        sht40x_basic_get_variant((sht40x_variant_t *) &variant);
+        sht40x_interface_debug_print("\nDevice variant: %d\n", variant);
+        sht40x_basic_get_addr((uint8_t *) & deviceAdd);
+        sht40x_interface_debug_print("\nDevice Address: %x\n", deviceAdd);
 
            // Add your application code
     }

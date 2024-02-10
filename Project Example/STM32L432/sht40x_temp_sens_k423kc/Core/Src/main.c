@@ -45,8 +45,8 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 void serial_print(const char *pString, uint8_t u8Length);
-uint8_t i2c_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);
-uint8_t i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);
+uint8_t i2c_write(uint8_t addr, uint8_t *buf, uint8_t len);
+uint8_t i2c_read(uint8_t addr, uint8_t *buf, uint8_t len);
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -105,7 +105,7 @@ int main(void)
   /* USER CODE END 2 */
   HAL_Delay(500);
 
-	sht40x_basic_initialize(SHT40_AD1B_VARIANT);
+	sht40x_basic_initialize(SHT40_AD1B_VARIANT);        /**< initialize device variant */
 	sht40x_info(&sht40xInfo);
 
 	sht40x_interface_debug_print("Chip Name: \t%s\r\n", sht40xInfo.chip_name);
@@ -139,12 +139,12 @@ int main(void)
 //        err = sht40x_basic_get_temp_humidity_nSample(SHT40X_PRECISION_HIGH, &dataRead, NumberSamples); /**< Measure Temp and humidity with n number of samples */
 //        sht40x_interface_debug_print("\nTemp C sampled: %.2f\n", dataRead.temperature_C);
 //        sht40x_interface_debug_print("Humidity sampled: %.2f\n", dataRead.humidity);
-
+//
 //        err = sht40x_basic_activate_heater(SHT40X_HEATER_POWER_200mW_100mS, &dataRead);                 /**< Activate heater and measure temperature */
 //        sht40x_interface_debug_print("\nHeater Temp C: %.2f\n", dataRead.temperature_C);
 //        sht40x_interface_debug_print("Heater Temp F: %.2f\n", dataRead.temperature_F);
 //        sht40x_interface_debug_print("Heater Humidity: %.2f\n", dataRead.humidity);
-
+//
 //        sht40x_basic_get_variant((uint8_t *) & variant);
 //        sht40x_interface_debug_print("\nDevice variant: %d\n", variant);
 //        sht40x_basic_get_addr((uint8_t *) & deviceAdd);
@@ -327,7 +327,7 @@ static void MX_GPIO_Init(void)
  * */
 void serial_print(const char *pString, uint8_t u8Length)
 {
-	HAL_UART_Transmit(&huart2, (const char *) pString, u8Length, HAL_MAX_DELAY);
+	HAL_UART_Transmit(&huart2, (const uint8_t *) pString, u8Length, HAL_MAX_DELAY);
 }
 
 /**
@@ -341,15 +341,9 @@ void serial_print(const char *pString, uint8_t u8Length)
  * 			- 1 failed to write
  * @note	none
  * */
-uint8_t i2c_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
+uint8_t i2c_write(uint8_t addr, uint8_t *buf, uint8_t len)
 {
-    int err;
-    err = HAL_I2C_Master_Transmit(&hi2c1, (addr << 1), (uint8_t *)&reg, 1, 1000);
-	if(err != HAL_OK)
-	{
-		return 1;				/**< failed */
-	}
-	return 0;                   /**< success */
+	return HAL_I2C_Master_Transmit(&hi2c1, (addr << 1), (uint8_t *)buf, len, 1000);
 }
 
 /**
@@ -364,16 +358,9 @@ uint8_t i2c_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
  * @note	none
  * */
 
-uint8_t i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
+uint8_t i2c_read(uint8_t addr, uint8_t *buf, uint8_t len)
 {
-    int err;
-	err = HAL_I2C_Master_Receive(&hi2c1, (addr << 1), (uint8_t *)buf, len, 1000);
-	if(err !=  HAL_OK)
-	{
-		return 1;				/**< failed */
-	}
-
-	return 0;                   /**< success */
+    return HAL_I2C_Master_Receive(&hi2c1, (addr << 1), (uint8_t *)buf, len, 1000);
 }
 /* USER CODE END 4 */
 
