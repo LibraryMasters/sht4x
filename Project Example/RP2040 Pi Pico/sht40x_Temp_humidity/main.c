@@ -29,10 +29,10 @@ int main()
     gpio_pull_up(PICO_DEFAULT_I2C_SDA_PIN);
     gpio_pull_up(PICO_DEFAULT_I2C_SCL_PIN);
 
-    sht40x_basic_initialize(SHT40_AD1B_VARIANT);
+    sht40x_basic_initialize(SHT40_AD1B_VARIANT); 
     sht40x_info(&sht40xInfo);
 
-    sht40x_interface_delay_ms(3000);
+     sht40x_interface_delay_ms(3000);
 
     sht40x_interface_debug_print("Chip Name: \t%s\r\n", sht40xInfo.chip_name);
     sht40x_interface_debug_print("Manufacturer: \t%s\r\n", sht40xInfo.manufacturer_name);
@@ -50,7 +50,7 @@ int main()
 		err =  sht40x_basic_get_temp_rh(SHT40X_PRECISION_HIGH, &dataRead);                               /**< Take temperature and humidity measurement */
 		sht40x_interface_debug_print("\nTemp C: %.2f\n", dataRead.temperature_C);
 		sht40x_interface_debug_print("Temp F: %.2f\n", dataRead.temperature_F);
-		sht40x_interface_debug_print("Humidity: %.2f\n", dataRead.humidity);
+		sht40x_interface_debug_print("Humidity: %.2f\n", dataRead.humidity); 
 		
 		for(int index = 0; index < RESPONSE_LENGTH; index++){
 			sht40x_interface_debug_print("raw data: 0x%.2x\n", dataRead.rawData[index]);
@@ -76,6 +76,7 @@ int main()
        sht40x_interface_debug_print("\nDevice variant: %d\n", variant);
        sht40x_basic_get_addr((uint8_t *) & deviceAdd);
        sht40x_interface_debug_print("\nDevice Address: 0x%x\n", deviceAdd);
+
     }
     return 0;
 }

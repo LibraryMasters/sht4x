@@ -40,8 +40,6 @@
 uint8_t sht40x_basic_initialize(sht40x_variant_t variant)
 {
 
-    volatile uint8_t err;
-
     /*link function*/
     DRIVER_SHT40X_LINK_INIT(&sht40x_handler, sht40x_handle_t);                               /**< Link the  */
     DRIVER_SHT40X_LINK_I2C_INIT(&sht40x_handler, sht40x_interface_i2c_init);                 /**< Link the i2c initialize function */
@@ -55,24 +53,21 @@ uint8_t sht40x_basic_initialize(sht40x_variant_t variant)
     err = sht40x_init(&sht40x_handler);
     if(err)
     {
-        a_sht40x_print_error_msg(&sht40x_handler, "initialize");
-        return err;       /**< failed */
+        return err;   /**< return error status*/
     }
 
     /* set device variant */
     err = sht40x_set_variant(&sht40x_handler, variant);
     if(err)
     {
-        a_sht40x_print_error_msg(&sht40x_handler, "set device variant");
-        return err;   /**< failed */
+       return err;   /**< return error status*/
     }
 
     /** set device address */
     err= sht40x_set_addr(&sht40x_handler);
     if(err)
     {
-         a_sht40x_print_error_msg(&sht40x_handler, "set device i2c address");
-        return err;
+        return err;   /**< return error status*/
     }
 
     sht40x_interface_delay_ms(10);         /**< wait 10 ms after initialize complete */
@@ -90,13 +85,8 @@ uint8_t sht40x_basic_initialize(sht40x_variant_t variant)
  */
 uint8_t sht40x_basic_get_variant(sht40x_variant_t *pVariant)
 {
-
-    if(sht40x_get_variant(&sht40x_handler, pVariant) != SHT40X_DRV_OK)
-    {
-        a_sht40x_print_error_msg(&sht40x_handler, "get device variant");
-        return 1; /**< failed */
-    }
-    return 0;   /**< success*/
+    err = sht40x_get_variant(&sht40x_handler, pVariant);
+    return err;   /**< return error status*/
 }
 
 /**
@@ -110,12 +100,8 @@ uint8_t sht40x_basic_get_variant(sht40x_variant_t *pVariant)
  */
 uint8_t sht40x_basic_get_temp_rh(sht40x_precision_t precision, sht40x_data_t *pData)
 {
-    if(sht40x_get_temp_rh(&sht40x_handler, precision, pData) != SHT40X_DRV_OK)
-    {
-        a_sht40x_print_error_msg(&sht40x_handler, "read data");
-        return 1; /**< failed */
-    }
-    return 0;   /**< success*/
+   err = sht40x_get_temp_rh(&sht40x_handler, precision, pData);
+   return err;   /**< return error status*/
 }
 
 /**
@@ -137,11 +123,10 @@ uint8_t sht40x_basic_get_temp_humidity_nSample(sht40x_precision_t precision, sht
 
     for(index = 0; index < u8NumSample; index++)
     {
-        if(sht40x_get_temp_rh(&sht40x_handler, precision, pData) != SHT40X_DRV_OK)
-        {
-            a_sht40x_print_error_msg(&sht40x_handler, "read sample data");
-            return 1; /**< failed */
-        }
+        err = sht40x_get_temp_rh(&sht40x_handler, precision, pData);
+		{
+			return err;   /**< return error status*/
+		}
         sht40x_interface_delay_ms(100);              /**< wait 100 ms between each sample measurement */
         temp_C_Samples += pData->temperature_C;
         temp_F_Samples += pData->temperature_F;
@@ -165,12 +150,8 @@ uint8_t sht40x_basic_get_temp_humidity_nSample(sht40x_precision_t precision, sht
  */
 uint8_t sht40x_basic_get_serial_number(uint32_t *pSerial_Number)
 {
-  if(sht40x_get_serial_number(&sht40x_handler, (uint32_t *)pSerial_Number) != SHT40X_DRV_OK)
-  {
-     a_sht40x_print_error_msg(&sht40x_handler, "read serial number");
-     return 1; /**< failed */
-  }
-  return 0;     /**< success */
+  err = sht40x_get_serial_number(&sht40x_handler, (uint32_t *)pSerial_Number);
+  return err;   /**< return error status*/
 }
 
 
@@ -185,13 +166,8 @@ uint8_t sht40x_basic_get_serial_number(uint32_t *pSerial_Number)
  */
 uint8_t sht40x_basic_activate_heater(sht40x_heater_power_t power, sht40x_data_t *pData)
 {
-    if(sht40x_activate_heater(&sht40x_handler, power, pData) != SHT40X_DRV_OK)
-    {
-         a_sht40x_print_error_msg(&sht40x_handler, "activate heater");
-         return 1; /**< failed */
-    }
-    return 0;   /**< success */
-
+    err = sht40x_activate_heater(&sht40x_handler, power, pData);
+    return err;   /**< return error status*/
 }
 
 /**
@@ -203,12 +179,8 @@ uint8_t sht40x_basic_activate_heater(sht40x_heater_power_t power, sht40x_data_t 
  */
 uint8_t sht40x_basic_soft_reset(void)
 {
-    if(sht40x_soft_reset(&sht40x_handler) != SHT40X_DRV_OK)
-    {
-        a_sht40x_print_error_msg(&sht40x_handler, "soft reset sensor");
-         return 1; /**< failed */
-    }
-    return 0; /**> success */
+    err = sht40x_soft_reset(&sht40x_handler);
+    return err;   /**< return error status*/
 }
 
 /**
@@ -221,12 +193,8 @@ uint8_t sht40x_basic_soft_reset(void)
  */
 uint8_t sht40x_basic_get_addr(uint8_t  *pI2c_address)
 {
-	if(sht40x_get_addr(&sht40x_handler, (uint8_t *)pI2c_address) != SHT40X_DRV_OK)
-	{
-		a_sht40x_print_error_msg(&sht40x_handler, "get address");
-		 return 1; /**< failed */
-	}
-	return 0;
+	err = sht40x_get_addr(&sht40x_handler, (uint8_t *)pI2c_address);
+	return err;   /**< return error status*/
 }
 
 

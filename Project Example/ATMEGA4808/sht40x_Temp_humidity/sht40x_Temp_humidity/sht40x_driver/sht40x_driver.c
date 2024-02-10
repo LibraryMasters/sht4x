@@ -30,16 +30,18 @@
 /**
 * @brief chip information definition
 */
-#define CHIP_NAME                "SHT40"                 /**< chip name */
+#define CHIP_NAME                "SHT4x"                 /**< chip name */
 #define INTERFACE                 "I2C"                  /**< interface protocol */
 #define MANUFACTURER_NAME         "Sensirion"            /**< manufacturer name */
 #define SUPPLY_VOLTAGE_MIN        1.8f                   /**< chip min supply voltage */
 #define SUPPLY_VOLTAGE_MAX        3.6f                   /**< chip max supply voltage */
-#define MAX_CURRENT               0.1                    /**< chip max current (uA)*/
-#define MIN_CURRENT               500                    /**< chip min current (μA)*/
+#define MIN_CURRENT               0.08                   /**< chip max current (μA)*/
+#define MAX_CURRENT               500                    /**< chip min current (μA)*/
 #define TEMPERATURE_MIN           -40.0f                 /**< chip min operating temperature (°C) */
 #define TEMPERATURE_MAX           125.0f                 /**< chip max operating temperature (°C) */
-#define DRIVER_VERSION            1100                   /**< driver version */
+#define MCU_FLASH_MIN             64                     /**< Micro-controller minimum recommended flash size (kB) */
+#define MCU_RAM_MIN               4                      /**< Micro-controller minimum recommended RAM size (KB)*/
+#define DRIVER_VERSION            1202                   /**< driver version */
 
 /**
 * @brief i2c write byte
@@ -52,13 +54,13 @@
             - 1 failed to write
 * @note none
 */
-uint8_t a_sht40x_i2c_write(sht40x_handle_t *const pHandle, uint8_t u8Reg, void *pBuf, uint8_t u8Length)
+uint8_t a_sht40x_i2c_write(sht40x_handle_t *const pHandle, uint8_t u8Reg, uint8_t *pBuf, uint8_t u8Length)
 {
-    if(pHandle->i2c_write(pHandle->i2c_address, u8Reg, (uint8_t*)pBuf, u8Length) !=  0)
-    {
-        return 1;                                      /**< return an error if failed to execute */
-    }
-    return 0;                                          /**< return success */
+	if(pHandle->i2c_write(pHandle->i2c_address, (uint8_t*)&u8Reg, 1) != 0)
+	{
+		return 1;                                       /**< return an error if failed to execute */
+	}
+	return 0;                                           /**< return success */
 }
 
 /**
@@ -73,12 +75,12 @@ uint8_t a_sht40x_i2c_write(sht40x_handle_t *const pHandle, uint8_t u8Reg, void *
 * @note none
 */
 
-uint8_t a_sht40x_i2c_read(sht40x_handle_t  *const pHandle, uint16_t u8Reg, void *pBuf, uint8_t u8Length)
+uint8_t a_sht40x_i2c_read(sht40x_handle_t  *const pHandle, uint8_t u8Reg, uint8_t *pBuf, uint8_t u8Length)
 {
-    if(pHandle->i2c_read(pHandle->i2c_address, u8Reg, (uint8_t*)pBuf, u8Length) != 0)
-    {
-        return 1;                                       /**< return an error if failed to execute */
-    }
+	if(pHandle->i2c_read(pHandle->i2c_address, (uint8_t*)pBuf, u8Length) != 0)
+	{
+		return 1;                                       /**< return an error if failed to execute */
+	}
     return 0;                                           /**< return success */
 }
 
@@ -190,7 +192,7 @@ uint8_t sht40x_deinit(sht40x_handle_t *pHandle)
 }
 
 /**
- * @brief     This function set the address
+ * @brief     This function set the i2c address
  * @param[in] *pHandle points to sht40x pHandle structure
  * @return  status code
  *            - 0 success
@@ -218,7 +220,7 @@ uint8_t sht40x_set_addr(sht40x_handle_t *const pHandle)
 }
 
 /**
- * @brief     This function get the address
+ * @brief     This function get the i2c address
  * @param[in] *pHandle points to sht40x pHandle structure
  * @param[out] pI2c_address point to the chip i2c address
  * @return  status code
@@ -356,8 +358,17 @@ uint8_t sht40x_get_temp_rh(sht40x_handle_t *const pHandle,  sht40x_precision_t p
     if(pHandle->inited != 1)
         return 3;      /**< return failed error */
 
-    err = a_sht40x_i2c_read(pHandle, READ_PRECISION[precision], (uint8_t *)pStatus, RESPONSE_LENGTH);
-    if(err)
+    err = a_sht40x_i2c_write(pHandle, READ_PRECISION[precision], DUMMY_DATA, 0);
+    if(err != SHT40X_DRV_OK)
+    {
+        a_sht40x_print_error_msg(pHandle, "write temp and humidity cmd");
+        return err;  /**< failed*/
+    }
+
+    pHandle->delay_ms(10);      /**< wait 10 ms for conversion to complete */
+
+    err = a_sht40x_i2c_read(pHandle, DUMMY_DATA, (uint8_t *)pStatus, RESPONSE_LENGTH);  /**< read result */
+    if(err != SHT40X_DRV_OK)
     {
         a_sht40x_print_error_msg(pHandle, "read temp and humidity");
         return err;  /**< failed*/
@@ -368,12 +379,13 @@ uint8_t sht40x_get_temp_rh(sht40x_handle_t *const pHandle,  sht40x_precision_t p
 
     pData->humidity = (pStatus[3] << 8) | pStatus[4];
     pData->humidity = ((pData->humidity/65535.0) * 125) - 6;
-	
-    /**error handler***/
 
+        /**error handler***/
     pData->humidity =  pData->humidity > HUMIDITY_MAX ? HUMIDITY_MAX: pData->humidity;                     /**< if humidity is high than max allowed, set to 100 */
-    pData->humidity =  pData->humidity < HUMIDITY_MIN ? HUMIDITY_MIN:  pData->humidity;                     /**< if humidity is less than min allowed, set to 0 */
-	memcpy(pData->rawData, pStatus, RESPONSE_LENGTH);
+    pData->humidity =  pData->humidity < HUMIDITY_MIN ? HUMIDITY_MIN:  pData->humidity;                    /**< if humidity is less than min allowed, set to 0 */
+
+    memcpy(pData->rawData, pStatus, RESPONSE_LENGTH);
+
     return 0;
 }
 
@@ -403,11 +415,20 @@ uint8_t sht40x_get_serial_number(sht40x_handle_t *const pHandle, uint32_t *pSeri
 
     memset(temp_data, 0, 4);
 
-    err =  a_sht40x_i2c_read(pHandle, SHT40X_READ_SERIAL_NUMBER_CMD, (uint8_t *)temp_data, RESPONSE_LENGTH);
-    if(err)
+     err = a_sht40x_i2c_write(pHandle, SHT40X_READ_SERIAL_NUMBER_CMD, DUMMY_DATA, 0);
+    if(err != SHT40X_DRV_OK)
     {
-        a_sht40x_print_error_msg(pHandle, "get serial number");
-        return err;
+        a_sht40x_print_error_msg(pHandle, "write UID cmd");
+        return err;  /**< failed*/
+    }
+
+    pHandle->delay_ms(10);
+
+    err = a_sht40x_i2c_read(pHandle, DUMMY_DATA, (uint8_t *)temp_data, RESPONSE_LENGTH);
+    if(err != SHT40X_DRV_OK)
+    {
+        a_sht40x_print_error_msg(pHandle, "get UID");
+        return err;  /**< failed*/
     }
 
 	temp_data[2] = temp_data[3];
@@ -421,7 +442,7 @@ uint8_t sht40x_get_serial_number(sht40x_handle_t *const pHandle, uint32_t *pSeri
    memcpy(serial.pBuffer, dataOut, 4);
   *pSerial_Number = serial.raw;
 
-    return 0;           /**<< success */
+    return 0;           /**< success */
 }
 
 /**
@@ -434,7 +455,7 @@ uint8_t sht40x_get_serial_number(sht40x_handle_t *const pHandle, uint32_t *pSeri
  *            - 1 failed activate heater
  *            - 2 pHandle is NULL
  *            - 3 pHandle is not initialized
- * @note      none
+ * @note      Depending on heater setting selected, this routine can take up to 1000 ms delay
  */
 uint8_t sht40x_activate_heater(sht40x_handle_t *const pHandle, sht40x_heater_power_t power, sht40x_data_t *pData)
 {
@@ -447,31 +468,38 @@ uint8_t sht40x_activate_heater(sht40x_handle_t *const pHandle, sht40x_heater_pow
     if(pHandle->inited != 1)
         return 3;      /**< return failed error */
 
-//    err = a_sht40x_i2c_write(pHandle, HEATER_POWER[power], DUMMY_DATA, 1);
-//    if(err)
-//    {
-//        a_sht40x_print_error_msg(pHandle, "activate heater");
-//        return err;           /**< failed */
-//    }
+    err = a_sht40x_i2c_write(pHandle, HEATER_POWER[power], DUMMY_DATA, 0);
+    if(err != SHT40X_DRV_OK)
+    {
+        a_sht40x_print_error_msg(pHandle, "write heater cmd");
+        return err;  /**< failed*/
+    }
 
-     err = a_sht40x_i2c_read(pHandle, HEATER_POWER[power], (uint8_t *)pStatus, RESPONSE_LENGTH);
-    if(err)
+    if((power == SHT40X_HEATER_POWER_200mW_1S) || (power == SHT40X_HEATER_POWER_110mW_1S) || (power == SHT40X_HEATER_POWER_20mW_1S))
+        pHandle->delay_ms(HEATER_DELAY_1S);
+    else
+     pHandle->delay_ms(HEATER_DELAY_100mS);
+
+    err = a_sht40x_i2c_read(pHandle, DUMMY_DATA, (uint8_t *)pStatus, RESPONSE_LENGTH);
+    if(err != SHT40X_DRV_OK)
     {
         a_sht40x_print_error_msg(pHandle, "read temp and humidity");
         return err;  /**< failed*/
     }
+
     pData->temperature_C = (pStatus[0] << 8) |  pStatus[1];
     pData->temperature_C = ((pData->temperature_C/65535.0) * 175) - 45;
     pData->temperature_F = (pData->temperature_C * 9/5) + 32;
 
     pData->humidity = (pStatus[3] << 8) | pStatus[4];
     pData->humidity = ((pData->humidity/65535.0) * 125) - 6;
-	
+
+    memcpy(pData->rawData, pStatus, RESPONSE_LENGTH);
+
     /**error handler***/
 
     pData->humidity =  pData->humidity > HUMIDITY_MAX ? HUMIDITY_MAX: pData->humidity;                     /**< if humidity is high than max allowed, set to 100 */
     pData->humidity =  pData->humidity < HUMIDITY_MIN ? HUMIDITY_MIN:  pData->humidity;                     /**< if humidity is less than min allowed, set to 0 */
-	memcpy(pData->rawData, pStatus, RESPONSE_LENGTH);
 
     return 0;
 }
@@ -495,8 +523,8 @@ uint8_t sht40x_soft_reset(sht40x_handle_t *const pHandle)
     if(pHandle->inited != 1)
         return 3;      /**< return failed error */
 
-    err = a_sht40x_i2c_write(pHandle, SHT40X_RESET_REG, (uint8_t *)SHT40X_SOFT_RESET_CMD, 1);
-    if(err)
+    err = a_sht40x_i2c_write(pHandle, SHT40X_SOFT_RESET_CMD, DUMMY_DATA, 0);
+    if(err != SHT40X_DRV_OK)
     {
         a_sht40x_print_error_msg(pHandle, "to reset");
         return err;     /**< failed */
@@ -529,6 +557,8 @@ uint8_t sht40x_info(sht40x_info_t *const pInfo)
     pInfo->max_current_ma = MAX_CURRENT;                             /**< set maximum current */
     pInfo->temperature_max = TEMPERATURE_MAX;                        /**< set minimal temperature */
     pInfo->temperature_min = TEMPERATURE_MIN;                        /**< set maximum temperature */
+    pInfo->flash_size_min = MCU_FLASH_MIN;                           /**< set the Micro-controller minimum recommended flash size */
+    pInfo->ram_size_min = MCU_RAM_MIN;                               /**< set the Micro-controller minimum recommended ram size */
     pInfo->driver_version = DRIVER_VERSION;                          /**< set driver version */
 
     return 0;                                                        /**< return success */

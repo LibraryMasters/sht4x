@@ -38,7 +38,6 @@
  *          - 1 initialize failed
  * @note    none
  */
-
 uint8_t sht40x_basic_initialize(sht40x_variant_t variant);
 
 /**
@@ -114,8 +113,6 @@ uint8_t sht40x_basic_soft_reset(void);
  * @note      none
  */
 uint8_t sht40x_basic_get_addr(uint8_t  *pI2c_address);
-
-
 
 
 #endif // SHT40X_DRIVER_BASIC_H_INCLUDED

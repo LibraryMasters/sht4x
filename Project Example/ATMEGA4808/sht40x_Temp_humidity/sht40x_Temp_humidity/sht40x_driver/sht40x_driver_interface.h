@@ -31,11 +31,11 @@
 
 #include "sht40x_driver.h"
 
-//extern i2c_read_data(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);
-//extern void serial_print(char *const pBuffer, uint8_t u8Length);
-//extern void delay_ms(uint32_t u32Ms);
-
 static sht40x_handle_t sht40x_handler;
+
+extern uint8_t i2c_write(uint8_t addr, uint8_t *pBuf, uint8_t len);
+extern uint8_t i2c_read(uint8_t addr, uint8_t *pBuf, uint8_t len);
+extern void delay_ms(uint32_t u32Ms);
 
 /**
  * @brief  interface i2c bus init
@@ -57,7 +57,6 @@ uint8_t sht40x_interface_i2c_deinit(void);
 /**
  * @brief      interface i2c bus read
  * @param[in]  u8Addr is the i2c device address 7 bit
- * @param[in]  u16Reg is the i2c register address
  * @param[out] *pBuf points to a data buffer
  * @param[in]  u8length is the length of the data buffer
  * @return     status code
@@ -65,20 +64,19 @@ uint8_t sht40x_interface_i2c_deinit(void);
  *             - 1 read failed
  * @note       none
  */
-uint8_t sht40x_interface_i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);
+uint8_t sht40x_interface_i2c_read(uint8_t addr, uint8_t *pBuf, uint8_t u8Length);
 
 /**
- * @brief     interface i2c bus write
- * @param[in] u8Addr is the i2c device address 7 bit
- * @param[in] u16Reg is the i2c register address
- * @param[in] *pBuf points to a data buffer
- * @param[in] u8length is the length of the data buffer
- * @return    status code
- *            - 0 success
- *            - 1 write failed
- * @note      none
+ * @brief      interface i2c bus read
+ * @param[in]  u8Addr is the i2c device address 7 bit
+ * @param[out] *pBuf points to a data buffer
+ * @param[in]  u8length is the length of the data buffer
+ * @return     status code
+ *             - 0 success
+ *             - 1 read failed
+ * @note       none
  */
-uint8_t sht40x_interface_i2c_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);
+uint8_t sht40x_interface_i2c_write(uint8_t addr, uint8_t *pBuf, uint8_t u8Length);
 
 /**
  * @brief     interface delay ms

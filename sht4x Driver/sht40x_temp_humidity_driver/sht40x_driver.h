@@ -78,6 +78,8 @@
 #define HEATER_DELAY_1S                                     1020U
 #define HEATER_DELAY_100mS                                  115U
 
+//static uint8_t sht40x_err;
+
 /* Read precision table */
 static uint8_t  const READ_PRECISION[3] = { SHT40X_MEASURE_T_RH_HIGH_PREC_CMD,
                               SHT40X_MEASURE_T_RH_MIDIUM_PREC_CMD,
@@ -183,8 +185,8 @@ typedef struct  sht40x_handle_s
 {
     uint8_t (*i2c_init)(void);                                                                  /**< point to a i2c init function address */
     uint8_t (*i2c_deinit)(void);                                                                /**< point to a i2c deinit function address */
-    uint8_t (*i2c_read)(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);                 /**< point to a i2c read function address */
-    uint8_t (*i2c_write)(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);                /**< point to a i2c write function address */
+    uint8_t (*i2c_read)(uint8_t addr, uint8_t *buf, uint8_t len);								/**< point to a i2c read function address */
+    uint8_t (*i2c_write)(uint8_t addr, uint8_t *buf, uint8_t len);								/**< point to a i2c write function address */
     void (*delay_ms)(uint32_t u32Ms);                                                           /**< point to a delay_ms function address */
     void(*debug_print)(char *fmt, ...);                                                         /**< point to a debug_print function address */
     uint8_t i2c_address;                                                                        /**< i2c device address */
@@ -431,14 +433,5 @@ uint8_t sht40x_activate_heater(sht40x_handle_t *const pHandle, sht40x_heater_pow
  * @note      none
  */
 uint8_t sht40x_soft_reset(sht40x_handle_t *const pHandle);
-
-
-
-
-
-
-
-
-
 
 #endif // SHT40X_DRIVER_H_INCLUDED

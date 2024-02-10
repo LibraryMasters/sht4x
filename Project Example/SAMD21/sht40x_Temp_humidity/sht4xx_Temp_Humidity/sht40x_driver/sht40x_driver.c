@@ -503,9 +503,6 @@ uint8_t sht40x_activate_heater(sht40x_handle_t *const pHandle, sht40x_heater_pow
     pData->humidity =  pData->humidity < HUMIDITY_MIN ? HUMIDITY_MIN:  pData->humidity;                     /**< if humidity is less than min allowed, set to 0 */
 
     return 0;
-
-
-    return 0;
 }
 
 /**

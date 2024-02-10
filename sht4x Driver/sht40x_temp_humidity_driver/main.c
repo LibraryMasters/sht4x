@@ -3,11 +3,12 @@
 sht40x_info_t sht40xInfo;
 sht40x_data_t dataRead;
 
-int err;
 uint32_t UID;
 uint8_t variant;
 uint8_t deviceAdd;
 uint8_t NumberSamples = 10;
+
+int err;
 
 int main()
 {

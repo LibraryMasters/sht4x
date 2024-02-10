@@ -38,7 +38,6 @@
  *          - 1 initialize failed
  * @note    none
  */
-
 uint8_t sht40x_basic_initialize(sht40x_variant_t variant);
 
 /**

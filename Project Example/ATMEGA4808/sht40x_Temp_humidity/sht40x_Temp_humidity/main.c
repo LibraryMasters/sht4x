@@ -5,13 +5,13 @@
 sht40x_info_t sht40xInfo;
 sht40x_data_t dataRead;
 
-int err;
 uint32_t UID;
 uint8_t variant;
 uint8_t deviceAdd;
 uint8_t NumberSamples = 10;
 
-uint8_t i2c_read_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);
+uint8_t i2c_write(uint8_t addr, uint8_t *pBuf, uint8_t len);
+uint8_t i2c_read(uint8_t addr, uint8_t *pBuf, uint8_t len);
 void delay_ms(uint32_t u32Ms);
 
 int main(void)
@@ -68,20 +68,78 @@ int main(void)
 	}
 }
 
-
-void delay_ms(uint32_t u32Ms)
+/**
+ * @brief i2c data transmit
+ * @param[in] addr is the slave address
+ * @param[in] reg the register to write
+ * @param[in] buf the data to be written
+ * @param[in] len size of data
+ * @return  status code
+ * 			- 0 success
+ * 			- 1 failed to write
+ * @note	none
+ * */
+uint8_t i2c_write(uint8_t addr, uint8_t *pBuf, uint8_t len)
 {
-	while(u32Ms)
-	{
-		_delay_ms(1);
-		u32Ms--;
+ 	/* timeout is used to get out of twim_release, when there is no device connected to the bus*/
+ 	uint16_t              timeout = 10000;
+	 
+ 	while (I2C_BUSY == I2C_0_open(addr) && --timeout)
+ 	; // sit here until we get the bus..
+ 	if (!timeout)
+ 	return I2C_BUSY;
+	 
+	 I2C_0_set_buffer((uint8_t *)pBuf, len);
+	 // Start a Write operation
+	 I2C_0_master_write();
+	 timeout = 10000;
+	 while (I2C_BUSY == I2C_0_close() && --timeout); // sit here until finished.
+	 if (!timeout){
+		return 1;
 	}
+  return 0;
 
 }
 
-uint8_t i2c_read_write(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
+/**
+ * @brief i2c data Read
+ * @param[in] addr is the slave address
+ * @param[in] reg the register to read
+ * @param[out] buf point to data to read
+ * @param[in] len size of data
+ * @return  status code
+ * 			- 0 success
+ * 			- 1 failed to read
+ * @note	none
+ * */
+
+uint8_t i2c_read(uint8_t addr, uint8_t *pBuf, uint8_t len)
 {
-	I2C_0_do_transfer(reg, (uint32_t *)buf, len);
+    /* timeout is used to get out of twim_release, when there is no device connected to the bus*/
+    uint16_t              timeout = 10000;
+
+    while (I2C_BUSY == I2C_0_open(addr) && --timeout)
+    ; // sit here until we get the bus..
+    if (!timeout)
+    return I2C_BUSY;
+     	
+    I2C_0_set_buffer((uint8_t *)pBuf, len);
+    // Start a Write operation
+    I2C_0_master_read();
+    timeout = 10000;
+    while (I2C_BUSY == I2C_0_close() && --timeout); // sit here until finished.
+    if (!timeout){
+		return 1;
+	}
 	return 0;
+}
+
+void delay_ms(uint32_t u32Ms)
+{
+	while(u32Ms--)
+	{
+		_delay_ms(1);
+	}
+
 }
 

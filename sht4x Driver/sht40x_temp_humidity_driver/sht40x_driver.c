@@ -41,7 +41,7 @@
 #define TEMPERATURE_MAX           125.0f                 /**< chip max operating temperature (°C) */
 #define MCU_FLASH_MIN             64                     /**< Micro-controller minimum recommended flash size (kB) */
 #define MCU_RAM_MIN               4                      /**< Micro-controller minimum recommended RAM size (KB)*/
-#define DRIVER_VERSION            1201                   /**< driver version */
+#define DRIVER_VERSION            1202                   /**< driver version */
 
 /**
 * @brief i2c write byte
@@ -54,13 +54,13 @@
             - 1 failed to write
 * @note none
 */
-uint8_t a_sht40x_i2c_write(sht40x_handle_t *const pHandle, uint8_t u8Reg, void *pBuf, uint8_t u8Length)
+uint8_t a_sht40x_i2c_write(sht40x_handle_t *const pHandle, uint8_t u8Reg, uint8_t *pBuf, uint8_t u8Length)
 {
-    if(pHandle->i2c_write(pHandle->i2c_address, u8Reg, (uint8_t*)pBuf, u8Length) !=  0)
-    {
-        return 1;                                      /**< return an error if failed to execute */
-    }
-    return 0;                                          /**< return success */
+	if(pHandle->i2c_write(pHandle->i2c_address, (uint8_t*)&u8Reg, 1) != 0)
+	{
+		return 1;                                       /**< return an error if failed to execute */
+	}
+	return 0;                                           /**< return success */
 }
 
 /**
@@ -75,12 +75,12 @@ uint8_t a_sht40x_i2c_write(sht40x_handle_t *const pHandle, uint8_t u8Reg, void *
 * @note none
 */
 
-uint8_t a_sht40x_i2c_read(sht40x_handle_t  *const pHandle, uint16_t u8Reg, void *pBuf, uint8_t u8Length)
+uint8_t a_sht40x_i2c_read(sht40x_handle_t  *const pHandle, uint8_t u8Reg, uint8_t *pBuf, uint8_t u8Length)
 {
-    if(pHandle->i2c_read(pHandle->i2c_address, u8Reg, (uint8_t*)pBuf, u8Length) != 0)
-    {
-        return 1;                                       /**< return an error if failed to execute */
-    }
+	if(pHandle->i2c_read(pHandle->i2c_address, (uint8_t*)pBuf, u8Length) != 0)
+	{
+		return 1;                                       /**< return an error if failed to execute */
+	}
     return 0;                                           /**< return success */
 }
 
@@ -359,7 +359,7 @@ uint8_t sht40x_get_temp_rh(sht40x_handle_t *const pHandle,  sht40x_precision_t p
         return 3;      /**< return failed error */
 
     err = a_sht40x_i2c_write(pHandle, READ_PRECISION[precision], DUMMY_DATA, 0);
-    if(err)
+    if(err != SHT40X_DRV_OK)
     {
         a_sht40x_print_error_msg(pHandle, "write temp and humidity cmd");
         return err;  /**< failed*/
@@ -368,7 +368,7 @@ uint8_t sht40x_get_temp_rh(sht40x_handle_t *const pHandle,  sht40x_precision_t p
     pHandle->delay_ms(10);      /**< wait 10 ms for conversion to complete */
 
     err = a_sht40x_i2c_read(pHandle, DUMMY_DATA, (uint8_t *)pStatus, RESPONSE_LENGTH);  /**< read result */
-    if(err)
+    if(err != SHT40X_DRV_OK)
     {
         a_sht40x_print_error_msg(pHandle, "read temp and humidity");
         return err;  /**< failed*/
@@ -416,7 +416,7 @@ uint8_t sht40x_get_serial_number(sht40x_handle_t *const pHandle, uint32_t *pSeri
     memset(temp_data, 0, 4);
 
      err = a_sht40x_i2c_write(pHandle, SHT40X_READ_SERIAL_NUMBER_CMD, DUMMY_DATA, 0);
-    if(err)
+    if(err != SHT40X_DRV_OK)
     {
         a_sht40x_print_error_msg(pHandle, "write UID cmd");
         return err;  /**< failed*/
@@ -425,7 +425,7 @@ uint8_t sht40x_get_serial_number(sht40x_handle_t *const pHandle, uint32_t *pSeri
     pHandle->delay_ms(10);
 
     err = a_sht40x_i2c_read(pHandle, DUMMY_DATA, (uint8_t *)temp_data, RESPONSE_LENGTH);
-    if(err)
+    if(err != SHT40X_DRV_OK)
     {
         a_sht40x_print_error_msg(pHandle, "get UID");
         return err;  /**< failed*/
@@ -463,14 +463,13 @@ uint8_t sht40x_activate_heater(sht40x_handle_t *const pHandle, sht40x_heater_pow
     uint8_t err;
     uint8_t pStatus[RESPONSE_LENGTH];
 
-
     if(pHandle == NULL)
         return 2;     /**< return failed error */
     if(pHandle->inited != 1)
         return 3;      /**< return failed error */
 
-         err = a_sht40x_i2c_write(pHandle, HEATER_POWER[power], DUMMY_DATA, 0);
-    if(err)
+    err = a_sht40x_i2c_write(pHandle, HEATER_POWER[power], DUMMY_DATA, 0);
+    if(err != SHT40X_DRV_OK)
     {
         a_sht40x_print_error_msg(pHandle, "write heater cmd");
         return err;  /**< failed*/
@@ -482,7 +481,7 @@ uint8_t sht40x_activate_heater(sht40x_handle_t *const pHandle, sht40x_heater_pow
      pHandle->delay_ms(HEATER_DELAY_100mS);
 
     err = a_sht40x_i2c_read(pHandle, DUMMY_DATA, (uint8_t *)pStatus, RESPONSE_LENGTH);
-    if(err)
+    if(err != SHT40X_DRV_OK)
     {
         a_sht40x_print_error_msg(pHandle, "read temp and humidity");
         return err;  /**< failed*/
@@ -501,9 +500,6 @@ uint8_t sht40x_activate_heater(sht40x_handle_t *const pHandle, sht40x_heater_pow
 
     pData->humidity =  pData->humidity > HUMIDITY_MAX ? HUMIDITY_MAX: pData->humidity;                     /**< if humidity is high than max allowed, set to 100 */
     pData->humidity =  pData->humidity < HUMIDITY_MIN ? HUMIDITY_MIN:  pData->humidity;                     /**< if humidity is less than min allowed, set to 0 */
-
-    return 0;
-
 
     return 0;
 }
@@ -528,7 +524,7 @@ uint8_t sht40x_soft_reset(sht40x_handle_t *const pHandle)
         return 3;      /**< return failed error */
 
     err = a_sht40x_i2c_write(pHandle, SHT40X_SOFT_RESET_CMD, DUMMY_DATA, 0);
-    if(err)
+    if(err != SHT40X_DRV_OK)
     {
         a_sht40x_print_error_msg(pHandle, "to reset");
         return err;     /**< failed */
@@ -573,4 +569,3 @@ uint8_t sht40x_info(sht40x_info_t *const pInfo)
  */
 
 /*end*/
-
