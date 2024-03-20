@@ -1,0 +1,27 @@
+\doxysection{sht40x\+\_\+driver\+\_\+interface.\+h}
+\hypertarget{sht40x__driver__interface_8h_source}{}\label{sht40x__driver__interface_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#ifndef\ SHT40X\_DRIVER\_INTERFACE\_H\_INCLUDED}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ SHT40X\_DRIVER\_INTERFACE\_H\_INCLUDED}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}sht40x\_driver.h"{}}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{static}\ \mbox{\hyperlink{structsht40x__handle__s}{sht40x\_handle\_t}}\ sht40x\_handler;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00043\ uint8\_t\ sht40x\_interface\_i2c\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00051\ uint8\_t\ sht40x\_interface\_i2c\_deinit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00064\ uint8\_t\ sht40x\_interface\_i2c\_read(uint8\_t\ addr,\ uint8\_t\ reg,\ uint8\_t\ *buf,\ uint16\_t\ len);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00077\ uint8\_t\ sht40x\_interface\_i2c\_write(uint8\_t\ addr,\ uint8\_t\ reg,\ uint8\_t\ *buf,\ uint16\_t\ len);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00084\ \textcolor{keywordtype}{void}\ sht40x\_interface\_delay\_ms(uint32\_t\ u32Ms);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00091\ \textcolor{keywordtype}{void}\ sht40x\_interface\_debug\_print(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\textcolor{keyword}{const}\ fmt,\ ...);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SHT40X\_DRIVER\_INTERFACE\_H\_INCLUDED}}
+
+\end{DoxyCode}

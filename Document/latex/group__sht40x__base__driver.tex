@@ -1,0 +1,755 @@
+\doxysubsection{sht40x base driver function}
+\hypertarget{group__sht40x__base__driver}{}\label{group__sht40x__base__driver}\index{sht40x base driver function@{sht40x base driver function}}
+
+
+sht40x base driver modules  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_ga4cb55ca0655fd0591d7c779b985ae814}{sht40x\+\_\+info}} (\mbox{\hyperlink{group__driver__sht40x_gad5d00c8d20ffb34531570e328073cd2f}{sht40x\+\_\+info\+\_\+t}} \texorpdfstring{$\ast$}{*}const info)
+\begin{DoxyCompactList}\small\item\em get chip\textquotesingle{}s information \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_gab5a047e4896a925e52b10e6c956dfa7c}{sht40x\+\_\+init}} (\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const p\+Handle)
+\begin{DoxyCompactList}\small\item\em This function initialize the chip. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_ga3b66b90085570eaf26aded262a47c5ab}{sht40x\+\_\+deinit}} (\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const p\+Handle)
+\begin{DoxyCompactList}\small\item\em This function close the chip. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_ga13b7a986936821445e11db95b2a472ac}{sht40x\+\_\+set\+\_\+addr}} (\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const p\+Handle)
+\begin{DoxyCompactList}\small\item\em This function set the address. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_gaab63de05b73b0dd26f20234ded872b34}{sht40x\+\_\+get\+\_\+addr}} (\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const p\+Handle, \mbox{\hyperlink{group__driver__sht40x_gae96188cc1735feaf37958b7d9d87c5f3}{sht40x\+\_\+i2c\+\_\+address\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+I2c\+\_\+address)
+\begin{DoxyCompactList}\small\item\em This function get the address. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_gab980498594e493b2515f647574683ee7}{sht40x\+\_\+set\+\_\+variant}} (\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const p\+Handle, \mbox{\hyperlink{group__driver__sht40x_gae5cf7a39681b5141b37b14b9e5724686}{sht40x\+\_\+variant\+\_\+t}} variant)
+\begin{DoxyCompactList}\small\item\em This function set the device variant. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_ga4fefe407f014e5bdd319b6ce1515bc4b}{sht40x\+\_\+get\+\_\+variant}} (\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const p\+Handle, \mbox{\hyperlink{group__driver__sht40x_gae5cf7a39681b5141b37b14b9e5724686}{sht40x\+\_\+variant\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+Variant)
+\begin{DoxyCompactList}\small\item\em This function get the device variant. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_gae8c360d749850f5a5f0685dc4c2ed6a5}{sht40x\+\_\+get\+\_\+temp\+\_\+rh}} (\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const p\+Handle, \mbox{\hyperlink{group__driver__sht40x_gac023ff12c3bab3146aa7121893982e8d}{sht40x\+\_\+precision\+\_\+t}} precision, \mbox{\hyperlink{group__driver__sht40x_ga35c0112b2e4e11c89c7655587ca11b4d}{sht40x\+\_\+data\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+Data)
+\begin{DoxyCompactList}\small\item\em This function reads the temperature and humidity. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_ga41024678c4b2a9aaceb52553ae72c7c0}{sht40x\+\_\+get\+\_\+serial\+\_\+number}} (\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const p\+Handle, uint32\+\_\+t \texorpdfstring{$\ast$}{*}p\+Serial\+\_\+\+Number)
+\begin{DoxyCompactList}\small\item\em This function get the device serial number. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_ga5bb0a0543bdc96436c562574dfacfe02}{sht40x\+\_\+activate\+\_\+heater}} (\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const p\+Handle, \mbox{\hyperlink{group__driver__sht40x_gaf4f7e90340bcb8e1384dd0cc42afca9d}{sht40x\+\_\+heater\+\_\+power\+\_\+t}} power, \mbox{\hyperlink{group__driver__sht40x_ga35c0112b2e4e11c89c7655587ca11b4d}{sht40x\+\_\+data\+\_\+t}} \texorpdfstring{$\ast$}{*}p\+Data)
+\begin{DoxyCompactList}\small\item\em This function activate the device heater. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_ga55aa82365880ea7d903a851178d5e4fe}{sht40x\+\_\+soft\+\_\+reset}} (\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const p\+Handle)
+\begin{DoxyCompactList}\small\item\em This function soft reset the device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{group__sht40x__base__driver_ga6ed9ed8b9ef93354a625e06c30a46e5f}{temperature\+\_\+C}}
+\item 
+float \mbox{\hyperlink{group__sht40x__base__driver_ga85a67a7a9e32560c12019dbde489cb5a}{temperature\+\_\+F}}
+\item 
+float \mbox{\hyperlink{group__sht40x__base__driver_ga6a87b2b0cff24d38b367ccd34843a206}{humidity}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_ga8ca7b17baca6e8a0b542bfb6f7b611fc}{raw\+Data}} \mbox{[}RESPONSE\+\_\+\+LENGTH\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_ga52a6e27165fb77b9cac34a55c32f0064}{p\+Buffer}} \mbox{[}4\mbox{]}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_ga0a595268561edc58e347ca8387000bc6}{raw}}
+\item 
+uint8\+\_\+t(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__sht40x__base__driver_ga0371a3fe03709a345f9f6d3b1e53dbf2}{i2c\+\_\+init}} )(void)
+\item 
+uint8\+\_\+t(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__sht40x__base__driver_ga2ed17bbf1b0e0d9f8369d88ec6c59c84}{i2c\+\_\+deinit}} )(void)
+\item 
+uint8\+\_\+t(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__sht40x__base__driver_ga5ef818b19857ef9b2bdda362a3da8546}{i2c\+\_\+read}} )(uint8\+\_\+t addr, uint8\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buf, uint16\+\_\+t len)
+\item 
+uint8\+\_\+t(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__sht40x__base__driver_ga2184a8faa98450c4bbe99bb3e9ec6b98}{i2c\+\_\+write}} )(uint8\+\_\+t addr, uint8\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buf, uint16\+\_\+t len)
+\item 
+void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__sht40x__base__driver_ga9671f2fb685ddb47d249aeb15d3b65f8}{delay\+\_\+ms}} )(uint32\+\_\+t u32\+Ms)
+\item 
+void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__sht40x__base__driver_ga7df70df65cbb313403d219c1d36f7f80}{debug\+\_\+print}} )(char \texorpdfstring{$\ast$}{*}fmt,...)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_gafd5dbf719bae2b1ea9260a55e7c289cf}{i2c\+\_\+address}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_gab12781dc74efa482bb473b16d794e273}{variant}}
+\item 
+\Hypertarget{group__sht40x__base__driver_ga19bedf28d2b9748f6a62d9ae93f4e68f}\label{group__sht40x__base__driver_ga19bedf28d2b9748f6a62d9ae93f4e68f} 
+uint8\+\_\+t {\bfseries inited}
+\item 
+\Hypertarget{group__sht40x__base__driver_ga2e7a8a8036f5d891e0caca559b2b4646}\label{group__sht40x__base__driver_ga2e7a8a8036f5d891e0caca559b2b4646} 
+\mbox{\hyperlink{group__driver__sht40x_gae96188cc1735feaf37958b7d9d87c5f3}{sht40x\+\_\+i2c\+\_\+address\+\_\+t}} {\bfseries addres}
+\item 
+char \mbox{\hyperlink{group__sht40x__base__driver_ga18705bed6dbf9c36936161c9438de2e4}{chip\+\_\+name}} \mbox{[}10\mbox{]}
+\item 
+char \mbox{\hyperlink{group__sht40x__base__driver_gaaf6aff5d2bbc0bb299ccc5668ed48f84}{manufacturer\+\_\+name}} \mbox{[}25\mbox{]}
+\item 
+char \mbox{\hyperlink{group__sht40x__base__driver_gab07cd02ca5925420eb6f44b424380a08}{interface}} \mbox{[}5\mbox{]}
+\item 
+float \mbox{\hyperlink{group__sht40x__base__driver_gad8bde6ddadaf43d951e62f3befb9d35a}{supply\+\_\+voltage\+\_\+min\+\_\+v}}
+\item 
+float \mbox{\hyperlink{group__sht40x__base__driver_ga3d2b12bcac7a85ea8646bff9debe8660}{supply\+\_\+voltage\+\_\+max\+\_\+v}}
+\item 
+float \mbox{\hyperlink{group__sht40x__base__driver_ga9db82802561bf22d799b03a345f1d1dc}{max\+\_\+current\+\_\+ma}}
+\item 
+float \mbox{\hyperlink{group__sht40x__base__driver_ga8f9dbe66ac0b66ebae0a36fcb4ba368e}{temperature\+\_\+min}}
+\item 
+float \mbox{\hyperlink{group__sht40x__base__driver_ga3366a5dce9b829e03c3d321c2b4df3f6}{temperature\+\_\+max}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_ga66b0077cb2ce08399af5e9c78db1c513}{flash\+\_\+size\+\_\+min}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__sht40x__base__driver_gad0004239afc1fd3b87020ed38521a8d2}{ram\+\_\+size\+\_\+min}}
+\item 
+float \mbox{\hyperlink{group__sht40x__base__driver_ga4f23616ece06fddbe13287610c4792e2}{driver\+\_\+version}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+sht40x base driver modules 
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__sht40x__base__driver_ga5bb0a0543bdc96436c562574dfacfe02}\label{group__sht40x__base__driver_ga5bb0a0543bdc96436c562574dfacfe02} 
+\index{sht40x base driver function@{sht40x base driver function}!sht40x\_activate\_heater@{sht40x\_activate\_heater}}
+\index{sht40x\_activate\_heater@{sht40x\_activate\_heater}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{sht40x\_activate\_heater()}{sht40x\_activate\_heater()}}
+{\footnotesize\ttfamily uint8\+\_\+t sht40x\+\_\+activate\+\_\+heater (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{p\+Handle,  }\item[{\mbox{\hyperlink{group__driver__sht40x_gaf4f7e90340bcb8e1384dd0cc42afca9d}{sht40x\+\_\+heater\+\_\+power\+\_\+t}}}]{power,  }\item[{\mbox{\hyperlink{group__driver__sht40x_ga35c0112b2e4e11c89c7655587ca11b4d}{sht40x\+\_\+data\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+Data }\end{DoxyParamCaption})}
+
+
+
+This function activate the device heater. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \texorpdfstring{$\ast$}{*}p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\mbox{\texttt{ in}}  & {\em power} & is the heater power desired \\
+\hline
+\mbox{\texttt{ out}}  & {\em p\+Data} & point to the sensor data to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 failed activate heater
+\item 2 p\+Handle is NULL
+\item 3 p\+Handle is not initialized 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Depending on heater setting selected, this routine can take up to 1000 ms delay 
+\end{DoxyNote}
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} failed
+
+\texorpdfstring{$<$}{<} failed
+
+error handler
+
+\texorpdfstring{$<$}{<} if humidity is high than max allowed, set to 100
+
+\texorpdfstring{$<$}{<} if humidity is less than min allowed, set to 0\Hypertarget{group__sht40x__base__driver_ga3b66b90085570eaf26aded262a47c5ab}\label{group__sht40x__base__driver_ga3b66b90085570eaf26aded262a47c5ab} 
+\index{sht40x base driver function@{sht40x base driver function}!sht40x\_deinit@{sht40x\_deinit}}
+\index{sht40x\_deinit@{sht40x\_deinit}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{sht40x\_deinit()}{sht40x\_deinit()}}
+{\footnotesize\ttfamily uint8\+\_\+t sht40x\+\_\+deinit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+Handle }\end{DoxyParamCaption})}
+
+
+
+This function close the chip. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \texorpdfstring{$\ast$}{*}p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 i2c deinit failed
+\item 2 p\+Handle is NULL
+\item 3 p\+Handle is not initialized 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} return failed error\Hypertarget{group__sht40x__base__driver_gaab63de05b73b0dd26f20234ded872b34}\label{group__sht40x__base__driver_gaab63de05b73b0dd26f20234ded872b34} 
+\index{sht40x base driver function@{sht40x base driver function}!sht40x\_get\_addr@{sht40x\_get\_addr}}
+\index{sht40x\_get\_addr@{sht40x\_get\_addr}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{sht40x\_get\_addr()}{sht40x\_get\_addr()}}
+{\footnotesize\ttfamily uint8\+\_\+t sht40x\+\_\+get\+\_\+addr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{p\+Handle,  }\item[{\mbox{\hyperlink{group__driver__sht40x_gae96188cc1735feaf37958b7d9d87c5f3}{sht40x\+\_\+i2c\+\_\+address\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+I2c\+\_\+address }\end{DoxyParamCaption})}
+
+
+
+This function get the address. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \texorpdfstring{$\ast$}{*}p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\mbox{\texttt{ out}}  & {\em p\+I2c\+\_\+address} & point to the chip i2c address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 failed to get i2c address
+\item 2 p\+Handle is NULL
+\item 3 p\+Handle is not initialized 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none
+\end{DoxyNote}
+This function get the address.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \texorpdfstring{$\ast$}{*}p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\mbox{\texttt{ out}}  & {\em p\+I2c\+\_\+address} & point to the chip i2c address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 failed to get i2c address
+\item 2 p\+Handle is NULL
+\item 3 p\+Handle is not initialized 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} read i2c set address
+
+\texorpdfstring{$<$}{<}failed
+
+\texorpdfstring{$<$}{<}success\Hypertarget{group__sht40x__base__driver_ga41024678c4b2a9aaceb52553ae72c7c0}\label{group__sht40x__base__driver_ga41024678c4b2a9aaceb52553ae72c7c0} 
+\index{sht40x base driver function@{sht40x base driver function}!sht40x\_get\_serial\_number@{sht40x\_get\_serial\_number}}
+\index{sht40x\_get\_serial\_number@{sht40x\_get\_serial\_number}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{sht40x\_get\_serial\_number()}{sht40x\_get\_serial\_number()}}
+{\footnotesize\ttfamily uint8\+\_\+t sht40x\+\_\+get\+\_\+serial\+\_\+number (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{p\+Handle,  }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{p\+Serial\+\_\+\+Number }\end{DoxyParamCaption})}
+
+
+
+This function get the device serial number. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \texorpdfstring{$\ast$}{*}p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\mbox{\texttt{ out}}  & {\em p\+Serial\+\_\+\+Number} & point to the device serial number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 failed to get S/N
+\item 2 p\+Handle is NULL
+\item 3 p\+Handle is not initialized 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\texorpdfstring{$<$}{<} temporary data to hold serial number
+
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} failed
+
+\texorpdfstring{$<$}{<} failed
+
+\texorpdfstring{$<$}{<} move data into a temporarily buffer in reverse order
+
+\texorpdfstring{$<$}{<} success\Hypertarget{group__sht40x__base__driver_gae8c360d749850f5a5f0685dc4c2ed6a5}\label{group__sht40x__base__driver_gae8c360d749850f5a5f0685dc4c2ed6a5} 
+\index{sht40x base driver function@{sht40x base driver function}!sht40x\_get\_temp\_rh@{sht40x\_get\_temp\_rh}}
+\index{sht40x\_get\_temp\_rh@{sht40x\_get\_temp\_rh}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{sht40x\_get\_temp\_rh()}{sht40x\_get\_temp\_rh()}}
+{\footnotesize\ttfamily uint8\+\_\+t sht40x\+\_\+get\+\_\+temp\+\_\+rh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{p\+Handle,  }\item[{\mbox{\hyperlink{group__driver__sht40x_gac023ff12c3bab3146aa7121893982e8d}{sht40x\+\_\+precision\+\_\+t}}}]{precision,  }\item[{\mbox{\hyperlink{group__driver__sht40x_ga35c0112b2e4e11c89c7655587ca11b4d}{sht40x\+\_\+data\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+Data }\end{DoxyParamCaption})}
+
+
+
+This function reads the temperature and humidity. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \texorpdfstring{$\ast$}{*}p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\mbox{\texttt{ in}}  & {\em precision} & is the data read accuracy \\
+\hline
+\mbox{\texttt{ out}}  & {\em p\+Data} & point to the sensor data to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 failed to get temp/humidity
+\item 2 p\+Handle is NULL
+\item 3 p\+Handle is not initialized 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \texorpdfstring{$\ast$}{*}p\+Handle} & points to the sht40x p\+Handler structure \\
+\hline
+\mbox{\texttt{ in}}  & {\em precision} & is the data read accuracy \\
+\hline
+\mbox{\texttt{ out}}  & {\em p\+Data} & point to the sensor data to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 failed to get temp/humidity
+\item 2 p\+Handle is NULL
+\item 3 p\+Handle is not initialized 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} failed
+
+\texorpdfstring{$<$}{<} wait 10 ms for conversion to complete
+
+\texorpdfstring{$<$}{<} read result
+
+\texorpdfstring{$<$}{<} failed
+
+error handler
+
+\texorpdfstring{$<$}{<} if humidity is high than max allowed, set to 100
+
+\texorpdfstring{$<$}{<} if humidity is less than min allowed, set to 0\Hypertarget{group__sht40x__base__driver_ga4fefe407f014e5bdd319b6ce1515bc4b}\label{group__sht40x__base__driver_ga4fefe407f014e5bdd319b6ce1515bc4b} 
+\index{sht40x base driver function@{sht40x base driver function}!sht40x\_get\_variant@{sht40x\_get\_variant}}
+\index{sht40x\_get\_variant@{sht40x\_get\_variant}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{sht40x\_get\_variant()}{sht40x\_get\_variant()}}
+{\footnotesize\ttfamily uint8\+\_\+t sht40x\+\_\+get\+\_\+variant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{p\+Handle,  }\item[{\mbox{\hyperlink{group__driver__sht40x_gae5cf7a39681b5141b37b14b9e5724686}{sht40x\+\_\+variant\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+Variant }\end{DoxyParamCaption})}
+
+
+
+This function get the device variant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \texorpdfstring{$\ast$}{*}p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\mbox{\texttt{ out}}  & {\em p\+Variant} & point to the device variant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 failed to get device variant
+\item 2 p\+Handle is NULL
+\item 3 p\+Handle is not initialized 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} failed
+
+\texorpdfstring{$<$}{<} success\Hypertarget{group__sht40x__base__driver_ga4cb55ca0655fd0591d7c779b985ae814}\label{group__sht40x__base__driver_ga4cb55ca0655fd0591d7c779b985ae814} 
+\index{sht40x base driver function@{sht40x base driver function}!sht40x\_info@{sht40x\_info}}
+\index{sht40x\_info@{sht40x\_info}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{sht40x\_info()}{sht40x\_info()}}
+{\footnotesize\ttfamily uint8\+\_\+t sht40x\+\_\+info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__driver__sht40x_gad5d00c8d20ffb34531570e328073cd2f}{sht40x\+\_\+info\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{p\+Info }\end{DoxyParamCaption})}
+
+
+
+get chip\textquotesingle{}s information 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em \texorpdfstring{$\ast$}{*}info} & points to sht40x info structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 2 p\+Handle is NULL 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em \texorpdfstring{$\ast$}{*}p\+Info} & points to sht40x info structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 2 p\+Handle is NULL 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\texorpdfstring{$<$}{<} check if handle is null
+
+\texorpdfstring{$<$}{<}failed, return error
+
+\texorpdfstring{$<$}{<} initialize sht40x info structure
+
+\texorpdfstring{$<$}{<} copy chip name
+
+\texorpdfstring{$<$}{<} copy interface name
+
+\texorpdfstring{$<$}{<} copy manufacturer name
+
+\texorpdfstring{$<$}{<} set minimal supply voltage
+
+\texorpdfstring{$<$}{<} set maximum supply voltage
+
+\texorpdfstring{$<$}{<} set maximum current
+
+\texorpdfstring{$<$}{<} set minimal temperature
+
+\texorpdfstring{$<$}{<} set maximum temperature
+
+\texorpdfstring{$<$}{<} set the Micro-\/controller minimum recommended flash size
+
+\texorpdfstring{$<$}{<} set the Micro-\/controller minimum recommended ram size
+
+\texorpdfstring{$<$}{<} set driver version
+
+\texorpdfstring{$<$}{<} return success\Hypertarget{group__sht40x__base__driver_gab5a047e4896a925e52b10e6c956dfa7c}\label{group__sht40x__base__driver_gab5a047e4896a925e52b10e6c956dfa7c} 
+\index{sht40x base driver function@{sht40x base driver function}!sht40x\_init@{sht40x\_init}}
+\index{sht40x\_init@{sht40x\_init}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{sht40x\_init()}{sht40x\_init()}}
+{\footnotesize\ttfamily uint8\+\_\+t sht40x\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{p\+Handle }\end{DoxyParamCaption})}
+
+
+
+This function initialize the chip. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \texorpdfstring{$\ast$}{*}p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 i2c initialization failed
+\item 2 p\+Handle is NULL
+\item 3 linked functions is NULL 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} return success\Hypertarget{group__sht40x__base__driver_ga13b7a986936821445e11db95b2a472ac}\label{group__sht40x__base__driver_ga13b7a986936821445e11db95b2a472ac} 
+\index{sht40x base driver function@{sht40x base driver function}!sht40x\_set\_addr@{sht40x\_set\_addr}}
+\index{sht40x\_set\_addr@{sht40x\_set\_addr}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{sht40x\_set\_addr()}{sht40x\_set\_addr()}}
+{\footnotesize\ttfamily uint8\+\_\+t sht40x\+\_\+set\+\_\+addr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{p\+Handle }\end{DoxyParamCaption})}
+
+
+
+This function set the address. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \texorpdfstring{$\ast$}{*}p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 failed to set i2c address
+\item 2 p\+Handle is NULL
+\item 3 p\+Handle is not initialized 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none
+\end{DoxyNote}
+This function set the address.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \texorpdfstring{$\ast$}{*}p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 failed to set i2c address
+\item 2 p\+Handle is NULL
+\item 3 p\+Handle is not initialized 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} return failed error\Hypertarget{group__sht40x__base__driver_gab980498594e493b2515f647574683ee7}\label{group__sht40x__base__driver_gab980498594e493b2515f647574683ee7} 
+\index{sht40x base driver function@{sht40x base driver function}!sht40x\_set\_variant@{sht40x\_set\_variant}}
+\index{sht40x\_set\_variant@{sht40x\_set\_variant}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{sht40x\_set\_variant()}{sht40x\_set\_variant()}}
+{\footnotesize\ttfamily uint8\+\_\+t sht40x\+\_\+set\+\_\+variant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{p\+Handle,  }\item[{\mbox{\hyperlink{group__driver__sht40x_gae5cf7a39681b5141b37b14b9e5724686}{sht40x\+\_\+variant\+\_\+t}}}]{variant }\end{DoxyParamCaption})}
+
+
+
+This function set the device variant. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \texorpdfstring{$\ast$}{*}p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\mbox{\texttt{ in}}  & {\em variant} & is the device variant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 failed to set device variant
+\item 2 p\+Handle is NULL
+\item 3 p\+Handle is not initialized 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} failed
+
+\texorpdfstring{$<$}{<} success\Hypertarget{group__sht40x__base__driver_ga55aa82365880ea7d903a851178d5e4fe}\label{group__sht40x__base__driver_ga55aa82365880ea7d903a851178d5e4fe} 
+\index{sht40x base driver function@{sht40x base driver function}!sht40x\_soft\_reset@{sht40x\_soft\_reset}}
+\index{sht40x\_soft\_reset@{sht40x\_soft\_reset}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{sht40x\_soft\_reset()}{sht40x\_soft\_reset()}}
+{\footnotesize\ttfamily uint8\+\_\+t sht40x\+\_\+soft\+\_\+reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__driver__sht40x_ga6f8ba55d20b7806cda26a0a891942b80}{sht40x\+\_\+handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{p\+Handle }\end{DoxyParamCaption})}
+
+
+
+This function soft reset the device. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \texorpdfstring{$\ast$}{*}p\+Handle} & points to sht40x p\+Handle structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code
+\begin{DoxyItemize}
+\item 0 success
+\item 1 failed to reset
+\item 2 p\+Handle is NULL
+\item 3 p\+Handle is not initialized 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+none 
+\end{DoxyNote}
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} return failed error
+
+\texorpdfstring{$<$}{<} failed
+
+\texorpdfstring{$<$}{<} success
+
+\doxysubsubsection{Variable Documentation}
+\Hypertarget{group__sht40x__base__driver_ga18705bed6dbf9c36936161c9438de2e4}\label{group__sht40x__base__driver_ga18705bed6dbf9c36936161c9438de2e4} 
+\index{sht40x base driver function@{sht40x base driver function}!chip\_name@{chip\_name}}
+\index{chip\_name@{chip\_name}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{chip\_name}{chip\_name}}
+{\footnotesize\ttfamily char chip\+\_\+name\mbox{[}10\mbox{]}}
+
+chip name \Hypertarget{group__sht40x__base__driver_ga7df70df65cbb313403d219c1d36f7f80}\label{group__sht40x__base__driver_ga7df70df65cbb313403d219c1d36f7f80} 
+\index{sht40x base driver function@{sht40x base driver function}!debug\_print@{debug\_print}}
+\index{debug\_print@{debug\_print}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{debug\_print}{debug\_print}}
+{\footnotesize\ttfamily void(\texorpdfstring{$\ast$}{*} debug\+\_\+print) (char \texorpdfstring{$\ast$}{*}fmt,...)}
+
+point to a debug\+\_\+print function address \Hypertarget{group__sht40x__base__driver_ga9671f2fb685ddb47d249aeb15d3b65f8}\label{group__sht40x__base__driver_ga9671f2fb685ddb47d249aeb15d3b65f8} 
+\index{sht40x base driver function@{sht40x base driver function}!delay\_ms@{delay\_ms}}
+\index{delay\_ms@{delay\_ms}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{delay\_ms}{delay\_ms}}
+{\footnotesize\ttfamily void(\texorpdfstring{$\ast$}{*} delay\+\_\+ms) (uint32\+\_\+t u32\+Ms)}
+
+point to a delay\+\_\+ms function address \Hypertarget{group__sht40x__base__driver_ga4f23616ece06fddbe13287610c4792e2}\label{group__sht40x__base__driver_ga4f23616ece06fddbe13287610c4792e2} 
+\index{sht40x base driver function@{sht40x base driver function}!driver\_version@{driver\_version}}
+\index{driver\_version@{driver\_version}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{driver\_version}{driver\_version}}
+{\footnotesize\ttfamily float driver\+\_\+version}
+
+driver version \Hypertarget{group__sht40x__base__driver_ga66b0077cb2ce08399af5e9c78db1c513}\label{group__sht40x__base__driver_ga66b0077cb2ce08399af5e9c78db1c513} 
+\index{sht40x base driver function@{sht40x base driver function}!flash\_size\_min@{flash\_size\_min}}
+\index{flash\_size\_min@{flash\_size\_min}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{flash\_size\_min}{flash\_size\_min}}
+{\footnotesize\ttfamily uint8\+\_\+t flash\+\_\+size\+\_\+min}
+
+Micro-\/controller minimum recommended flash size \Hypertarget{group__sht40x__base__driver_ga6a87b2b0cff24d38b367ccd34843a206}\label{group__sht40x__base__driver_ga6a87b2b0cff24d38b367ccd34843a206} 
+\index{sht40x base driver function@{sht40x base driver function}!humidity@{humidity}}
+\index{humidity@{humidity}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{humidity}{humidity}}
+{\footnotesize\ttfamily float humidity}
+
+Humidity data read \Hypertarget{group__sht40x__base__driver_gafd5dbf719bae2b1ea9260a55e7c289cf}\label{group__sht40x__base__driver_gafd5dbf719bae2b1ea9260a55e7c289cf} 
+\index{sht40x base driver function@{sht40x base driver function}!i2c\_address@{i2c\_address}}
+\index{i2c\_address@{i2c\_address}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{i2c\_address}{i2c\_address}}
+{\footnotesize\ttfamily uint8\+\_\+t i2c\+\_\+address}
+
+i2c device address \Hypertarget{group__sht40x__base__driver_ga2ed17bbf1b0e0d9f8369d88ec6c59c84}\label{group__sht40x__base__driver_ga2ed17bbf1b0e0d9f8369d88ec6c59c84} 
+\index{sht40x base driver function@{sht40x base driver function}!i2c\_deinit@{i2c\_deinit}}
+\index{i2c\_deinit@{i2c\_deinit}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{i2c\_deinit}{i2c\_deinit}}
+{\footnotesize\ttfamily uint8\+\_\+t(\texorpdfstring{$\ast$}{*} i2c\+\_\+deinit) (void)}
+
+point to a i2c deinit function address \Hypertarget{group__sht40x__base__driver_ga0371a3fe03709a345f9f6d3b1e53dbf2}\label{group__sht40x__base__driver_ga0371a3fe03709a345f9f6d3b1e53dbf2} 
+\index{sht40x base driver function@{sht40x base driver function}!i2c\_init@{i2c\_init}}
+\index{i2c\_init@{i2c\_init}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{i2c\_init}{i2c\_init}}
+{\footnotesize\ttfamily uint8\+\_\+t(\texorpdfstring{$\ast$}{*} i2c\+\_\+init) (void)}
+
+point to a i2c init function address \Hypertarget{group__sht40x__base__driver_ga5ef818b19857ef9b2bdda362a3da8546}\label{group__sht40x__base__driver_ga5ef818b19857ef9b2bdda362a3da8546} 
+\index{sht40x base driver function@{sht40x base driver function}!i2c\_read@{i2c\_read}}
+\index{i2c\_read@{i2c\_read}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{i2c\_read}{i2c\_read}}
+{\footnotesize\ttfamily uint8\+\_\+t(\texorpdfstring{$\ast$}{*} i2c\+\_\+read) (uint8\+\_\+t addr, uint8\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buf, uint16\+\_\+t len)}
+
+point to a i2c read function address \Hypertarget{group__sht40x__base__driver_ga2184a8faa98450c4bbe99bb3e9ec6b98}\label{group__sht40x__base__driver_ga2184a8faa98450c4bbe99bb3e9ec6b98} 
+\index{sht40x base driver function@{sht40x base driver function}!i2c\_write@{i2c\_write}}
+\index{i2c\_write@{i2c\_write}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{i2c\_write}{i2c\_write}}
+{\footnotesize\ttfamily uint8\+\_\+t(\texorpdfstring{$\ast$}{*} i2c\+\_\+write) (uint8\+\_\+t addr, uint8\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buf, uint16\+\_\+t len)}
+
+point to a i2c write function address \Hypertarget{group__sht40x__base__driver_gab07cd02ca5925420eb6f44b424380a08}\label{group__sht40x__base__driver_gab07cd02ca5925420eb6f44b424380a08} 
+\index{sht40x base driver function@{sht40x base driver function}!interface@{interface}}
+\index{interface@{interface}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{interface}{interface}}
+{\footnotesize\ttfamily char interface\mbox{[}5\mbox{]}}
+
+chip interface name \Hypertarget{group__sht40x__base__driver_gaaf6aff5d2bbc0bb299ccc5668ed48f84}\label{group__sht40x__base__driver_gaaf6aff5d2bbc0bb299ccc5668ed48f84} 
+\index{sht40x base driver function@{sht40x base driver function}!manufacturer\_name@{manufacturer\_name}}
+\index{manufacturer\_name@{manufacturer\_name}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{manufacturer\_name}{manufacturer\_name}}
+{\footnotesize\ttfamily char manufacturer\+\_\+name\mbox{[}25\mbox{]}}
+
+manufacturer name \Hypertarget{group__sht40x__base__driver_ga9db82802561bf22d799b03a345f1d1dc}\label{group__sht40x__base__driver_ga9db82802561bf22d799b03a345f1d1dc} 
+\index{sht40x base driver function@{sht40x base driver function}!max\_current\_ma@{max\_current\_ma}}
+\index{max\_current\_ma@{max\_current\_ma}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{max\_current\_ma}{max\_current\_ma}}
+{\footnotesize\ttfamily float max\+\_\+current\+\_\+ma}
+
+chip max current \Hypertarget{group__sht40x__base__driver_ga52a6e27165fb77b9cac34a55c32f0064}\label{group__sht40x__base__driver_ga52a6e27165fb77b9cac34a55c32f0064} 
+\index{sht40x base driver function@{sht40x base driver function}!pBuffer@{pBuffer}}
+\index{pBuffer@{pBuffer}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{pBuffer}{pBuffer}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily uint8\+\_\+t p\+Buffer\mbox{[}4\mbox{]}}
+
+general purpose buffer \Hypertarget{group__driver__sht40x_ga52a6e27165fb77b9cac34a55c32f0064}\label{group__driver__sht40x_ga52a6e27165fb77b9cac34a55c32f0064} 
+\index{sht40x base driver function@{sht40x base driver function}!pBuffer@{pBuffer}}
+\index{pBuffer@{pBuffer}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{pBuffer}{pBuffer}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily uint8\+\_\+t p\+Buffer\mbox{[}4\mbox{]}}
+
+general purpose buffer \Hypertarget{group__sht40x__base__driver_gad0004239afc1fd3b87020ed38521a8d2}\label{group__sht40x__base__driver_gad0004239afc1fd3b87020ed38521a8d2} 
+\index{sht40x base driver function@{sht40x base driver function}!ram\_size\_min@{ram\_size\_min}}
+\index{ram\_size\_min@{ram\_size\_min}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{ram\_size\_min}{ram\_size\_min}}
+{\footnotesize\ttfamily uint8\+\_\+t ram\+\_\+size\+\_\+min}
+
+Micro-\/controller minimum recommended flash size \Hypertarget{group__sht40x__base__driver_ga0a595268561edc58e347ca8387000bc6}\label{group__sht40x__base__driver_ga0a595268561edc58e347ca8387000bc6} 
+\index{sht40x base driver function@{sht40x base driver function}!raw@{raw}}
+\index{raw@{raw}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{raw}{raw}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily uint32\+\_\+t raw}
+
+general purpose raw data \Hypertarget{group__driver__sht40x_ga0a595268561edc58e347ca8387000bc6}\label{group__driver__sht40x_ga0a595268561edc58e347ca8387000bc6} 
+\index{sht40x base driver function@{sht40x base driver function}!raw@{raw}}
+\index{raw@{raw}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{raw}{raw}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily uint32\+\_\+t raw}
+
+general purpose raw data \Hypertarget{group__sht40x__base__driver_ga8ca7b17baca6e8a0b542bfb6f7b611fc}\label{group__sht40x__base__driver_ga8ca7b17baca6e8a0b542bfb6f7b611fc} 
+\index{sht40x base driver function@{sht40x base driver function}!rawData@{rawData}}
+\index{rawData@{rawData}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{rawData}{rawData}}
+{\footnotesize\ttfamily uint8\+\_\+t raw\+Data\mbox{[}RESPONSE\+\_\+\+LENGTH\mbox{]}}
+
+Sensor raw data \Hypertarget{group__sht40x__base__driver_ga3d2b12bcac7a85ea8646bff9debe8660}\label{group__sht40x__base__driver_ga3d2b12bcac7a85ea8646bff9debe8660} 
+\index{sht40x base driver function@{sht40x base driver function}!supply\_voltage\_max\_v@{supply\_voltage\_max\_v}}
+\index{supply\_voltage\_max\_v@{supply\_voltage\_max\_v}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{supply\_voltage\_max\_v}{supply\_voltage\_max\_v}}
+{\footnotesize\ttfamily float supply\+\_\+voltage\+\_\+max\+\_\+v}
+
+chip max supply voltage \Hypertarget{group__sht40x__base__driver_gad8bde6ddadaf43d951e62f3befb9d35a}\label{group__sht40x__base__driver_gad8bde6ddadaf43d951e62f3befb9d35a} 
+\index{sht40x base driver function@{sht40x base driver function}!supply\_voltage\_min\_v@{supply\_voltage\_min\_v}}
+\index{supply\_voltage\_min\_v@{supply\_voltage\_min\_v}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{supply\_voltage\_min\_v}{supply\_voltage\_min\_v}}
+{\footnotesize\ttfamily float supply\+\_\+voltage\+\_\+min\+\_\+v}
+
+chip min supply voltage \Hypertarget{group__sht40x__base__driver_ga6ed9ed8b9ef93354a625e06c30a46e5f}\label{group__sht40x__base__driver_ga6ed9ed8b9ef93354a625e06c30a46e5f} 
+\index{sht40x base driver function@{sht40x base driver function}!temperature\_C@{temperature\_C}}
+\index{temperature\_C@{temperature\_C}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{temperature\_C}{temperature\_C}}
+{\footnotesize\ttfamily float temperature\+\_\+C}
+
+Temperature read in degree Celsius ~\newline
+ \Hypertarget{group__sht40x__base__driver_ga85a67a7a9e32560c12019dbde489cb5a}\label{group__sht40x__base__driver_ga85a67a7a9e32560c12019dbde489cb5a} 
+\index{sht40x base driver function@{sht40x base driver function}!temperature\_F@{temperature\_F}}
+\index{temperature\_F@{temperature\_F}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{temperature\_F}{temperature\_F}}
+{\footnotesize\ttfamily float temperature\+\_\+F}
+
+Temperature read in degree Fahrenheit \Hypertarget{group__sht40x__base__driver_ga3366a5dce9b829e03c3d321c2b4df3f6}\label{group__sht40x__base__driver_ga3366a5dce9b829e03c3d321c2b4df3f6} 
+\index{sht40x base driver function@{sht40x base driver function}!temperature\_max@{temperature\_max}}
+\index{temperature\_max@{temperature\_max}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{temperature\_max}{temperature\_max}}
+{\footnotesize\ttfamily float temperature\+\_\+max}
+
+chip max operating temperature \Hypertarget{group__sht40x__base__driver_ga8f9dbe66ac0b66ebae0a36fcb4ba368e}\label{group__sht40x__base__driver_ga8f9dbe66ac0b66ebae0a36fcb4ba368e} 
+\index{sht40x base driver function@{sht40x base driver function}!temperature\_min@{temperature\_min}}
+\index{temperature\_min@{temperature\_min}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{temperature\_min}{temperature\_min}}
+{\footnotesize\ttfamily float temperature\+\_\+min}
+
+chip min operating temperature \Hypertarget{group__sht40x__base__driver_gab12781dc74efa482bb473b16d794e273}\label{group__sht40x__base__driver_gab12781dc74efa482bb473b16d794e273} 
+\index{sht40x base driver function@{sht40x base driver function}!variant@{variant}}
+\index{variant@{variant}!sht40x base driver function@{sht40x base driver function}}
+\doxysubsubsubsection{\texorpdfstring{variant}{variant}}
+{\footnotesize\ttfamily uint8\+\_\+t variant}
+
+sensor variant 
